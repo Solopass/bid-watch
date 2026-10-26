@@ -1,12 +1,16 @@
-"""Scrape MetroWest town bid pages into data/bids.json and data/status.json.
+"""Scrape covered-town bid pages into data/bids.json and data/status.json.
 
 One pass. A town that fails is recorded and the rest of the run continues.
+COMMBUYS is ingested only for the covered towns and their related agencies.
+The Central Register is recorded as skipped unless a robots-allowed bulletin
+feed is available.
 """
 
 from __future__ import annotations
 
 import json
 import sys
+import time
 import traceback
 from datetime import datetime
 from pathlib import Path
@@ -15,7 +19,14 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scraper.commbuys import CommBuysError, assign_flags, fetch_open_solicitations
+from scraper.commbuys import (
+    SEARCH_URL,
+    CommBuysError,
+    assign_flags,
+    covered_rows,
+    fetch_open_solicitations,
+)
+from scraper.places import town_regions_from_config
 from scraper.dates import EASTERN
 from scraper.fetch import DEFAULT_UA, FetchError, PoliteFetcher, RobotsDisallowed
 from scraper.parsers.bidnet import ParseError as BidNetParseError
@@ -36,8 +47,20 @@ from scraper.store import (
     load_status,
     merge_bids,
     new_open_bids,
+    norm_bid_number,
     sort_bids,
     write_json,
+)
+
+# The State Library aggregation page is allowed, but the bulletin list is the
+# items tab robots.txt disallows (/entities/*/*/*), and the discover search
+# API is disallowed too. OAI answers Identify and then lists no records.
+# RSS for the collection 404s. Sitemaps are allowed untitled entity URLs,
+# about 100MB, not a bulletin feed. sec.state.ma.us is not requested.
+CENTRAL_REGISTER_SKIPPED = (
+    "Skipped: no robots-allowed feed for the latest bulletin. "
+    "The State Library items list and search are disallowed; "
+    "OAI returns no records; RSS is absent. sec.state.ma.us was not requested."
 )
 
 PARSE_ERRORS = (CivicParseError, DocParseError, WpParseError, BidNetParseError)
@@ -51,7 +74,9 @@ CHALLENGE_TITLES = (
 
 
 def main() -> int:
+    started = time.perf_counter()
     config = json.loads((ROOT / "sources.json").read_text(encoding="utf-8"))
+    town_regions = town_regions_from_config(config)
     bids_path = ROOT / "data" / "bids.json"
     status_path = ROOT / "data" / "status.json"
     new_path = ROOT / "data" / "new_bids.json"
@@ -124,13 +149,36 @@ def main() -> int:
         }
         print(f"OK COMMBUYS: {len(commbuys_rows)} open solicitations", flush=True)
 
+    # Merge town pages first. COMMBUYS rows that match a town bid, open or
+    # closed, update that bid instead of being copied. Unmatched covered
+    # rows are then merged with the COMMBUYS search marked successful, so a
+    # covered solicitation that leaves the CSV is closed and a failed export
+    # leaves the previous COMMBUYS rows in place.
     merged = merge_bids(previous_doc.get("bids", []), fresh, successful, now)
+    added = 0
+    if commbuys_rows is not None:
+        extras = covered_rows(merged, commbuys_rows, town_regions)
+        added = len(extras)
+        fresh.extend(extras)
+        successful.add(canonical_url(SEARCH_URL))
+        merged = merge_bids(previous_doc.get("bids", []), fresh, successful, now)
     _carry_commbuys(merged, previous_doc.get("bids", []))
-    assign_flags(merged, commbuys_rows)
+    assign_flags(merged, commbuys_rows, town_regions)
+    _label_bids(merged, town_regions)
+    if commbuys_rows is not None and commbuys_report.get("status") == "ok":
+        matched = sum(1 for bid in merged if bid.get("on_commbuys") == "yes" and bid.get("source") != "commbuys")
+        commbuys_report["message"] = (
+            f"{len(commbuys_rows)} open statewide; {added} covered rows kept; "
+            f"{matched} matched a town bid"
+        )
+        commbuys_report["covered_rows"] = added
     town_order = []
     for source in config["sources"]:
         if source["town"] not in town_order:
             town_order.append(source["town"])
+    for bid in merged:
+        if bid.get("town") not in town_order:
+            town_order.append(bid["town"])
     merged = sort_bids(merged, town_order)
     opened = new_open_bids(previous_doc.get("bids", []), merged)
 
@@ -139,7 +187,15 @@ def main() -> int:
     status_doc = {
         "updated": _iso(now),
         "commbuys": commbuys_report,
-        "towns": _town_status(town_order, source_reports, merged, previous_status, now),
+        "central_register": _central_register_status(),
+        "towns": _town_status(
+            [source["town"] for source in config["sources"]],
+            source_reports,
+            merged,
+            previous_status,
+            now,
+            town_regions,
+        ),
     }
     write_json(status_path, status_doc)
     write_json(
@@ -149,6 +205,8 @@ def main() -> int:
             "bids": [
                 {
                     "town": bid["town"],
+                    "region": bid.get("region"),
+                    "source": bid.get("source"),
                     "title": bid["title"],
                     "bid_number": bid.get("bid_number"),
                     "due_date": bid.get("due_date"),
@@ -158,7 +216,7 @@ def main() -> int:
             ],
         },
     )
-    _print_summary(town_order, merged, status_doc, opened)
+    _print_summary(town_order, merged, status_doc, opened, time.perf_counter() - started)
     return 0
 
 
@@ -189,6 +247,8 @@ def scrape_source(source: dict, fetcher: PoliteFetcher, known: dict) -> list[dic
     source_url = canonical_url(page_url)
     for item in listings:
         item["town"] = source["town"]
+        item["region"] = source.get("region")
+        item["source"] = "town"
         item["source_url"] = source_url
         item["url"] = canonical_url(item["url"])
         item.pop("close_raw", None)
@@ -315,10 +375,32 @@ def _key(record: dict) -> tuple:
     return ("url", canonical_url(record.get("url") or ""))
 
 
-def _town_status(town_order, reports, bids, previous_status, now) -> dict:
+def _label_bids(bids: list[dict], town_regions: dict[str, str]) -> None:
+    for bid in bids:
+        if not bid.get("source"):
+            bid["source"] = "town"
+        if not bid.get("region"):
+            bid["region"] = town_regions.get(bid.get("town") or "")
+
+
+def _central_register_status() -> dict:
+    return {
+        "status": "skipped",
+        "last_success": None,
+        "last_error": None,
+        "message": CENTRAL_REGISTER_SKIPPED,
+        "rows": 0,
+    }
+
+
+def _town_status(town_order, reports, bids, previous_status, now, town_regions) -> dict:
     towns = {}
     previous_towns = previous_status.get("towns") or {}
+    seen = []
     for town in town_order:
+        if town not in seen:
+            seen.append(town)
+    for town in seen:
         mine = [report for report in reports if report["town"] == town]
         failed = [report for report in mine if report["status"] != "ok"]
         open_count = sum(
@@ -344,6 +426,7 @@ def _town_status(town_order, reports, bids, previous_status, now) -> dict:
                 "message": None,
                 "open_count": open_count,
             }
+        entry["region"] = town_regions.get(town)
         entry["sources"] = [
             {
                 "type": report["type"],
@@ -369,18 +452,62 @@ def _commbuys_status(previous_status: dict, now: datetime) -> dict:
     }
 
 
-def _print_summary(town_order, bids, status_doc, opened) -> None:
-    print("\nTown            open  closed  status", flush=True)
+def _print_summary(town_order, bids, status_doc, opened, elapsed: float) -> None:
+    print("\nSource             open", flush=True)
+    for source, label in (
+        ("town", "Town page"),
+        ("commbuys", "COMMBUYS"),
+        ("central_register", "Central Register"),
+    ):
+        count = sum(1 for bid in bids if bid.get("source") == source and bid.get("status") == "open")
+        print(f"{label:<18} {count:>4}", flush=True)
+    print("\nTown                  region           open  closed  status", flush=True)
     for town in town_order:
+        info = (status_doc.get("towns") or {}).get(town) or {}
         open_count = sum(1 for bid in bids if bid["town"] == town and bid["status"] == "open")
         closed_count = sum(1 for bid in bids if bid["town"] == town and bid["status"] == "closed")
-        state = status_doc["towns"][town]["status"]
-        message = status_doc["towns"][town].get("message") or ""
-        print(f"{town:<15} {open_count:>4}  {closed_count:>6}  {state}  {message}", flush=True)
-    print(f"\nNew open bids: {len(opened)}", flush=True)
+        region = ""
+        for bid in bids:
+            if bid.get("town") == town and bid.get("region"):
+                region = bid["region"]
+                break
+        region = region or info.get("region") or ""
+        state = info.get("status") or "n/a"
+        message = info.get("message") or ""
+        print(f"{town:<21} {region:<16} {open_count:>4}  {closed_count:>6}  {state}  {message}", flush=True)
+    dupes = _duplicate_open(bids)
+    print(f"\nDuplicate open bids: {len(dupes)}", flush=True)
+    for kind, key in dupes:
+        print(f"  {kind}: {key}", flush=True)
+    print(f"New open bids: {len(opened)}", flush=True)
     for bid in opened:
         due = bid.get("due_date") or "no due date"
         print(f"  {bid['town']}: {bid['title']} ({due})", flush=True)
+    print(f"Runtime: {elapsed:.0f}s", flush=True)
+    register = status_doc.get("central_register") or {}
+    if register.get("status") == "skipped":
+        print(f"Central Register: {register.get('message')}", flush=True)
+
+
+def _duplicate_open(bids: list[dict]) -> list[tuple[str, str]]:
+    seen_url: dict[str, int] = {}
+    seen_num: dict[tuple[str, str], int] = {}
+    found: list[tuple[str, str]] = []
+    for bid in bids:
+        if bid.get("status") != "open":
+            continue
+        url = canonical_url(bid.get("url") or "")
+        if url:
+            seen_url[url] = seen_url.get(url, 0) + 1
+            if seen_url[url] == 2:
+                found.append(("url", url))
+        number = norm_bid_number(bid.get("bid_number")).casefold()
+        if number:
+            key = ((bid.get("town") or "").casefold(), number)
+            seen_num[key] = seen_num.get(key, 0) + 1
+            if seen_num[key] == 2:
+                found.append(("bid_number", f"{key[0]} {key[1]}"))
+    return found
 
 
 def _iso(now: datetime) -> str:

@@ -60,13 +60,19 @@ def _body(date: str, bids: list[dict]) -> str:
     lines = [
         f"New open bids found on {date}.",
         "",
-        "Personal-use tracker. Each link is a public town posting.",
+        "Personal-use tracker. Each link is a public posting.",
         "",
     ]
+    labels = {
+        "town": "Town page",
+        "commbuys": "COMMBUYS",
+        "central_register": "Central Register",
+    }
     for bid in bids:
         number = f" ({bid['bid_number']})" if bid.get("bid_number") else ""
+        origin = labels.get(bid.get("source") or "town", bid.get("source") or "Town page")
         lines.append(
-            f"- **{bid['town']}** — [{bid['title']}]({bid['url']}){number} — due {format_due(bid.get('due_date'))}"
+            f"- **{bid['town']}** ({origin}) — [{bid['title']}]({bid['url']}){number} — due {format_due(bid.get('due_date'))}"
         )
     lines.append("")
     return "\n".join(lines)

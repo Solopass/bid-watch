@@ -8,7 +8,8 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from scraper.commbuys import assign_flags
+from scraper.commbuys import assign_flags, covered_rows
+from scraper.places import match_location, match_organization, town_regions_from_config
 from scraper.dates import format_due, is_past, parse_when
 from scraper.parsers.bidnet import parse_bidnet
 from scraper.parsers.civicplus import close_kind, enrich_civicplus_detail, parse_civicplus
@@ -295,6 +296,82 @@ class StoreTest(unittest.TestCase):
         assign_flags(bids, None)
         self.assertEqual(bids[0]["on_commbuys"], "yes")
 
+    def test_covered_rows_skip_matches_and_statewide(self):
+        regions = town_regions_from_config()
+        self.assertEqual(regions["Framingham"], "MetroWest core")
+        self.assertEqual(regions["Wellesley"], "Next ring")
+        self.assertEqual(len(regions), 27)
+        self.assertIsNone(match_organization("Framingham State University", regions))
+        self.assertIsNone(match_organization("Massachusetts Department of Transportation", regions))
+        self.assertEqual(match_organization("Town of Weston", regions).town, "Weston")
+        self.assertEqual(match_organization("Town of Westborough", regions).town, "Westborough")
+        self.assertEqual(match_organization("Natick Public Schools", regions).town, "Natick")
+        self.assertEqual(match_organization("Natick Housing Authority", regions).town, "Natick")
+        self.assertEqual(match_organization("Sudbury Water District", regions).town, "Sudbury")
+        assabet = match_organization(
+            "Assabet Valley Regional Vocational School District", regions
+        )
+        self.assertEqual(assabet.town, "Assabet Valley")
+        self.assertEqual(assabet.region, "MetroWest core")
+        self.assertEqual(match_location("Natick, MA", regions).town, "Natick")
+        self.assertIsNone(match_location("Bridge replacement in Natick", regions))
+
+        rows = [
+            {
+                "Bid Solicitation #": "BD-A",
+                "Organization Name": "Town of Westborough",
+                "Description": "Golf Course Maintenance Services",
+                "Alternate Id": "FY2027-001",
+                "Bid Opening Date": "12/01/2026 10:00 AM",
+            },
+            {
+                "Bid Solicitation #": "BD-B",
+                "Organization Name": "Town of Westborough",
+                "Description": "RFQ General and FSB Contractor for New Dispatch Facility",
+                "Alternate Id": "",
+                "Bid Opening Date": "11/04/2026 1:00 PM",
+            },
+            {
+                "Bid Solicitation #": "BD-C",
+                "Organization Name": "Framingham State University",
+                "Description": "Public Safety Radio",
+                "Alternate Id": "",
+                "Bid Opening Date": "12/01/2026",
+            },
+            {
+                "Bid Solicitation #": "BD-D",
+                "Organization Name": "Assabet Valley Regional Vocational School District",
+                "Description": "IFB 631 On-call plumbing",
+                "Alternate Id": "",
+                "Bid Opening Date": "11/10/2026 10:00 AM",
+            },
+            {
+                "Bid Solicitation #": "BD-E",
+                "Organization Name": "Massachusetts Department of Transportation",
+                "Description": "Bridge replacement NATICK",
+                "Alternate Id": "",
+                "Bid Opening Date": "12/01/2026",
+            },
+        ]
+        bids = [
+            {
+                "town": "Westborough",
+                "source": "town",
+                "title": "Golf Course Maintenance Services",
+                "bid_number": "FY2027-001",
+            }
+        ]
+        extra = covered_rows(bids, rows, regions)
+        assign_flags(bids, rows, regions)
+        self.assertEqual(bids[0]["on_commbuys"], "yes")
+        self.assertEqual(sorted(item["town"] for item in extra), ["Assabet Valley", "Westborough"])
+        self.assertEqual({item["source"] for item in extra}, {"commbuys"})
+        self.assertTrue(all(item["on_commbuys"] == "yes" for item in extra))
+        dispatch = next(item for item in extra if item["town"] == "Westborough")
+        self.assertIn("Dispatch", dispatch["title"])
+        self.assertEqual(dispatch["bid_number"], "BD-B")
+        self.assertNotIn("BD-A", [item["bid_number"] for item in extra])
+
 
 class ScheduleTest(unittest.TestCase):
     def test_workflow_is_daily_plus_manual_only(self):
@@ -309,9 +386,24 @@ class ScheduleTest(unittest.TestCase):
             "https://github.com/Solopass/bid-watch/actions/workflows/scrape.yml",
             page,
         )
+        self.assertIn('id="source"', page)
+        self.assertIn("MetroWest core", page)
+        self.assertIn("Next ring", page)
+        self.assertIn("central_register", page)
         self.assertNotIn("ghp_", page)
         self.assertNotIn("github_pat_", page)
         self.assertNotIn("token", page.lower())
+        config = json.loads((ROOT / "sources.json").read_text(encoding="utf-8"))
+        next_ring = [item["town"] for item in config["sources"] if item["region"] == "Next ring"]
+        self.assertEqual(
+            next_ring,
+            [
+                "Wellesley", "Weston", "Needham", "Shrewsbury", "Stow", "Acton",
+                "Concord", "Dover", "Sherborn", "Bellingham", "Upton", "Grafton",
+                "Maynard", "Lincoln", "Mendon",
+            ],
+        )
+        self.assertTrue(all(item["type"] == "civicplus" for item in config["sources"] if item["region"] == "Next ring"))
 
 
 if __name__ == "__main__":

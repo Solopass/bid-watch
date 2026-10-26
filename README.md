@@ -1,10 +1,10 @@
 # bid-watch
 
-A personal tracker for open municipal bids and RFPs in MetroWest Massachusetts: Framingham, Natick, Marlborough, Hudson, Westborough, Ashland, Hopkinton, Sudbury, Wayland, Southborough, Holliston, and Milford.
+A personal tracker for open municipal bids and RFPs in MetroWest Massachusetts. MetroWest core is Framingham, Natick, Marlborough, Hudson, Westborough, Ashland, Hopkinton, Sudbury, Wayland, Southborough, Holliston, and Milford. The next ring is Wellesley, Weston, Needham, Shrewsbury, Stow, Acton, Concord, Dover, Sherborn, Bellingham, Upton, Grafton, Maynard, Lincoln, and Mendon.
 
 A GitHub Actions workflow reads each town's public bid page once a day and writes `data/bids.json`. This repository's GitHub Pages site is a static dashboard of that file. There is no server, no paid API, and no API key.
 
-The dashboard will be at [https://solopass.github.io/bid-watch/](https://solopass.github.io/bid-watch/) after Pages is turned on.
+The dashboard is [https://solopass.github.io/bid-watch/](https://solopass.github.io/bid-watch/).
 
 ## What it collects
 
@@ -43,7 +43,7 @@ When a run finds new open bids, it opens (or comments on) a GitHub issue titled 
 
 | `type` | Pages |
 | --- | --- |
-| `civicplus` | CivicPlus `Bids.aspx` (Framingham, Natick, Marlborough, Hudson, Ashland, Wayland, Southborough, Milford, and Westborough's usually empty town page) |
+| `civicplus` | CivicPlus `Bids.aspx`. The original MetroWest pages, Westborough's usually empty town page, and the next-ring towns (Wellesley, Weston, Needham, Shrewsbury, Stow, Acton, Concord, Dover, Sherborn, Bellingham, Upton, Grafton, Maynard, Lincoln, Mendon). Each next-ring page is the town's official `Bids.aspx` and uses the same list markup. |
 | `bidnet` | BidNet Direct agency HTML (Westborough, Hopkinton) |
 | `wordpress` | Sudbury's post list. The list has no due date, so each new post is opened. |
 | `documents` | Holliston's procurement page. Due dates are in the headings; the first PDF link is the bid. |
@@ -52,7 +52,13 @@ Natick leaves years of award notices up as "Open / Upon Contract". Those rows ar
 
 Hopkinton's town site links to Beacon (`beaconbid.com`). That site is a JavaScript app behind a captcha, so it is not scraped. The Hopkinton source is the town's public BidNet list instead.
 
-Most Massachusetts construction bids over $10,000 are also posted on COMMBUYS. The run downloads the public open-solicitation CSV from the COMMBUYS search page (one page view, then the CSV export on that same page). A bid is `on_commbuys: yes` when the organization is that town or city and the title or bid number matches. Otherwise it is `no`. If that export fails, flags stay `unknown`. The check does not log in and does not try to get around a challenge.
+Most Massachusetts construction bids over $10,000 are also posted on COMMBUYS. The run downloads the public open-solicitation CSV from the COMMBUYS search page (one page view, then the CSV export on that same page). It does not keep the statewide list. A row is kept when the organization is a covered town or city, that town's public schools, housing authority, water district, or community development authority, or a regional school district that serves a covered town (Keefe Tech, Assabet Valley, Lincoln-Sudbury, Algonquin / Northborough-Southborough, Nashoba, Tri-County, Blackstone Valley Tech, Minuteman). The public CSV has no location column. If a location column shows up later, it counts only when the whole value is one covered town, not when a description mentions the name. Framingham State University and other similar names are not covered towns.
+
+When a COMMBUYS row matches a bid already collected from a town page, that bid is marked `on_commbuys: yes` and the row is not copied. A covered row with no town-page match is stored as its own bid with `source: commbuys`. Other town bids are `on_commbuys: no`. If the export fails, existing flags stay and no new COMMBUYS rows are added. The check does not log in and does not try to get around a challenge.
+
+A regional district is grouped with MetroWest core when a core town belongs to it (Assabet Valley, Keefe Tech, Lincoln-Sudbury, Algonquin, Blackstone Valley Tech) and with the next ring otherwise (Nashoba, Tri-County, Minuteman).
+
+The Massachusetts Central Register is not scraped. The weekly bulletin PDF is archived by the State Library of Massachusetts, and the collection page at `archives.lib.state.ma.us` is allowed, but the list of issues is the items tab (`/entities/.../items`), which `robots.txt` disallows. Discovery search is disallowed too. The public OAI endpoint answers `Identify` and then returns no records (`ListSets` is HTTP 500). The collection RSS URL 404s. The sitemaps are allowed, but they are untitled entity URLs, about 100MB, and not a feed of the latest bulletin. `sec.state.ma.us` is behind a challenge and is not requested. The dashboard still has a Central Register source filter; it stays empty, and the health strip says skipped.
 
 ## Add a town
 
@@ -61,11 +67,14 @@ Add an object to the `sources` array in `sources.json`:
 ```json
 {
   "town": "Sherborn",
+  "region": "Next ring",
   "type": "civicplus",
-  "url": "https://example.gov/Bids.aspx",
+  "url": "https://www.sherbornma.org/Bids.aspx",
   "notes": "Why this page is the public list."
 }
 ```
+
+`region` is `MetroWest core` or `Next ring`. The dashboard groups towns by that field.
 
 Use `bidnet`, `wordpress`, or `documents` when the page matches those shapes. CivicPlus options:
 
