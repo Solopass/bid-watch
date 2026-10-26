@@ -1,0 +1,211 @@
+{
+  "updated": "2026-10-26T14:06:12-04:00",
+  "commbuys": {
+    "status": "ok",
+    "last_success": "2026-10-26T14:06:12-04:00",
+    "last_error": null,
+    "message": "877 open solicitations",
+    "rows": 877
+  },
+  "towns": {
+    "Framingham": {
+      "status": "ok",
+      "last_success": "2026-10-26T14:06:12-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 4,
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.framinghamma.gov/bids.aspx",
+          "status": "ok",
+          "count": 4,
+          "message": null
+        }
+      ]
+    },
+    "Natick": {
+      "status": "ok",
+      "last_success": "2026-10-26T14:06:12-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 5,
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.natickma.gov/bids.aspx",
+          "status": "ok",
+          "count": 5,
+          "message": null
+        }
+      ]
+    },
+    "Marlborough": {
+      "status": "ok",
+      "last_success": "2026-10-26T14:06:12-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 3,
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.marlborough-ma.gov/bids.aspx",
+          "status": "ok",
+          "count": 3,
+          "message": null
+        }
+      ]
+    },
+    "Hudson": {
+      "status": "ok",
+      "last_success": "2026-10-26T14:06:12-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.townofhudson.org/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Westborough": {
+      "status": "ok",
+      "last_success": "2026-10-26T14:06:12-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 3,
+      "sources": [
+        {
+          "type": "bidnet",
+          "url": "https://www.bidnetdirect.com/massachusetts/townwestborough",
+          "status": "ok",
+          "count": 3,
+          "message": null
+        },
+        {
+          "type": "civicplus",
+          "url": "https://www.westboroughma.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Ashland": {
+      "status": "ok",
+      "last_success": "2026-10-26T14:06:12-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 1,
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.ashlandmass.com/bids.aspx",
+          "status": "ok",
+          "count": 1,
+          "message": null
+        }
+      ]
+    },
+    "Hopkinton": {
+      "status": "ok",
+      "last_success": "2026-10-26T14:06:12-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "sources": [
+        {
+          "type": "bidnet",
+          "url": "https://www.bidnetdirect.com/massachusetts/hopkintonma",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Sudbury": {
+      "status": "ok",
+      "last_success": "2026-10-26T14:06:12-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 1,
+      "sources": [
+        {
+          "type": "wordpress",
+          "url": "https://sudbury.ma.us/bids/",
+          "status": "ok",
+          "count": 1,
+          "message": null
+        }
+      ]
+    },
+    "Wayland": {
+      "status": "ok",
+      "last_success": "2026-10-26T14:06:12-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 1,
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.wayland.ma.us/bids.aspx",
+          "status": "ok",
+          "count": 1,
+          "message": null
+        }
+      ]
+    },
+    "Southborough": {
+      "status": "ok",
+      "last_success": "2026-10-26T14:06:12-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 2,
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.southboroughma.gov/bids.aspx",
+          "status": "ok",
+          "count": 3,
+          "message": null
+        }
+      ]
+    },
+    "Holliston": {
+      "status": "ok",
+      "last_success": "2026-10-26T14:06:12-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 3,
+      "sources": [
+        {
+          "type": "documents",
+          "url": "https://www.townofholliston.us/592/Procurement-Legal-Notices",
+          "status": "ok",
+          "count": 6,
+          "message": null
+        }
+      ]
+    },
+    "Milford": {
+      "status": "ok",
+      "last_success": "2026-10-26T14:06:12-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.milfordma.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    }
+  }
+}
