@@ -9,6 +9,12 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from scraper.commbuys import assign_flags, covered_rows
+from scraper.legal import apply_notices, parse_notice_page
+from scraper.pdftext import text_from_content
+from scraper.parsers.bidexpress import parse_bid_express
+from scraper.parsers.massdevelopment import parse_massdevelopment
+from scraper.parsers.mbta import parse_current_solicitations, parse_future_solicitations
+from scraper.parsers.msba import parse_bid_schedule_text
 from scraper.places import match_location, match_organization, town_regions_from_config
 from scraper.dates import format_due, is_past, parse_when
 from scraper.parsers.bidnet import parse_bidnet
@@ -390,6 +396,13 @@ class ScheduleTest(unittest.TestCase):
         self.assertIn("MetroWest core", page)
         self.assertIn("Next ring", page)
         self.assertIn("central_register", page)
+        self.assertIn("Legal notices", page)
+        self.assertIn("Bid Express", page)
+        self.assertIn("MassDevelopment", page)
+        self.assertIn("MBTA", page)
+        self.assertIn("MSBA", page)
+        self.assertIn("Statewide agency", page)
+        self.assertIn("Upcoming projects", page)
         self.assertNotIn("ghp_", page)
         self.assertNotIn("github_pat_", page)
         self.assertNotIn("token", page.lower())
@@ -404,6 +417,174 @@ class ScheduleTest(unittest.TestCase):
             ],
         )
         self.assertTrue(all(item["type"] == "civicplus" for item in config["sources"] if item["region"] == "Next ring"))
+        feed_types = {item["type"] for item in config["feeds"]}
+        self.assertEqual(
+            feed_types,
+            {"legal_notice", "bid_express", "massdevelopment", "mbta_current", "mbta_future", "msba"},
+        )
+
+
+class StatewideSourceTest(unittest.TestCase):
+    def test_bid_express_reads_the_upcoming_table_only(self):
+        html = """
+        <h3>Upcoming Solicitations</h3>
+        <table id="solicitations"><tr id="Solicitation_48902">
+          <td><a href="/solicitations/48902">DCP2604 Sub Bids</a>
+          <div data-popup-content="Chelsea office renovation">Chelsea office renovation</div></td>
+          <td id="Solicitation_48902_Deadline">10/27/2026 04:00 PM UTC</td>
+        </tr></table>
+        <h3><span>Closed Solicitations</span></h3>
+        <table><tr id="Solicitation_1">
+          <td><a href="/solicitations/1">OLD</a><div data-popup-content="Closed job">Closed job</div></td>
+          <td id="Solicitation_1_Deadline">01/02/2020 04:00 PM UTC</td>
+        </tr></table>
+        """
+        rows = parse_bid_express(html, "https://www.bidexpress.com/businesses/10279/home", "DCAMM")
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["town"], "DCAMM")
+        self.assertEqual(rows[0]["region"], "Statewide agency")
+        self.assertEqual(rows[0]["source"], "bid_express")
+        self.assertEqual(rows[0]["kind"], "open")
+        self.assertEqual(rows[0]["due"], "2026-10-27T12:00:00-04:00")
+        self.assertEqual(rows[0]["url"], "https://www.bidexpress.com/solicitations/48902")
+
+    def test_massdevelopment_pairs_heading_with_the_next_pdf(self):
+        html = """
+        <h5>NOTICE TO BID: Gas path, Devens, MA MassDevelopment Project No. 26-021</h5>
+        <a href="https://www.massdevelopment.com/assets/document/RFP/Legal_Notice_26-021_FINAL.pdf">More information</a>
+        <h5>Capital providers for PACE</h5>
+        <p>Responses are due January 15, 2027.</p>
+        <a href="/assets/pace.pdf">More information</a>
+        """
+        rows = parse_massdevelopment(html, "https://www.massdevelopment.com/rfps-and-rfqs/")
+        self.assertEqual(len(rows), 2)
+        self.assertEqual(rows[0]["bid_number"], "26-021")
+        self.assertEqual(rows[0]["region"], "Statewide agency")
+        self.assertTrue(rows[0]["url"].endswith("Legal_Notice_26-021_FINAL.pdf"))
+        self.assertEqual(rows[1]["due"], "2027-01-15")
+        self.assertEqual(rows[1]["url"], "https://www.massdevelopment.com/assets/pace.pdf")
+
+    def test_mbta_future_rows_are_upcoming_and_statewide(self):
+        html = """
+        <table>
+          <tr><th>Title</th><th>Contract Number</th><th>Adv. Date</th><th>Bid Date</th><th>Type of work</th><th>Engineer's Estimate</th></tr>
+          <tr><td>Haverhill Layover Building Demolition</td><td>F64CN01</td><td>11/04/2026</td><td>12/03/2026</td><td>Demolition</td><td>$560,000</td></tr>
+          <tr><td>Escalator Replacement, Boston, MA</td><td>TBD</td><td>11/11/2026</td><td>12/10/2026</td><td>Station Improvements</td><td>$8,000,000</td></tr>
+        </table>
+        """
+        page = "https://bc.mbta.com/business_center/bidding_solicitations/future_solicitations/"
+        rows = parse_future_solicitations(html, page)
+        self.assertEqual(len(rows), 2)
+        self.assertEqual(rows[0]["kind"], "upcoming")
+        self.assertEqual(rows[0]["region"], "Statewide agency")
+        self.assertEqual(rows[0]["town"], "MBTA")
+        self.assertEqual(rows[0]["bid_number"], "F64CN01")
+        self.assertEqual(rows[0]["due"], "2026-12-03")
+        self.assertIsNone(rows[1]["bid_number"])
+        self.assertNotEqual(canonical_url(rows[0]["url"]), canonical_url(rows[1]["url"]))
+        current = """
+        <h4>Current Construction Contract Bid Solicitations</h4>
+        <ul><!--contract_nbr: F79CN01--><li><a href="/business_center/bidding_solicitations/design_and_construction/construction_bid/?cbid=7507">South Station Crew Base, Boston, MA</a></li></ul>
+        <h4>Awarded MBTA Contracts</h4>
+        <ul><li><a href="/awarded/">View awarded</a></li></ul>
+        """
+        live = parse_current_solicitations(current, "https://bc.mbta.com/business_center/bidding_solicitations/current_solicitations/")
+        self.assertEqual(len(live), 1)
+        self.assertEqual(live[0]["kind"], "open")
+        self.assertEqual(live[0]["bid_number"], "F79CN01")
+        self.assertEqual(live[0]["region"], "Statewide agency")
+
+    def test_msba_keeps_covered_towns_and_not_a_lookalike(self):
+        text = "\n".join([
+            "MarlboroughES950New$ 162.5Mon 8/2/27Fri 10/1/27$ 129.3GMP targeted: October 2027",
+            "North AndoverES335New$ 79.8Wed 7/7/27Fri 9/10/27$ 63.2NTP targeted: September 2027",
+            "AndoverES100New$ 10.0Mon 1/4/27Tue 2/2/27$ 8.0NTP targeted: February 2027",
+            "NeedhamMS1335Add/Reno$ 0.0Mon 2/28/28Tue 4/25/28$ 0.0GMP targeted: April 2028",
+        ])
+        regions = {"Marlborough": "MetroWest core", "Needham": "Next ring", "Dover": "Next ring"}
+        rows = parse_bid_schedule_text(
+            text,
+            "https://www.massschoolbuildings.org/schedule.pdf",
+            "https://www.massschoolbuildings.org/building/CP_Information_Project_Info",
+            regions,
+        )
+        self.assertEqual([row["town"] for row in rows], ["Marlborough", "Needham"])
+        self.assertEqual(rows[0]["kind"], "upcoming")
+        self.assertEqual(rows[0]["region"], "MetroWest core")
+        self.assertEqual(rows[0]["due"], "2027-08-02")
+        self.assertEqual(rows[1]["region"], "Next ring")
+        self.assertIn("#", rows[0]["url"])
+
+    def test_pdf_text_keeps_words_and_breaks_on_a_wide_gap(self):
+        content = b"[(Marl)5(borough)]TJ\n-800 (ES) Tj"
+        text = text_from_content(content)
+        self.assertIn("Marlborough", text.replace(" ", ""))
+        self.assertIn("\n", text)
+
+    def test_legal_notice_flags_a_town_bid_and_drops_other_towns(self):
+        html = """
+        <table class="nested">
+          <tr><td><input type="hidden" value="1" />
+            <a onclick="Details.aspx?SID=abc&amp;ID=923821">view</a></td>
+            <td><div class="left"><strong>MetroWest Daily News, The</strong><br>Wednesday, October 21, 2026</div>
+            <div class="right">City: Marlborough</div></td></tr>
+          <tr><td colspan="3">MPS 2027-01 LEGAL NOTICE INVITATION TO BID CITY OF MARLBOROUGH HIGH SCHOOL FIELD HOUSE FLOORING</td></tr>
+        </table>
+        <table class="nested">
+          <tr><td><a onclick="Details.aspx?ID=2">view</a></td>
+            <td><strong>Melrose Weekly News</strong><br>Friday, October 23, 2026</td></tr>
+          <tr><td colspan="3">CITY OF MELROSE INVITATION TO BID sealed bids irrigation</td></tr>
+        </table>
+        """
+        regions = {"Marlborough": "MetroWest core", "Melrose": "Next ring"}
+        # Melrose is not covered. Only Marlborough is in the real map; pass both and then
+        # confirm a town outside the map is ignored by using the real filter.
+        notices = parse_notice_page(html, {"Marlborough": "MetroWest core"})
+        self.assertEqual(len(notices), 1)
+        self.assertEqual(notices[0]["town"], "Marlborough")
+        self.assertEqual(notices[0]["source"], "legal_notice")
+        self.assertEqual(notices[0]["paper"], "MetroWest Daily News, The")
+        self.assertTrue(notices[0]["url"].endswith("Details.aspx?ID=923821"))
+        town_bid = {
+            "town": "Marlborough",
+            "source": "town",
+            "title": "High School Field House Flooring",
+            "bid_number": "MPS 2027-01",
+            "url": "https://www.marlborough-ma.gov/bids.aspx?bidID=1",
+        }
+        other = {
+            "town": "Hudson",
+            "source": "town",
+            "title": "High School Field House Flooring",
+            "bid_number": "MPS 2027-01",
+            "url": "https://www.townofhudson.org/bids.aspx?bidID=9",
+        }
+        unmatched = apply_notices([town_bid, other], notices)
+        self.assertEqual(unmatched, [])
+        self.assertEqual(town_bid["legal_notice_url"], notices[0]["url"])
+        self.assertIsNone(other["legal_notice_url"])
+        self.assertEqual(regions["Marlborough"], "MetroWest core")
+
+    def test_kind_defaults_to_open_and_fragments_stay_unique(self):
+        source = canonical_url("https://www.example.gov/Bids.aspx")
+        merged = merge_bids(
+            [],
+            [{
+                "town": "Framingham",
+                "title": "Roof",
+                "url": "https://www.example.gov/Bids.aspx?bidID=1",
+                "source_url": source,
+                "due": "2026-12-01",
+            }],
+            {source},
+            NOW,
+        )
+        self.assertEqual(merged[0]["kind"], "open")
+        self.assertIsNone(merged[0]["legal_notice_url"])
+        upcoming = "https://bc.mbta.com/future/#haverhill"
+        other = "https://bc.mbta.com/future/#quincy"
+        self.assertNotEqual(canonical_url(upcoming), canonical_url(other))
+        self.assertIn("haverhill", canonical_url(upcoming))
 
 
 if __name__ == "__main__":

@@ -67,10 +67,17 @@ def _body(date: str, bids: list[dict]) -> str:
         "town": "Town page",
         "commbuys": "COMMBUYS",
         "central_register": "Central Register",
+        "legal_notice": "Legal notices",
+        "bid_express": "Bid Express",
+        "massdevelopment": "MassDevelopment",
+        "mbta": "MBTA",
+        "msba": "MSBA",
     }
     for bid in bids:
         number = f" ({bid['bid_number']})" if bid.get("bid_number") else ""
         origin = labels.get(bid.get("source") or "town", bid.get("source") or "Town page")
+        if bid.get("kind") == "upcoming":
+            origin = f"{origin}, upcoming"
         lines.append(
             f"- **{bid['town']}** ({origin}) — [{bid['title']}]({bid['url']}){number} — due {format_due(bid.get('due_date'))}"
         )

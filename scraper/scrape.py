@@ -26,6 +26,8 @@ from scraper.commbuys import (
     covered_rows,
     fetch_open_solicitations,
 )
+from scraper.legal import SEARCH_URL as LEGAL_SEARCH_URL
+from scraper.legal import LegalNoticeError, apply_notices, fetch_notices
 from scraper.places import town_regions_from_config
 from scraper.dates import EASTERN
 from scraper.fetch import DEFAULT_UA, FetchError, PoliteFetcher, RobotsDisallowed
@@ -37,8 +39,16 @@ from scraper.parsers.civicplus import (
     enrich_civicplus_detail,
     parse_civicplus,
 )
+from scraper.parsers.bidexpress import ParseError as BidExpressParseError
+from scraper.parsers.bidexpress import parse_bid_express
 from scraper.parsers.documents import ParseError as DocParseError
 from scraper.parsers.documents import parse_document_page
+from scraper.parsers.massdevelopment import ParseError as MassDevParseError
+from scraper.parsers.massdevelopment import parse_massdevelopment
+from scraper.parsers.mbta import ParseError as MbtaParseError
+from scraper.parsers.mbta import due_from_detail, parse_current_solicitations, parse_future_solicitations
+from scraper.parsers.msba import ParseError as MsbaParseError
+from scraper.parsers.msba import latest_bid_schedule_url, parse_bid_schedule
 from scraper.parsers.wordpress import ParseError as WpParseError
 from scraper.parsers.wordpress import enrich_wordpress_post, parse_wordpress_list
 from scraper.store import (
@@ -63,7 +73,24 @@ CENTRAL_REGISTER_SKIPPED = (
     "OAI returns no records; RSS is absent. sec.state.ma.us was not requested."
 )
 
-PARSE_ERRORS = (CivicParseError, DocParseError, WpParseError, BidNetParseError)
+PARSE_ERRORS = (
+    CivicParseError,
+    DocParseError,
+    WpParseError,
+    BidNetParseError,
+    BidExpressParseError,
+    MassDevParseError,
+    MbtaParseError,
+    MsbaParseError,
+    LegalNoticeError,
+)
+FEED_LABELS = {
+    "legal_notices": "Legal notices",
+    "bid_express": "Bid Express",
+    "massdevelopment": "MassDevelopment",
+    "mbta": "MBTA",
+    "msba": "MSBA",
+}
 CHALLENGE_TITLES = (
     "just a moment",
     "attention required",
@@ -122,6 +149,10 @@ def main() -> int:
             print(f"OK {source['town']} ({source['type']}): {len(found)} listing(s)", flush=True)
         source_reports.append(report)
 
+    feed_items, feed_ok, feed_reports, legal_notices = collect_feeds(
+        config, fetcher, known, town_regions, previous_status, now
+    )
+
     commbuys_rows = None
     commbuys_report = _commbuys_status(previous_status, now)
     try:
@@ -161,7 +192,35 @@ def main() -> int:
         added = len(extras)
         fresh.extend(extras)
         successful.add(canonical_url(SEARCH_URL))
-        merged = merge_bids(previous_doc.get("bids", []), fresh, successful, now)
+    if legal_notices is not None:
+        fresh_keys = {
+            _key(item)
+            for item in fresh
+            if (item.get("source") or "town") in ("town", "commbuys")
+        }
+        pool = [
+            item
+            for item in fresh
+            if (item.get("source") or "town") in ("town", "commbuys")
+        ]
+        for record in previous_doc.get("bids", []):
+            if (record.get("source") or "town") not in ("town", "commbuys"):
+                continue
+            if _key(record) in fresh_keys:
+                continue
+            pool.append(record)
+        unmatched = apply_notices(pool, legal_notices)
+        matched_notices = len(legal_notices) - len(unmatched)
+        fresh.extend(unmatched)
+        successful.add(canonical_url(LEGAL_SEARCH_URL))
+        legal_report = feed_reports.get("legal_notices") or {}
+        legal_report["message"] = (
+            f"{legal_report.get('message')}; {matched_notices} matched an existing bid; "
+            f"{len(unmatched)} added"
+        )
+    fresh.extend(feed_items)
+    successful.update(feed_ok)
+    merged = merge_bids(previous_doc.get("bids", []), fresh, successful, now)
     _carry_commbuys(merged, previous_doc.get("bids", []))
     assign_flags(merged, commbuys_rows, town_regions)
     _label_bids(merged, town_regions)
@@ -188,6 +247,7 @@ def main() -> int:
         "updated": _iso(now),
         "commbuys": commbuys_report,
         "central_register": _central_register_status(),
+        "feeds": _feed_counts(feed_reports, merged),
         "towns": _town_status(
             [source["town"] for source in config["sources"]],
             source_reports,
@@ -207,6 +267,7 @@ def main() -> int:
                     "town": bid["town"],
                     "region": bid.get("region"),
                     "source": bid.get("source"),
+                    "kind": bid.get("kind") or "open",
                     "title": bid["title"],
                     "bid_number": bid.get("bid_number"),
                     "due_date": bid.get("due_date"),
@@ -218,6 +279,205 @@ def main() -> int:
     )
     _print_summary(town_order, merged, status_doc, opened, time.perf_counter() - started)
     return 0
+
+
+def collect_feeds(config, fetcher, known, town_regions, previous_status, now):
+    """Statewide pages that are not town bid lists.
+
+    Legal notices are returned separately so they can be matched against
+    town and COMMBUYS rows before they are stored. An unchanged MSBA PDF
+    is not downloaded and is not treated as a fresh listing, so the
+    projects already stored stay in place.
+    """
+    previous_feeds = previous_status.get("feeds") or {}
+    items: list[dict] = []
+    ok_sources: set[str] = set()
+    reports: dict[str, dict] = {}
+    legal_notices = None
+    grouped: dict[str, dict] = {
+        "bid_express": {"parts": [], "errors": []},
+        "mbta": {"parts": [], "errors": []},
+    }
+
+    for feed in config.get("feeds") or []:
+        kind = feed.get("type")
+        url = feed.get("url") or ""
+        agency = feed.get("agency") or kind
+        try:
+            if kind == "bid_express":
+                html = fetcher.get(url)
+                _reject_challenge(html, url)
+                found = parse_bid_express(html, url, agency)
+                items.extend(found)
+                ok_sources.add(canonical_url(url))
+                grouped["bid_express"]["parts"].append(f"{agency} {len(found)}")
+            elif kind == "massdevelopment":
+                html = fetcher.get(url)
+                _reject_challenge(html, url)
+                found = parse_massdevelopment(html, url)
+                items.extend(found)
+                ok_sources.add(canonical_url(url))
+                reports["massdevelopment"] = _feed_ok(
+                    now, "massdevelopment", f"{len(found)} posting(s)"
+                )
+            elif kind == "mbta_current":
+                html = fetcher.get(url)
+                _reject_challenge(html, url)
+                found = parse_current_solicitations(html, url)
+                _finish_mbta(found, fetcher, known)
+                items.extend(found)
+                ok_sources.add(canonical_url(url))
+                grouped["mbta"]["parts"].append(f"{len(found)} current")
+            elif kind == "mbta_future":
+                html = fetcher.get(url)
+                _reject_challenge(html, url)
+                found = parse_future_solicitations(html, url)
+                items.extend(found)
+                ok_sources.add(canonical_url(url))
+                grouped["mbta"]["parts"].append(f"{len(found)} upcoming")
+            elif kind == "msba":
+                found, refreshed, pdf_url, message = _scrape_msba(
+                    feed, fetcher, town_regions, previous_feeds.get("msba") or {}
+                )
+                report = _feed_ok(now, "msba", message)
+                report["pdf_url"] = pdf_url
+                reports["msba"] = report
+                if refreshed:
+                    items.extend(found)
+                    ok_sources.add(canonical_url(url))
+            elif kind == "legal_notice":
+                legal_notices, message = fetch_notices(fetcher, town_regions)
+                reports["legal_notices"] = _feed_ok(now, "legal_notices", message)
+            else:
+                raise FetchError(f"unknown feed type {kind!r}")
+        except (FetchError, RobotsDisallowed, *PARSE_ERRORS) as exc:
+            _note_feed_error(grouped, reports, previous_feeds, now, kind, agency, exc)
+        except Exception as exc:
+            traceback.print_exc()
+            _note_feed_error(grouped, reports, previous_feeds, now, kind, agency, exc)
+        else:
+            print(f"OK {agency} ({kind})", flush=True)
+
+    for key in ("bid_express", "mbta"):
+        parts = grouped[key]["parts"]
+        errors = grouped[key]["errors"]
+        if not parts and not errors:
+            continue
+        message = "; ".join(parts + errors)
+        if parts:
+            report = _feed_ok(now, key, message)
+            if errors:
+                report["status"] = "error"
+                report["last_error"] = _iso(now)
+            reports[key] = report
+        else:
+            reports[key] = _feed_failed(previous_feeds, now, key, message)
+    return items, ok_sources, reports, legal_notices
+
+
+def _scrape_msba(feed, fetcher, town_regions, prior: dict):
+    page_url = feed["url"]
+    html = fetcher.get(page_url)
+    _reject_challenge(html, page_url)
+    pdf_url = latest_bid_schedule_url(html, page_url)
+    if not pdf_url:
+        raise FetchError("MSBA capital planning page had no estimated bid schedule")
+    pdf_url = canonical_url(pdf_url).split("#", 1)[0]
+    if prior.get("pdf_url") == pdf_url and prior.get("status") == "ok":
+        return [], False, pdf_url, "Estimated bid schedule unchanged; PDF not downloaded"
+    data, _final = fetcher.get_bytes(pdf_url)
+    found = parse_bid_schedule(data, pdf_url, page_url, town_regions)
+    return found, True, pdf_url, f"{len(found)} covered-town projects"
+
+
+def _finish_mbta(items: list[dict], fetcher: PoliteFetcher, known: dict) -> None:
+    opened = 0
+    for item in items:
+        if item.get("due"):
+            continue
+        prior = known.get(canonical_url(item["url"]))
+        if prior and prior.get("due_date"):
+            item["due"] = prior["due_date"]
+            item["bid_number"] = item.get("bid_number") or prior.get("bid_number")
+            continue
+        if opened >= 12:
+            print("MBTA detail cap reached; remaining due dates left blank", flush=True)
+            return
+        opened += 1
+        try:
+            html = fetcher.get(item["url"])
+        except RobotsDisallowed:
+            print(f"detail skipped, robots.txt disallows {item['url']}", flush=True)
+            continue
+        except FetchError as exc:
+            print(f"detail failed {item['url']}: {exc}", flush=True)
+            continue
+        if _is_challenge(html):
+            print(f"detail asked for a human check; not attempted ({item['url']})", flush=True)
+            continue
+        due = due_from_detail(html)
+        if due:
+            item["due"] = due
+
+
+def _note_feed_error(grouped, reports, previous_feeds, now, kind, agency, exc) -> None:
+    print(f"ERROR {agency} ({kind}): {exc}", flush=True)
+    if kind == "bid_express":
+        grouped["bid_express"]["errors"].append(f"{agency}: {exc}")
+        return
+    if kind in ("mbta_current", "mbta_future"):
+        grouped["mbta"]["errors"].append(f"{agency}: {exc}")
+        return
+    key = {"msba": "msba", "legal_notice": "legal_notices"}.get(kind, kind or "feed")
+    reports[key] = _feed_failed(previous_feeds, now, key, str(exc))
+
+
+def _feed_ok(now, key: str, message: str) -> dict:
+    return {
+        "status": "ok",
+        "label": FEED_LABELS.get(key, key),
+        "last_success": _iso(now),
+        "last_error": None,
+        "message": message,
+        "open_count": 0,
+    }
+
+
+def _feed_failed(previous_feeds: dict, now, key: str, message: str) -> dict:
+    prior = previous_feeds.get(key) or {}
+    report = {
+        "status": "error",
+        "label": FEED_LABELS.get(key, key),
+        "last_success": prior.get("last_success"),
+        "last_error": _iso(now),
+        "message": message,
+        "open_count": prior.get("open_count") or 0,
+    }
+    if prior.get("pdf_url"):
+        report["pdf_url"] = prior["pdf_url"]
+    return report
+
+
+def _feed_counts(reports: dict, bids: list[dict]) -> dict:
+    source_for = {
+        "legal_notices": "legal_notice",
+        "bid_express": "bid_express",
+        "massdevelopment": "massdevelopment",
+        "mbta": "mbta",
+        "msba": "msba",
+    }
+    cleaned = {}
+    for key in FEED_LABELS:
+        if key not in reports:
+            continue
+        report = dict(reports[key])
+        source = source_for[key]
+        report["open_count"] = sum(
+            1 for bid in bids if bid.get("source") == source and bid.get("status") == "open"
+        )
+        report.pop("pdf_url", None) if key != "msba" else None
+        cleaned[key] = report
+    return cleaned
 
 
 def scrape_source(source: dict, fetcher: PoliteFetcher, known: dict) -> list[dict]:
@@ -249,6 +509,7 @@ def scrape_source(source: dict, fetcher: PoliteFetcher, known: dict) -> list[dic
         item["town"] = source["town"]
         item["region"] = source.get("region")
         item["source"] = "town"
+        item["kind"] = item.get("kind") or "open"
         item["source_url"] = source_url
         item["url"] = canonical_url(item["url"])
         item.pop("close_raw", None)
@@ -453,14 +714,32 @@ def _commbuys_status(previous_status: dict, now: datetime) -> dict:
 
 
 def _print_summary(town_order, bids, status_doc, opened, elapsed: float) -> None:
-    print("\nSource             open", flush=True)
+    print("\nSource             open  upcoming", flush=True)
     for source, label in (
         ("town", "Town page"),
         ("commbuys", "COMMBUYS"),
         ("central_register", "Central Register"),
+        ("legal_notice", "Legal notices"),
+        ("bid_express", "Bid Express"),
+        ("massdevelopment", "MassDevelopment"),
+        ("mbta", "MBTA"),
+        ("msba", "MSBA"),
     ):
-        count = sum(1 for bid in bids if bid.get("source") == source and bid.get("status") == "open")
-        print(f"{label:<18} {count:>4}", flush=True)
+        open_count = sum(
+            1
+            for bid in bids
+            if bid.get("source") == source
+            and bid.get("status") == "open"
+            and (bid.get("kind") or "open") == "open"
+        )
+        upcoming_count = sum(
+            1
+            for bid in bids
+            if bid.get("source") == source
+            and bid.get("status") == "open"
+            and bid.get("kind") == "upcoming"
+        )
+        print(f"{label:<18} {open_count:>4}  {upcoming_count:>8}", flush=True)
     print("\nTown                  region           open  closed  status", flush=True)
     for town in town_order:
         info = (status_doc.get("towns") or {}).get(town) or {}
