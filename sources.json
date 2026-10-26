@@ -1,0 +1,96 @@
+{
+  "user_agent": "bid-watch/1.0 (personal municipal bid tracker; +https://github.com/solopass/bid-watch)",
+  "min_interval_seconds": 10,
+  "sources": [
+    {
+      "town": "Framingham",
+      "type": "civicplus",
+      "url": "https://www.framinghamma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. Open list is one HTML page."
+    },
+    {
+      "town": "Natick",
+      "type": "civicplus",
+      "url": "https://www.natickma.gov/Bids.aspx",
+      "notes": "Same CivicPlus list. Old award notices stay Open / Upon Contract, so those rows are skipped. A future close with no bid number is confirmed on the detail page.",
+      "options": {
+        "when_contract": "skip",
+        "when_blank": "detail",
+        "detail_if_missing_number": true
+      }
+    },
+    {
+      "town": "Marlborough",
+      "type": "civicplus",
+      "url": "https://www.marlborough-ma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Hudson",
+      "type": "civicplus",
+      "url": "https://www.townofhudson.org/Bids.aspx",
+      "notes": "CivicPlus Bids module. Often empty."
+    },
+    {
+      "town": "Westborough",
+      "type": "bidnet",
+      "url": "https://www.bidnetdirect.com/massachusetts/townwestborough",
+      "notes": "BidNet Direct agency list. Public HTML. Detail pages ask for a free registration and are not opened."
+    },
+    {
+      "town": "Westborough",
+      "type": "civicplus",
+      "url": "https://www.westboroughma.gov/Bids.aspx",
+      "notes": "Town CivicPlus page. Usually empty; BidNet is the live list."
+    },
+    {
+      "town": "Ashland",
+      "type": "civicplus",
+      "url": "https://www.ashlandmass.com/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Hopkinton",
+      "type": "bidnet",
+      "url": "https://www.bidnetdirect.com/massachusetts/hopkintonma",
+      "notes": "The town procurement page points at Beacon (beaconbid.com), which is a JavaScript app behind a captcha. Beacon is not scraped. This BidNet list is the public fallback."
+    },
+    {
+      "town": "Sudbury",
+      "type": "wordpress",
+      "url": "https://sudbury.ma.us/bids/",
+      "notes": "WordPress table with no due dates. Each current post is opened once. Already-known due dates are not fetched again.",
+      "options": {
+        "max_posts": 25
+      }
+    },
+    {
+      "town": "Wayland",
+      "type": "civicplus",
+      "url": "https://www.wayland.ma.us/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Southborough",
+      "type": "civicplus",
+      "url": "https://www.southboroughma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. Upon Contract rows are opened so a real due date in the description can close stale postings.",
+      "options": {
+        "when_contract": "detail",
+        "when_blank": "detail"
+      }
+    },
+    {
+      "town": "Holliston",
+      "type": "documents",
+      "url": "https://www.townofholliston.us/592/Procurement-Legal-Notices",
+      "notes": "Plain content page. Each heading's first document link is the bid. The due date is in the heading. Addenda in the same heading are ignored. Closed items stay listed."
+    },
+    {
+      "town": "Milford",
+      "type": "civicplus",
+      "url": "https://www.milfordma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. Often empty."
+    }
+  ]
+}
