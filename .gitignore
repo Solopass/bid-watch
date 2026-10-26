@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+data/new_bids.json
+data/new_bids_issue.md

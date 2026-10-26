@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /search.aspx
+Crawl-delay: 10
+
+User-agent: GPTBot
+Disallow: /Bids.aspx
+Disallow: /

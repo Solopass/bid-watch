@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MetroWest bid watch</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f3efe6;
+      --paper: #fffcf7;
+      --ink: #1e1a16;
+      --muted: #5c564c;
+      --line: #e4d9c8;
+      --accent: #0e4d5c;
+      --accent-ink: #f4fffe;
+      --hot: #9a3412;
+      --ok: #176b45;
+      --ok-bg: #e5f4ec;
+      --bad: #9f1239;
+      --bad-bg: #fde8ee;
+      --new-bg: #f6e2c4;
+      --new-ink: #7c4a12;
+      --chip: #efe6d6;
+      --shadow: 0 1px 0 rgba(30, 26, 22, 0.04);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --bg: #12171b;
+        --paper: #1b2228;
+        --ink: #f4efe6;
+        --muted: #c3bbb0;
+        --line: #314049;
+        --accent: #8fd0d4;
+        --accent-ink: #082226;
+        --hot: #f0a07a;
+        --ok: #86d0a8;
+        --ok-bg: #1a3328;
+        --bad: #ffb4c0;
+        --bad-bg: #3b222a;
+        --new-bg: #3d3424;
+        --new-ink: #f0c27a;
+        --chip: #263038;
+        --shadow: none;
+      }
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #12171b;
+      --paper: #1b2228;
+      --ink: #f4efe6;
+      --muted: #c3bbb0;
+      --line: #314049;
+      --accent: #8fd0d4;
+      --accent-ink: #082226;
+      --hot: #f0a07a;
+      --ok: #86d0a8;
+      --ok-bg: #1a3328;
+      --bad: #ffb4c0;
+      --bad-bg: #3b222a;
+      --new-bg: #3d3424;
+      --new-ink: #f0c27a;
+      --chip: #263038;
+      --shadow: none;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.45 "Segoe UI", "Avenir Next", "Trebuchet MS", sans-serif;
+    }
+    a { color: var(--accent); }
+    a:hover { text-decoration: none; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    header, main { width: min(1120px, calc(100% - 1.5rem)); margin: 0 auto; }
+    header { padding: 1.4rem 0 0.4rem; }
+    .title-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.25rem;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+    .kicker {
+      margin: 0;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      color: var(--hot);
+      font-weight: 700;
+    }
+    h1 {
+      margin: 0.15rem 0 0.35rem;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 650;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    .lede { margin: 0; max-width: 38rem; color: var(--muted); }
+    .actions { min-width: min(100%, 18rem); }
+    .updated {
+      margin: 0 0 0.55rem;
+      font-weight: 650;
+    }
+    .refresh {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--accent-ink);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+    }
+    .refresh:hover { text-decoration: underline; }
+    .hint { margin: 0.45rem 0 0; color: var(--muted); font-size: 0.88rem; max-width: 22rem; }
+    .health {
+      display: flex;
+      gap: 0.45rem;
+      overflow-x: auto;
+      padding: 0.9rem 0 0.2rem;
+      scrollbar-width: thin;
+    }
+    .chip {
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      font: inherit;
+      font-size: 0.86rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+    .chip strong { font-weight: 700; }
+    .chip.ok { background: var(--ok-bg); }
+    .chip.bad { background: var(--bad-bg); }
+    .chip .dot {
+      display: inline-block;
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 50%;
+      margin-right: 0.3rem;
+      background: var(--ok);
+      vertical-align: 0.05em;
+    }
+    .chip.bad .dot { background: var(--bad); }
+    .chip[aria-pressed="true"] { outline: 2px solid var(--accent); }
+    .filters {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr 0.7fr 0.7fr;
+      gap: 0.6rem;
+      margin: 0.9rem 0 0.55rem;
+    }
+    label { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.78rem; color: var(--muted); font-weight: 650; }
+    input, select, button.ghost {
+      font: inherit;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 0.55rem;
+      padding: 0.5rem 0.6rem;
+    }
+    .toggles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.9rem;
+      align-items: center;
+      margin-bottom: 0.7rem;
+    }
+    .segment { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--paper); }
+    .segment button {
+      font: inherit;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      padding: 0.4rem 0.75rem;
+      cursor: pointer;
+    }
+    .segment button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+    .check { flex-direction: row; align-items: center; gap: 0.4rem; font-size: 0.92rem; color: var(--ink); }
+    .check input { width: 1rem; height: 1rem; }
+    .count { margin: 0 0 0.5rem; color: var(--muted); }
+    .table-wrap { overflow-x: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 0.8rem; }
+    table { width: 100%; border-collapse: collapse; min-width: 760px; }
+    th, td { text-align: left; padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th button {
+      font: inherit;
+      font-weight: 750;
+      background: none;
+      border: 0;
+      padding: 0;
+      color: inherit;
+      cursor: pointer;
+    }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: color-mix(in srgb, var(--chip) 70%, transparent); }
+    .title-cell a { font-weight: 650; }
+    .badge {
+      display: inline-block;
+      margin-left: 0.35rem;
+      background: var(--new-bg);
+      color: var(--new-ink);
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 750;
+      padding: 0.05rem 0.4rem;
+      vertical-align: 0.1em;
+    }
+    .closed-tag { color: var(--muted); font-size: 0.78rem; font-weight: 700; }
+    .due-soon { color: var(--hot); font-weight: 700; }
+    tr.is-closed { color: var(--muted); }
+    #empty, #error {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 0.8rem;
+      padding: 1rem;
+    }
+    footer { width: min(1120px, calc(100% - 1.5rem)); margin: 1rem auto 2rem; color: var(--muted); font-size: 0.88rem; }
+    @media (max-width: 800px) {
+      .filters { grid-template-columns: 1fr 1fr; }
+      .table-wrap { border: 0; background: transparent; overflow: visible; }
+      table, thead, tbody, tr, td { display: block; min-width: 0; }
+      thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+      tbody tr {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 0.8rem;
+        margin-bottom: 0.7rem;
+        padding: 0.35rem 0;
+      }
+      td { border-bottom: 0; display: flex; justify-content: space-between; gap: 1rem; }
+      td::before { content: attr(data-label); color: var(--muted); font-size: 0.75rem; font-weight: 700; }
+      td.title-cell { display: block; }
+      td.title-cell::before { display: block; margin-bottom: 0.15rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title-row">
+      <div>
+        <p class="kicker">MetroWest Massachusetts</p>
+        <h1>Bid watch</h1>
+        <p class="lede">Open municipal bids and RFPs from twelve towns. Personal use. It only reads public pages.</p>
+      </div>
+      <div class="actions">
+        <p class="updated" id="last-updated">Last updated: loading…</p>
+        <a class="refresh" href="https://github.com/Solopass/bid-watch/actions/workflows/scrape.yml" target="_blank" rel="noopener noreferrer">Refresh now</a>
+        <p class="hint">Opens the daily GitHub Actions workflow. Choose <strong>Run workflow</strong>. The automatic run stays once a day.</p>
+      </div>
+    </div>
+    <div class="health" id="health" aria-label="Town scrape status"></div>
+  </header>
+  <main>
+    <div class="filters">
+      <label>Keyword
+        <input id="q" type="search" placeholder="Title, number, town" autocomplete="off">
+      </label>
+      <label>Town
+        <select id="town"><option value="">All towns</option></select>
+      </label>
+      <label>Due on or after
+        <input id="due-from" type="date">
+      </label>
+      <label>Due on or before
+        <input id="due-to" type="date">
+      </label>
+    </div>
+    <div class="toggles">
+      <div class="segment" role="group" aria-label="Town site or COMMBUYS">
+        <button type="button" data-view="all" aria-pressed="true">All</button>
+        <button type="button" data-view="town" aria-pressed="false">Town only</button>
+        <button type="button" data-view="commbuys" aria-pressed="false">On COMMBUYS</button>
+      </div>
+      <label class="check"><input id="show-closed" type="checkbox"> Show closed</label>
+      <button class="ghost" id="theme" type="button">Theme</button>
+    </div>
+    <p class="count" id="count" aria-live="polite"></p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th><button type="button" data-sort="town">Town</button></th>
+            <th><button type="button" data-sort="title">Title</button></th>
+            <th><button type="button" data-sort="bid_number">Bid #</button></th>
+            <th><button type="button" data-sort="due_date">Due</button></th>
+            <th><button type="button" data-sort="category">Category</button></th>
+            <th><button type="button" data-sort="on_commbuys">COMMBUYS</button></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p id="empty" hidden>No bids match these filters.</p>
+    <p id="error" hidden></p>
+  </main>
+  <footer>
+    Times are US Eastern. A bid is new when it was first seen in the last 7 days.
+    Town only means the public COMMBUYS list did not have a matching solicitation.
+    <a href="https://github.com/Solopass/bid-watch">Source</a>
+  </footer>
+  <script>
+    const WORKFLOW = "https://github.com/Solopass/bid-watch/actions/workflows/scrape.yml";
+    const state = {
+      bids: [],
+      status: null,
+      sort: "due_date",
+      dir: "asc",
+      view: "all",
+    };
+
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    function easternToday() {
+      return new Intl.DateTimeFormat("en-CA", {
+        timeZone: "America/New_York",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      }).format(new Date());
+    }
+
+    function formatStamp(iso) {
+      if (!iso) return "not yet";
+      const date = new Date(iso);
+      if (Number.isNaN(date.getTime())) return iso;
+      return new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York",
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        timeZoneName: "short",
+      }).format(date);
+    }
+
+    function daysSince(isoDate) {
+      if (!isoDate) return 9999;
+      const [y, m, d] = isoDate.slice(0, 10).split("-").map(Number);
+      const [ty, tm, td] = easternToday().split("-").map(Number);
+      return Math.round((Date.UTC(ty, tm - 1, td) - Date.UTC(y, m - 1, d)) / 86400000);
+    }
+
+    function formatDue(value) {
+      if (!value) return "Not listed";
+      const [y, m, d] = value.slice(0, 10).split("-").map(Number);
+      let label = months[m - 1] + " " + d + ", " + y;
+      if (value.includes("T")) {
+        const hh = Number(value.slice(11, 13));
+        const mm = value.slice(14, 16);
+        const suffix = hh >= 12 ? "PM" : "AM";
+        const hour = hh % 12 || 12;
+        label += " " + hour + ":" + mm + " " + suffix;
+      }
+      return label;
+    }
+
+    function isNew(bid) {
+      const age = daysSince(bid.first_seen);
+      return age >= 0 && age <= 7;
+    }
+
+    function dueSoon(bid) {
+      if (!bid.due_date || bid.status !== "open") return false;
+      const age = daysSince(bid.due_date);
+      return age <= 0 && age >= -7;
+    }
+
+    function matches(bid) {
+      if (!document.getElementById("show-closed").checked && bid.status !== "open") return false;
+      const town = document.getElementById("town").value;
+      if (town && bid.town !== town) return false;
+      const q = document.getElementById("q").value.trim().toLowerCase();
+      if (q) {
+        const hay = [bid.town, bid.title, bid.bid_number, bid.category, bid.url].join(" ").toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+      const from = document.getElementById("due-from").value;
+      const to = document.getElementById("due-to").value;
+      const day = bid.due_date ? bid.due_date.slice(0, 10) : "";
+      if ((from || to) && !day) return false;
+      if (from && day < from) return false;
+      if (to && day > to) return false;
+      if (state.view === "town" && bid.on_commbuys !== "no") return false;
+      if (state.view === "commbuys" && bid.on_commbuys !== "yes") return false;
+      return true;
+    }
+
+    function compare(a, b) {
+      const field = state.sort;
+      let av = a[field] || "";
+      let bv = b[field] || "";
+      if (field === "due_date") {
+        if (!av && !bv) return 0;
+        if (!av) return 1;
+        if (!bv) return -1;
+      }
+      av = String(av).toLowerCase();
+      bv = String(bv).toLowerCase();
+      if (av < bv) return state.dir === "asc" ? -1 : 1;
+      if (av > bv) return state.dir === "asc" ? 1 : -1;
+      return 0;
+    }
+
+    function cell(label, node) {
+      const td = document.createElement("td");
+      td.dataset.label = label;
+      td.append(node);
+      return td;
+    }
+
+    function textCell(label, value) {
+      return cell(label, document.createTextNode(value || "—"));
+    }
+
+    function render() {
+      const rows = state.bids.filter(matches).sort(compare);
+      const body = document.getElementById("rows");
+      body.replaceChildren();
+      const openCount = state.bids.filter((bid) => bid.status === "open").length;
+      document.getElementById("count").textContent =
+        rows.length + " shown · " + openCount + " open";
+      document.getElementById("empty").hidden = rows.length !== 0;
+      document.querySelector(".table-wrap").hidden = rows.length === 0;
+      for (const bid of rows) {
+        const tr = document.createElement("tr");
+        if (bid.status === "closed") tr.className = "is-closed";
+        tr.append(textCell("Town", bid.town));
+
+        const title = document.createElement("div");
+        const link = document.createElement("a");
+        link.href = bid.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = bid.title;
+        title.append(link);
+        if (isNew(bid) && bid.status === "open") {
+          const badge = document.createElement("span");
+          badge.className = "badge";
+          badge.textContent = "New";
+          title.append(badge);
+        }
+        if (bid.status === "closed") {
+          const tag = document.createElement("div");
+          tag.className = "closed-tag";
+          tag.textContent = "Closed";
+          title.append(tag);
+        }
+        const titleCell = cell("Title", title);
+        titleCell.className = "title-cell";
+        tr.append(titleCell);
+        tr.append(textCell("Bid #", bid.bid_number || "—"));
+
+        const due = document.createElement("span");
+        due.textContent = formatDue(bid.due_date);
+        if (dueSoon(bid)) due.className = "due-soon";
+        tr.append(cell("Due", due));
+        tr.append(textCell("Category", bid.category || "—"));
+
+        let comm = document.createTextNode(bid.on_commbuys || "unknown");
+        if (bid.on_commbuys === "yes" && bid.commbuys_url) {
+          const a = document.createElement("a");
+          a.href = bid.commbuys_url;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.textContent = "Yes";
+          comm = a;
+        } else if (bid.on_commbuys === "yes") {
+          comm = document.createTextNode("Yes");
+        } else if (bid.on_commbuys === "no") {
+          comm = document.createTextNode("No");
+        } else {
+          comm = document.createTextNode("Unknown");
+        }
+        tr.append(cell("COMMBUYS", comm));
+        body.append(tr);
+      }
+      document.querySelectorAll("th button").forEach((button) => {
+        const field = button.dataset.sort;
+        const mark = field === state.sort ? (state.dir === "asc" ? " ↑" : " ↓") : "";
+        const labels = {
+          town: "Town",
+          title: "Title",
+          bid_number: "Bid #",
+          due_date: "Due",
+          category: "Category",
+          on_commbuys: "COMMBUYS",
+        };
+        button.textContent = labels[field] + mark;
+      });
+    }
+
+    function renderHealth() {
+      const bar = document.getElementById("health");
+      bar.replaceChildren();
+      const towns = (state.status && state.status.towns) || {};
+      const select = document.getElementById("town");
+      const current = select.value;
+      select.replaceChildren(new Option("All towns", ""));
+      for (const [town, info] of Object.entries(towns)) {
+        select.append(new Option(town, town));
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "chip " + (info.status === "ok" ? "ok" : "bad");
+        chip.setAttribute("aria-pressed", current === town ? "true" : "false");
+        const when = info.last_success ? formatStamp(info.last_success) : "no successful run yet";
+        chip.title = (info.message ? info.message + " · " : "") + "Last success " + when;
+        const dot = document.createElement("span");
+        dot.className = "dot";
+        chip.append(dot, document.createTextNode(town + " "));
+        const count = document.createElement("strong");
+        count.textContent = String(info.open_count ?? 0);
+        chip.append(count);
+        chip.addEventListener("click", () => {
+          select.value = select.value === town ? "" : town;
+          renderHealth();
+          render();
+        });
+        bar.append(chip);
+      }
+      select.value = current;
+      const comm = state.status && state.status.commbuys;
+      if (comm) {
+        const chip = document.createElement("span");
+        chip.className = "chip " + (comm.status === "ok" ? "ok" : "bad");
+        chip.textContent = "COMMBUYS " + (comm.status === "ok" ? "checked" : "unavailable");
+        chip.title = comm.message || "";
+        bar.append(chip);
+      }
+    }
+
+    function bind() {
+      ["q", "town", "due-from", "due-to", "show-closed"].forEach((id) => {
+        document.getElementById(id).addEventListener("input", render);
+      });
+      document.querySelectorAll(".segment button").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.view = button.dataset.view;
+          document.querySelectorAll(".segment button").forEach((other) => {
+            other.setAttribute("aria-pressed", other === button ? "true" : "false");
+          });
+          render();
+        });
+      });
+      document.querySelectorAll("th button").forEach((button) => {
+        button.addEventListener("click", () => {
+          const field = button.dataset.sort;
+          if (state.sort === field) state.dir = state.dir === "asc" ? "desc" : "asc";
+          else {
+            state.sort = field;
+            state.dir = field === "due_date" ? "asc" : "asc";
+          }
+          render();
+        });
+      });
+      document.getElementById("theme").addEventListener("click", () => {
+        const root = document.documentElement;
+        const next = root.dataset.theme === "dark" ? "light" : "dark";
+        root.dataset.theme = next;
+        try { localStorage.setItem("bid-watch-theme", next); } catch (err) { /* ignore */ }
+      });
+      let saved = null;
+      try { saved = localStorage.getItem("bid-watch-theme"); } catch (err) { saved = null; }
+      if (saved === "light" || saved === "dark") document.documentElement.dataset.theme = saved;
+    }
+
+    async function load() {
+      bind();
+      try {
+        const [bidsRes, statusRes] = await Promise.all([
+          fetch("data/bids.json", { cache: "no-store" }),
+          fetch("data/status.json", { cache: "no-store" }),
+        ]);
+        if (!bidsRes.ok || !statusRes.ok) throw new Error("Could not read data/bids.json or data/status.json");
+        const bidsDoc = await bidsRes.json();
+        state.status = await statusRes.json();
+        state.bids = bidsDoc.bids || [];
+        document.getElementById("last-updated").textContent =
+          "Last updated: " + formatStamp(state.status.updated);
+        renderHealth();
+        render();
+      } catch (err) {
+        document.getElementById("last-updated").textContent = "Last updated: unavailable";
+        const box = document.getElementById("error");
+        box.hidden = false;
+        box.textContent = "Could not load the bid data. Serve this folder over http (GitHub Pages does that) and confirm data/bids.json and data/status.json are present. " + WORKFLOW;
+      }
+    }
+
+    load();
+  </script>
+</body>
+</html>
