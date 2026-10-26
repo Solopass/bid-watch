@@ -210,5 +210,55 @@
       "url": "https://www.mendonma.gov/Bids.aspx",
       "notes": "CivicPlus Bids module."
     }
+  ],
+  "feeds": [
+    {
+      "id": "legal_notices",
+      "type": "legal_notice",
+      "url": "https://www.masspublicnotices.org/Search.aspx",
+      "notes": "MNPA public search. Last 14 days, Middlesex, Norfolk, and Worcester, bid-style phrases. The notice body is behind a captcha and is not opened."
+    },
+    {
+      "id": "bid_express_dcamm",
+      "type": "bid_express",
+      "agency": "DCAMM",
+      "url": "https://www.bidexpress.com/businesses/10279/home",
+      "notes": "Public upcoming-solicitations table. Same parser as Massport."
+    },
+    {
+      "id": "bid_express_massport",
+      "type": "bid_express",
+      "agency": "Massport",
+      "url": "https://www.bidexpress.com/businesses/27137/home",
+      "notes": "Massport capital programs, including Worcester airport when those rows are on this board."
+    },
+    {
+      "id": "massdevelopment",
+      "type": "massdevelopment",
+      "agency": "MassDevelopment",
+      "url": "https://www.massdevelopment.com/rfps-and-rfqs/",
+      "notes": "Heading plus the following PDF. Includes Devens."
+    },
+    {
+      "id": "mbta_current",
+      "type": "mbta_current",
+      "agency": "MBTA",
+      "url": "https://bc.mbta.com/business_center/bidding_solicitations/current_solicitations/",
+      "notes": "Current construction, CMAR, and design-build lists. Kept in full and tagged Statewide agency."
+    },
+    {
+      "id": "mbta_future",
+      "type": "mbta_future",
+      "agency": "MBTA",
+      "url": "https://bc.mbta.com/business_center/bidding_solicitations/future_solicitations/",
+      "notes": "Upcoming construction projects. kind upcoming so they stay off the open-bid list."
+    },
+    {
+      "id": "msba",
+      "type": "msba",
+      "agency": "MSBA",
+      "url": "https://www.massschoolbuildings.org/building/CP_Information_Project_Info",
+      "notes": "Monthly estimated bid schedule PDF. Covered towns only. The PDF is skipped when the link has not changed."
+    }
   ]
 }

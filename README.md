@@ -8,7 +8,7 @@ The dashboard is [https://solopass.github.io/bid-watch/](https://solopass.github
 
 ## What it collects
 
-For each posting: town, title, bid number when the page has one, posted date when the page has one, due date when the page has one, category when the page has one, and the public URL. `first_seen` is the day the bid first appeared. A bid is marked closed when its due date has passed, or when a successful scrape of its listing no longer shows it. A town that fails does not close that town's existing bids.
+For each posting: town, region, source, kind (`open` or `upcoming`), title, bid number when the page has one, posted date when the page has one, due date when the page has one, category when the page has one, and the public URL. `first_seen` is the day the bid first appeared. A bid is marked closed when its due date has passed, or when a successful scrape of its listing no longer shows it. A town or feed that fails does not close the bids it previously found. Region is `MetroWest core`, `Next ring`, or `Statewide agency`.
 
 `data/status.json` records each town as `ok` or `error`, plus the time of the last successful scrape. The dashboard shows that as **Last updated** in America/New_York.
 
@@ -58,6 +58,10 @@ When a COMMBUYS row matches a bid already collected from a town page, that bid i
 
 A regional district is grouped with MetroWest core when a core town belongs to it (Assabet Valley, Keefe Tech, Lincoln-Sudbury, Algonquin, Blackstone Valley Tech) and with the next ring otherwise (Nashoba, Tri-County, Minuteman).
 
+Legal notices come from the Massachusetts Newspaper Publishers Association search at masspublicnotices.org. The run asks for the last 14 days in Middlesex, Norfolk, and Worcester, using bid, RFP, and RFQ phrases. A notice is kept only when the listing names one of the 27 towns. The full notice text is behind a captcha, so the scraper stores the listing snippet, the paper, the publish date, a due date when that snippet states one, and the detail link. It does not open the detail page. When the snippet matches a town-page or COMMBUYS bid for the same town (same bid number, or a fuzzy title match), that existing row is flagged with the notice link instead of being copied.
+
+Bid Express is one HTML-table parser for two public boards: DCAMM and Massport (the Massport board includes Worcester airport when those solicitations are listed). Only the upcoming table is read. Deadlines are converted from UTC to US Eastern. MassDevelopment's RFP page is a heading followed by a PDF, including Devens projects. The MBTA current-solicitation lists are kept in full, including Boston work, and tagged `region: Statewide agency`. A handful of public detail pages are opened for the due date. MBTA future projects and the MSBA estimated-bid schedule are `kind: upcoming`, so the dashboard's Upcoming projects tab shows them apart from open bids. MSBA rows are limited to covered towns. The capital-planning page is checked daily, and the PDF is downloaded only when its link has changed.
+
 The Massachusetts Central Register is not scraped. The weekly bulletin PDF is archived by the State Library of Massachusetts, and the collection page at `archives.lib.state.ma.us` is allowed, but the list of issues is the items tab (`/entities/.../items`), which `robots.txt` disallows. Discovery search is disallowed too. The public OAI endpoint answers `Identify` and then returns no records (`ListSets` is HTTP 500). The collection RSS URL 404s. The sitemaps are allowed, but they are untitled entity URLs, about 100MB, and not a feed of the latest bulletin. `sec.state.ma.us` is behind a challenge and is not requested. The dashboard still has a Central Register source filter; it stays empty, and the health strip says skipped.
 
 ## Add a town
@@ -74,7 +78,7 @@ Add an object to the `sources` array in `sources.json`:
 }
 ```
 
-`region` is `MetroWest core` or `Next ring`. The dashboard groups towns by that field.
+`region` is `MetroWest core` or `Next ring`. Statewide boards live in `feeds`, not in this town list. The dashboard groups towns by region and adds `Statewide agency` for DCAMM, Massport, MassDevelopment, and the MBTA.
 
 Use `bidnet`, `wordpress`, or `documents` when the page matches those shapes. CivicPlus options:
 

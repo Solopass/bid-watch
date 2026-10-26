@@ -20,6 +20,7 @@ FIELDS = (
     "town",
     "region",
     "source",
+    "kind",
     "title",
     "bid_number",
     "category",
@@ -29,6 +30,8 @@ FIELDS = (
     "source_url",
     "on_commbuys",
     "commbuys_url",
+    "paper",
+    "legal_notice_url",
     "status",
     "first_seen",
     "last_seen",
@@ -56,7 +59,7 @@ def canonical_url(url: str) -> str:
             continue
         query_pairs.append(("bidID" if lowered == "bidid" else key, value))
     query_pairs.sort()
-    return urlunsplit((scheme, host, path, urlencode(query_pairs), ""))
+    return urlunsplit((scheme, host, path, urlencode(query_pairs), parts.fragment))
 
 
 def norm_bid_number(value: str | None) -> str:
@@ -81,6 +84,7 @@ def load_status(path: Path) -> dict:
     data.setdefault("towns", {})
     data.setdefault("commbuys", {})
     data.setdefault("central_register", {})
+    data.setdefault("feeds", {})
     return data
 
 
@@ -175,6 +179,7 @@ def _combine(prev: dict | None, item: dict, today: str, now: datetime) -> dict:
             "town": item.get("town") or base.get("town"),
             "region": item.get("region") or base.get("region"),
             "source": item.get("source") or base.get("source") or "town",
+            "kind": item.get("kind") or base.get("kind") or "open",
             "title": item.get("title") or base.get("title"),
             "bid_number": norm_bid_number(item.get("bid_number")) or base.get("bid_number") or None,
             "category": item.get("category") if item.get("category") is not None else base.get("category"),
@@ -184,6 +189,12 @@ def _combine(prev: dict | None, item: dict, today: str, now: datetime) -> dict:
             "source_url": canonical_url(item.get("source_url") or base.get("source_url") or ""),
             "on_commbuys": base.get("on_commbuys") or "unknown",
             "commbuys_url": base.get("commbuys_url"),
+            "paper": item.get("paper") if "paper" in item else base.get("paper"),
+            "legal_notice_url": (
+                item.get("legal_notice_url")
+                if "legal_notice_url" in item
+                else base.get("legal_notice_url")
+            ),
             "status": status,
             "first_seen": (prev or {}).get("first_seen") or today,
             "last_seen": today,
@@ -201,6 +212,10 @@ def _ordered(record: dict) -> dict:
         value = record.get(field)
         if field == "bid_number":
             value = norm_bid_number(value) or None
+        elif field == "kind":
+            value = value or "open"
+        elif field in ("paper", "legal_notice_url") and not value:
+            value = None
         ordered[field] = value
     return ordered
 

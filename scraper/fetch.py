@@ -41,21 +41,44 @@ class PoliteFetcher:
         self._delay: dict[str, int] = {}
 
     def get(self, url: str) -> str:
-        status, body, content_type = self._read(url, data=None)
+        _status, body, content_type, _final = self._read(url, data=None)
         return _decode(body, content_type)
 
+    def get_page(self, url: str) -> tuple[str, str]:
+        """Return the decoded body and the final URL after redirects."""
+        _status, body, content_type, final = self._read(url, data=None)
+        return _decode(body, content_type), final
+
+    def get_bytes(self, url: str) -> tuple[bytes, str]:
+        _status, body, _content_type, final = self._read(
+            url,
+            data=None,
+            accept="application/pdf,*/*;q=0.8",
+        )
+        return body, final
+
     def post_form(self, url: str, fields: dict[str, str]) -> tuple[int, str, str]:
+        status, text, content_type, _final = self.post_form_result(url, fields)
+        return status, text, content_type
+
+    def post_form_result(self, url: str, fields: dict[str, str]) -> tuple[int, str, str, str]:
         from urllib.parse import urlencode
 
         payload = urlencode(fields).encode("utf-8")
-        status, body, content_type = self._read(
+        status, body, content_type, final = self._read(
             url,
             data=payload,
             extra_headers={"Content-Type": "application/x-www-form-urlencoded"},
         )
-        return status, _decode(body, content_type), content_type
+        return status, _decode(body, content_type), content_type, final
 
-    def _read(self, url: str, data: bytes | None, extra_headers: dict | None = None):
+    def _read(
+        self,
+        url: str,
+        data: bytes | None,
+        extra_headers: dict | None = None,
+        accept: str | None = None,
+    ):
         self._ensure_robots(url)
         policy = self._robots[_host_key(url)]
         if not policy.can_fetch(self.user_agent, url):
@@ -63,7 +86,10 @@ class PoliteFetcher:
         self._wait(url)
         request = Request(url, data=data, method="POST" if data is not None else "GET")
         request.add_header("User-Agent", self.user_agent)
-        request.add_header("Accept", "text/html,application/xhtml+xml,text/csv;q=0.9,*/*;q=0.8")
+        request.add_header(
+            "Accept",
+            accept or "text/html,application/xhtml+xml,text/csv;q=0.9,*/*;q=0.8",
+        )
         request.add_header("Accept-Language", "en-US,en;q=0.9")
         for key, value in (extra_headers or {}).items():
             request.add_header(key, value)
@@ -88,7 +114,7 @@ class PoliteFetcher:
             raise FetchError(f"response from {url} exceeded {MAX_BYTES} bytes")
         if status >= 400:
             raise FetchError(f"HTTP {status} for {url}", status)
-        return status, body, content_type
+        return status, body, content_type, final_url
 
     def _ensure_robots(self, url: str) -> None:
         parts = urlsplit(url)

@@ -257,7 +257,7 @@
       <div>
         <p class="kicker">MetroWest Massachusetts</p>
         <h1>Bid watch</h1>
-        <p class="lede">Open bids and RFPs for 27 towns, MetroWest core and the next ring, plus COMMBUYS notices for those towns and their schools, housing authorities, water districts, and regional schools. Personal use. Public pages only.</p>
+        <p class="lede">Open bids and RFPs for 27 towns, MetroWest core and the next ring, plus COMMBUYS, legal notices, Bid Express, MassDevelopment, and the MBTA. Upcoming school and MBTA projects are on their own tab. Personal use. Public pages only.</p>
       </div>
       <div class="actions">
         <p class="updated" id="last-updated">Last updated: loading…</p>
@@ -277,6 +277,7 @@
           <option value="">All regions</option>
           <option value="MetroWest core">MetroWest core</option>
           <option value="Next ring">Next ring</option>
+          <option value="Statewide agency">Statewide agency</option>
         </select>
       </label>
       <label>Town
@@ -287,6 +288,11 @@
           <option value="">All sources</option>
           <option value="town">Town page</option>
           <option value="commbuys">COMMBUYS</option>
+          <option value="legal_notice">Legal notices</option>
+          <option value="bid_express">Bid Express</option>
+          <option value="massdevelopment">MassDevelopment</option>
+          <option value="mbta">MBTA</option>
+          <option value="msba">MSBA</option>
           <option value="central_register">Central Register</option>
         </select>
       </label>
@@ -298,7 +304,11 @@
       </label>
     </div>
     <div class="toggles">
-      <div class="segment" role="group" aria-label="Town site or COMMBUYS">
+      <div class="segment" id="kind-segment" role="group" aria-label="Open bids or upcoming projects">
+        <button type="button" data-kind="open" aria-pressed="true">Open bids</button>
+        <button type="button" data-kind="upcoming" aria-pressed="false">Upcoming projects</button>
+      </div>
+      <div class="segment" id="origin-segment" role="group" aria-label="Town site or COMMBUYS">
         <button type="button" data-view="all" aria-pressed="true">All</button>
         <button type="button" data-view="town" aria-pressed="false">Town only</button>
         <button type="button" data-view="commbuys" aria-pressed="false">On COMMBUYS</button>
@@ -328,8 +338,10 @@
   </main>
   <footer>
     Times are US Eastern. A bid is new when it was first seen in the last 7 days.
+    Open bids are the default. Upcoming projects are MSBA school pipeline rows and MBTA future solicitations.
     Town only means the public COMMBUYS list did not have a matching solicitation.
     Source is where the row was found. A town bid that is also on COMMBUYS stays a town-page row and is marked Yes.
+    A town bid that also ran in a covered legal notice stays one row and links to that notice.
     <a href="https://github.com/Solopass/bid-watch">Source</a>
   </footer>
   <script>
@@ -340,13 +352,26 @@
       sort: "due_date",
       dir: "asc",
       view: "all",
+      kind: "open",
     };
     const SOURCE_LABELS = {
       town: "Town page",
       commbuys: "COMMBUYS",
+      legal_notice: "Legal notices",
+      bid_express: "Bid Express",
+      massdevelopment: "MassDevelopment",
+      mbta: "MBTA",
+      msba: "MSBA",
       central_register: "Central Register",
     };
-    const REGION_ORDER = ["MetroWest core", "Next ring"];
+    const REGION_ORDER = ["MetroWest core", "Next ring", "Statewide agency"];
+    const FEED_ORDER = [
+      ["legal_notices", "Legal notices"],
+      ["bid_express", "Bid Express"],
+      ["massdevelopment", "MassDevelopment"],
+      ["mbta", "MBTA"],
+      ["msba", "MSBA"],
+    ];
 
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -417,7 +442,7 @@
       if (source && (bid.source || "town") !== source) return false;
       const q = document.getElementById("q").value.trim().toLowerCase();
       if (q) {
-        const hay = [bid.town, bid.region, bid.title, bid.bid_number, bid.category, bid.source, bid.url].join(" ").toLowerCase();
+        const hay = [bid.town, bid.region, bid.title, bid.bid_number, bid.category, bid.paper, bid.source, bid.url].join(" ").toLowerCase();
         if (!hay.includes(q)) return false;
       }
       const from = document.getElementById("due-from").value;
@@ -426,6 +451,7 @@
       if ((from || to) && !day) return false;
       if (from && day < from) return false;
       if (to && day > to) return false;
+      if ((bid.kind || "open") !== state.kind) return false;
       if (state.view === "town" && bid.on_commbuys !== "no") return false;
       if (state.view === "commbuys" && bid.on_commbuys !== "yes") return false;
       return true;
@@ -458,13 +484,30 @@
       return cell(label, document.createTextNode(value || "—"));
     }
 
+    function sourceNode(bid) {
+      const wrap = document.createElement("div");
+      wrap.append(document.createTextNode(SOURCE_LABELS[bid.source || "town"] || bid.source || "—"));
+      if (bid.legal_notice_url && (bid.source || "town") !== "legal_notice") {
+        const line = document.createElement("div");
+        const link = document.createElement("a");
+        link.href = bid.legal_notice_url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = bid.paper ? "Legal notice, " + bid.paper : "Legal notice";
+        line.append(link);
+        wrap.append(line);
+      }
+      return wrap;
+    }
+
     function render() {
       const rows = state.bids.filter(matches).sort(compare);
       const body = document.getElementById("rows");
       body.replaceChildren();
-      const openCount = state.bids.filter((bid) => bid.status === "open").length;
+      const openCount = state.bids.filter((bid) => bid.status === "open" && (bid.kind || "open") === "open").length;
+      const upcomingCount = state.bids.filter((bid) => bid.status === "open" && bid.kind === "upcoming").length;
       document.getElementById("count").textContent =
-        rows.length + " shown · " + openCount + " open";
+        rows.length + " shown · " + openCount + " open bids · " + upcomingCount + " upcoming";
       document.getElementById("empty").hidden = rows.length !== 0;
       document.querySelector(".table-wrap").hidden = rows.length === 0;
       for (const bid of rows) {
@@ -501,7 +544,7 @@
         if (dueSoon(bid)) due.className = "due-soon";
         tr.append(cell("Due", due));
         tr.append(textCell("Category", bid.category || "—"));
-        tr.append(textCell("Source", SOURCE_LABELS[bid.source || "town"] || bid.source || "—"));
+        tr.append(cell("Source", sourceNode(bid)));
 
         let comm = document.createTextNode(bid.on_commbuys || "unknown");
         if (bid.on_commbuys === "yes" && bid.commbuys_url) {
@@ -622,21 +665,37 @@
         chip.title = register.message || "";
         bar.append(chip);
       }
+      const feeds = (state.status && state.status.feeds) || {};
+      for (const [key, label] of FEED_ORDER) {
+        const info = feeds[key];
+        if (!info) continue;
+        const chip = document.createElement("span");
+        chip.className = chipClass(info.status);
+        const stateWord = info.status === "ok" ? "ok" : info.status === "skipped" ? "skipped" : "unavailable";
+        const count = info.open_count == null ? "" : " " + info.open_count;
+        chip.textContent = label + " " + stateWord + count;
+        chip.title = info.message || "";
+        bar.append(chip);
+      }
     }
 
     function bind() {
       ["q", "region", "town", "source", "due-from", "due-to", "show-closed"].forEach((id) => {
         document.getElementById(id).addEventListener("input", render);
       });
-      document.querySelectorAll(".segment button").forEach((button) => {
-        button.addEventListener("click", () => {
-          state.view = button.dataset.view;
-          document.querySelectorAll(".segment button").forEach((other) => {
-            other.setAttribute("aria-pressed", other === button ? "true" : "false");
+      function bindSegment(id, apply) {
+        document.querySelectorAll("#" + id + " button").forEach((button) => {
+          button.addEventListener("click", () => {
+            apply(button);
+            document.querySelectorAll("#" + id + " button").forEach((other) => {
+              other.setAttribute("aria-pressed", other === button ? "true" : "false");
+            });
+            render();
           });
-          render();
         });
-      });
+      }
+      bindSegment("origin-segment", (button) => { state.view = button.dataset.view; });
+      bindSegment("kind-segment", (button) => { state.kind = button.dataset.kind; });
       document.querySelectorAll("th button").forEach((button) => {
         button.addEventListener("click", () => {
           const field = button.dataset.sort;
