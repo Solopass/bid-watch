@@ -1,9 +1,12 @@
-"""Flag town bids that are also on the public COMMBUYS open-bid list.
+"""Read the public COMMBUYS open-bid list and keep the covered towns.
 
 COMMBUYS (a Periscope / Jaggaer site) renders a public advanced search at
 ``advancedSearchBid.xhtml?openBids=true`` and that page offers a CSV export
 of the open solicitations. No login and no captcha. The export is one GET
-plus one POST. If either step fails, callers leave ``on_commbuys`` unknown.
+plus one POST. The CSV has no location column; organization name is the
+filter, and a location column is honored if one appears later. Statewide
+rows are not kept. A row that matches a town-page bid sets ``on_commbuys``
+on that bid instead of becoming a second record.
 """
 
 from __future__ import annotations
@@ -13,7 +16,9 @@ import io
 import re
 from urllib.parse import quote
 
+from scraper.dates import parse_when
 from scraper.fetch import FetchError
+from scraper.places import Place, match_row, town_regions_from_config
 
 SEARCH_URL = (
     "https://www.commbuys.com/bso/view/search/external/"
@@ -64,7 +69,11 @@ def fetch_open_solicitations(fetcher) -> list[dict]:
     return rows
 
 
-def assign_flags(bids: list[dict], rows: list[dict] | None) -> None:
+def assign_flags(
+    bids: list[dict],
+    rows: list[dict] | None,
+    town_regions: dict[str, str] | None = None,
+) -> None:
     """Set on_commbuys and commbuys_url on each bid in place.
 
     ``rows is None`` means the check did not run; existing yes/no values
@@ -75,51 +84,100 @@ def assign_flags(bids: list[dict], rows: list[dict] | None) -> None:
             bid["on_commbuys"] = bid.get("on_commbuys") or "unknown"
             bid["commbuys_url"] = bid.get("commbuys_url")
         return
+    regions = town_regions or town_regions_from_config()
+    chosen = _choose(bids, rows, regions)
+    for index, bid in enumerate(bids):
+        row_index = chosen.get(index)
+        row = rows[row_index] if row_index is not None else None
+        if row:
+            bid["on_commbuys"] = "yes"
+            bid["commbuys_url"] = _detail_url(row)
+        elif (bid.get("source") or "town") == "commbuys" and bid.get("commbuys_url"):
+            bid["on_commbuys"] = "yes"
+        else:
+            bid["on_commbuys"] = "no"
+            bid["commbuys_url"] = None
 
+
+def covered_rows(
+    town_bids: list[dict],
+    rows: list[dict] | None,
+    town_regions: dict[str, str] | None = None,
+) -> list[dict]:
+    """COMMBUYS rows for covered organizations that are not already town bids.
+
+    Matching uses town-page bids only, including closed ones, so a town
+    record is updated in place instead of being copied.
+    """
+    if not rows:
+        return []
+    regions = town_regions or town_regions_from_config()
+    page_bids = [bid for bid in town_bids if (bid.get("source") or "town") == "town"]
+    used = set(_choose(page_bids, rows, regions).values())
+    fresh: list[dict] = []
+    for index, row in enumerate(rows):
+        if index in used:
+            continue
+        place = match_row(row, regions)
+        if place is None:
+            continue
+        fresh.append(_bid_from_row(row, place))
+    return fresh
+
+
+def _choose(bids: list[dict], rows: list[dict], town_regions: dict[str, str]) -> dict[int, int]:
+    places = [match_row(row, town_regions) for row in rows]
     candidates: list[tuple[float, int, int]] = []
     for index, bid in enumerate(bids):
-        town_rows = [
-            (row_index, row)
-            for row_index, row in enumerate(rows)
-            if _municipality(row.get("Organization Name") or "", bid.get("town") or "")
-        ]
-        for row_index, row in town_rows:
+        for row_index, row in enumerate(rows):
+            place = places[row_index]
+            if place is None or place.town.casefold() != (bid.get("town") or "").casefold():
+                continue
             score = _score(bid, row)
             if score > 0:
                 candidates.append((score, index, row_index))
     candidates.sort(key=lambda item: (-item[0], item[1], item[2]))
     used_bids: set[int] = set()
     used_rows: set[int] = set()
-    chosen: dict[int, dict] = {}
+    chosen: dict[int, int] = {}
     for _score_value, index, row_index in candidates:
         if index in used_bids or row_index in used_rows:
             continue
         used_bids.add(index)
         used_rows.add(row_index)
-        chosen[index] = rows[row_index]
-
-    for index, bid in enumerate(bids):
-        row = chosen.get(index)
-        if row:
-            doc = (row.get("Bid Solicitation #") or "").strip()
-            bid["on_commbuys"] = "yes"
-            bid["commbuys_url"] = (
-                "https://www.commbuys.com/bso/external/bidDetail.sda"
-                f"?docId={quote(doc)}&external=true"
-                if doc
-                else None
-            )
-        else:
-            bid["on_commbuys"] = "no"
-            bid["commbuys_url"] = None
+        chosen[index] = row_index
+    return chosen
 
 
-def _municipality(org: str, town: str) -> bool:
-    cleaned = re.sub(r"\s+", " ", org).strip().casefold()
-    name = town.strip().casefold()
-    if not name:
-        return False
-    return cleaned in {f"town of {name}", f"city of {name}", name}
+def _detail_url(row: dict) -> str | None:
+    doc = (row.get("Bid Solicitation #") or "").strip()
+    if not doc:
+        return None
+    return (
+        "https://www.commbuys.com/bso/external/bidDetail.sda"
+        f"?docId={quote(doc)}&external=true"
+    )
+
+
+def _bid_from_row(row: dict, place: Place) -> dict:
+    doc = (row.get("Bid Solicitation #") or "").strip()
+    description = re.sub(r"\s+", " ", (row.get("Description") or "").replace("\xa0", " ")).strip()
+    url = _detail_url(row) or SEARCH_URL
+    org = re.sub(r"\s+", " ", (row.get("Organization Name") or "").strip()) or None
+    return {
+        "town": place.town,
+        "region": place.region,
+        "source": "commbuys",
+        "title": description or f"COMMBUYS {doc}".strip(),
+        "bid_number": doc or None,
+        "category": org,
+        "posted_date": None,
+        "due": parse_when(row.get("Bid Opening Date")),
+        "url": url,
+        "source_url": SEARCH_URL,
+        "on_commbuys": "yes",
+        "commbuys_url": _detail_url(row),
+    }
 
 
 def _tokens(text: str) -> list[str]:

@@ -4,12 +4,14 @@
   "sources": [
     {
       "town": "Framingham",
+      "region": "MetroWest core",
       "type": "civicplus",
       "url": "https://www.framinghamma.gov/Bids.aspx",
       "notes": "CivicPlus Bids module. Open list is one HTML page."
     },
     {
       "town": "Natick",
+      "region": "MetroWest core",
       "type": "civicplus",
       "url": "https://www.natickma.gov/Bids.aspx",
       "notes": "Same CivicPlus list. Old award notices stay Open / Upon Contract, so those rows are skipped. A future close with no bid number is confirmed on the detail page.",
@@ -21,42 +23,49 @@
     },
     {
       "town": "Marlborough",
+      "region": "MetroWest core",
       "type": "civicplus",
       "url": "https://www.marlborough-ma.gov/Bids.aspx",
       "notes": "CivicPlus Bids module."
     },
     {
       "town": "Hudson",
+      "region": "MetroWest core",
       "type": "civicplus",
       "url": "https://www.townofhudson.org/Bids.aspx",
       "notes": "CivicPlus Bids module. Often empty."
     },
     {
       "town": "Westborough",
+      "region": "MetroWest core",
       "type": "bidnet",
       "url": "https://www.bidnetdirect.com/massachusetts/townwestborough",
       "notes": "BidNet Direct agency list. Public HTML. Detail pages ask for a free registration and are not opened."
     },
     {
       "town": "Westborough",
+      "region": "MetroWest core",
       "type": "civicplus",
       "url": "https://www.westboroughma.gov/Bids.aspx",
       "notes": "Town CivicPlus page. Usually empty; BidNet is the live list."
     },
     {
       "town": "Ashland",
+      "region": "MetroWest core",
       "type": "civicplus",
       "url": "https://www.ashlandmass.com/Bids.aspx",
       "notes": "CivicPlus Bids module."
     },
     {
       "town": "Hopkinton",
+      "region": "MetroWest core",
       "type": "bidnet",
       "url": "https://www.bidnetdirect.com/massachusetts/hopkintonma",
       "notes": "The town procurement page points at Beacon (beaconbid.com), which is a JavaScript app behind a captcha. Beacon is not scraped. This BidNet list is the public fallback."
     },
     {
       "town": "Sudbury",
+      "region": "MetroWest core",
       "type": "wordpress",
       "url": "https://sudbury.ma.us/bids/",
       "notes": "WordPress table with no due dates. Each current post is opened once. Already-known due dates are not fetched again.",
@@ -66,12 +75,14 @@
     },
     {
       "town": "Wayland",
+      "region": "MetroWest core",
       "type": "civicplus",
       "url": "https://www.wayland.ma.us/Bids.aspx",
       "notes": "CivicPlus Bids module."
     },
     {
       "town": "Southborough",
+      "region": "MetroWest core",
       "type": "civicplus",
       "url": "https://www.southboroughma.gov/Bids.aspx",
       "notes": "CivicPlus Bids module. Upon Contract rows are opened so a real due date in the description can close stale postings.",
@@ -82,15 +93,122 @@
     },
     {
       "town": "Holliston",
+      "region": "MetroWest core",
       "type": "documents",
       "url": "https://www.townofholliston.us/592/Procurement-Legal-Notices",
       "notes": "Plain content page. Each heading's first document link is the bid. The due date is in the heading. Addenda in the same heading are ignored. Closed items stay listed."
     },
     {
       "town": "Milford",
+      "region": "MetroWest core",
       "type": "civicplus",
       "url": "https://www.milfordma.gov/Bids.aspx",
       "notes": "CivicPlus Bids module. Often empty."
+    },
+    {
+      "town": "Wellesley",
+      "region": "Next ring",
+      "type": "civicplus",
+      "url": "https://www.wellesleyma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Weston",
+      "region": "Next ring",
+      "type": "civicplus",
+      "url": "https://www.westonma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Needham",
+      "region": "Next ring",
+      "type": "civicplus",
+      "url": "https://www.needhamma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Shrewsbury",
+      "region": "Next ring",
+      "type": "civicplus",
+      "url": "https://www.shrewsburyma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Stow",
+      "region": "Next ring",
+      "type": "civicplus",
+      "url": "https://www.stow-ma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Acton",
+      "region": "Next ring",
+      "type": "civicplus",
+      "url": "https://www.acton-ma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Concord",
+      "region": "Next ring",
+      "type": "civicplus",
+      "url": "https://www.concordma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Dover",
+      "region": "Next ring",
+      "type": "civicplus",
+      "url": "https://www.doverma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Sherborn",
+      "region": "Next ring",
+      "type": "civicplus",
+      "url": "https://www.sherbornma.org/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Bellingham",
+      "region": "Next ring",
+      "type": "civicplus",
+      "url": "https://www.bellinghamma.org/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Upton",
+      "region": "Next ring",
+      "type": "civicplus",
+      "url": "https://www.uptonma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Grafton",
+      "region": "Next ring",
+      "type": "civicplus",
+      "url": "https://www.grafton-ma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Maynard",
+      "region": "Next ring",
+      "type": "civicplus",
+      "url": "https://www.townofmaynard-ma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Lincoln",
+      "region": "Next ring",
+      "type": "civicplus",
+      "url": "https://www.lincolntown.org/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Mendon",
+      "region": "Next ring",
+      "type": "civicplus",
+      "url": "https://www.mendonma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
     }
   ]
 }

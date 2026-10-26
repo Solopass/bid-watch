@@ -149,9 +149,21 @@
     }
     .chip.bad .dot { background: var(--bad); }
     .chip[aria-pressed="true"] { outline: 2px solid var(--accent); }
+    .chip.skipped { background: var(--chip); }
+    .chip.skipped .dot { background: var(--muted); }
+    .region-label {
+      flex: 0 0 auto;
+      align-self: center;
+      font-size: 0.72rem;
+      font-weight: 750;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-left: 0.15rem;
+    }
     .filters {
       display: grid;
-      grid-template-columns: 1.4fr 0.8fr 0.7fr 0.7fr;
+      grid-template-columns: 1.3fr 0.85fr 0.9fr 0.9fr 0.7fr 0.7fr;
       gap: 0.6rem;
       margin: 0.9rem 0 0.55rem;
     }
@@ -245,7 +257,7 @@
       <div>
         <p class="kicker">MetroWest Massachusetts</p>
         <h1>Bid watch</h1>
-        <p class="lede">Open municipal bids and RFPs from twelve towns. Personal use. It only reads public pages.</p>
+        <p class="lede">Open bids and RFPs for 27 towns, MetroWest core and the next ring, plus COMMBUYS notices for those towns and their schools, housing authorities, water districts, and regional schools. Personal use. Public pages only.</p>
       </div>
       <div class="actions">
         <p class="updated" id="last-updated">Last updated: loading…</p>
@@ -260,8 +272,23 @@
       <label>Keyword
         <input id="q" type="search" placeholder="Title, number, town" autocomplete="off">
       </label>
+      <label>Region
+        <select id="region">
+          <option value="">All regions</option>
+          <option value="MetroWest core">MetroWest core</option>
+          <option value="Next ring">Next ring</option>
+        </select>
+      </label>
       <label>Town
         <select id="town"><option value="">All towns</option></select>
+      </label>
+      <label>Source
+        <select id="source">
+          <option value="">All sources</option>
+          <option value="town">Town page</option>
+          <option value="commbuys">COMMBUYS</option>
+          <option value="central_register">Central Register</option>
+        </select>
       </label>
       <label>Due on or after
         <input id="due-from" type="date">
@@ -289,6 +316,7 @@
             <th><button type="button" data-sort="bid_number">Bid #</button></th>
             <th><button type="button" data-sort="due_date">Due</button></th>
             <th><button type="button" data-sort="category">Category</button></th>
+            <th><button type="button" data-sort="source">Source</button></th>
             <th><button type="button" data-sort="on_commbuys">COMMBUYS</button></th>
           </tr>
         </thead>
@@ -301,6 +329,7 @@
   <footer>
     Times are US Eastern. A bid is new when it was first seen in the last 7 days.
     Town only means the public COMMBUYS list did not have a matching solicitation.
+    Source is where the row was found. A town bid that is also on COMMBUYS stays a town-page row and is marked Yes.
     <a href="https://github.com/Solopass/bid-watch">Source</a>
   </footer>
   <script>
@@ -312,6 +341,12 @@
       dir: "asc",
       view: "all",
     };
+    const SOURCE_LABELS = {
+      town: "Town page",
+      commbuys: "COMMBUYS",
+      central_register: "Central Register",
+    };
+    const REGION_ORDER = ["MetroWest core", "Next ring"];
 
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -376,9 +411,13 @@
       if (!document.getElementById("show-closed").checked && bid.status !== "open") return false;
       const town = document.getElementById("town").value;
       if (town && bid.town !== town) return false;
+      const region = document.getElementById("region").value;
+      if (region && bid.region !== region) return false;
+      const source = document.getElementById("source").value;
+      if (source && (bid.source || "town") !== source) return false;
       const q = document.getElementById("q").value.trim().toLowerCase();
       if (q) {
-        const hay = [bid.town, bid.title, bid.bid_number, bid.category, bid.url].join(" ").toLowerCase();
+        const hay = [bid.town, bid.region, bid.title, bid.bid_number, bid.category, bid.source, bid.url].join(" ").toLowerCase();
         if (!hay.includes(q)) return false;
       }
       const from = document.getElementById("due-from").value;
@@ -462,6 +501,7 @@
         if (dueSoon(bid)) due.className = "due-soon";
         tr.append(cell("Due", due));
         tr.append(textCell("Category", bid.category || "—"));
+        tr.append(textCell("Source", SOURCE_LABELS[bid.source || "town"] || bid.source || "—"));
 
         let comm = document.createTextNode(bid.on_commbuys || "unknown");
         if (bid.on_commbuys === "yes" && bid.commbuys_url) {
@@ -490,10 +530,17 @@
           bid_number: "Bid #",
           due_date: "Due",
           category: "Category",
+          source: "Source",
           on_commbuys: "COMMBUYS",
         };
         button.textContent = labels[field] + mark;
       });
+    }
+
+    function chipClass(status) {
+      if (status === "ok") return "chip ok";
+      if (status === "skipped") return "chip skipped";
+      return "chip bad";
     }
 
     function renderHealth() {
@@ -503,40 +550,82 @@
       const select = document.getElementById("town");
       const current = select.value;
       select.replaceChildren(new Option("All towns", ""));
-      for (const [town, info] of Object.entries(towns)) {
-        select.append(new Option(town, town));
-        const chip = document.createElement("button");
-        chip.type = "button";
-        chip.className = "chip " + (info.status === "ok" ? "ok" : "bad");
-        chip.setAttribute("aria-pressed", current === town ? "true" : "false");
-        const when = info.last_success ? formatStamp(info.last_success) : "no successful run yet";
-        chip.title = (info.message ? info.message + " · " : "") + "Last success " + when;
-        const dot = document.createElement("span");
-        dot.className = "dot";
-        chip.append(dot, document.createTextNode(town + " "));
-        const count = document.createElement("strong");
-        count.textContent = String(info.open_count ?? 0);
-        chip.append(count);
-        chip.addEventListener("click", () => {
-          select.value = select.value === town ? "" : town;
-          renderHealth();
-          render();
-        });
-        bar.append(chip);
+      const groups = new Map();
+      for (const region of REGION_ORDER) groups.set(region, []);
+      const entries = Object.entries(towns);
+      const extraTowns = [];
+      for (const bid of state.bids) {
+        if (bid.town && !towns[bid.town] && !extraTowns.includes(bid.town)) extraTowns.push(bid.town);
+      }
+      for (const [town, info] of entries) {
+        const region = info.region || "MetroWest core";
+        if (!groups.has(region)) groups.set(region, []);
+        groups.get(region).push([town, info]);
+      }
+      for (const [region, rows] of groups) {
+        if (!rows.length) continue;
+        const label = document.createElement("span");
+        label.className = "region-label";
+        label.textContent = region;
+        bar.append(label);
+        const group = document.createElement("optgroup");
+        group.label = region;
+        for (const [town, info] of rows) {
+          group.append(new Option(town, town));
+          const chip = document.createElement("button");
+          chip.type = "button";
+          chip.className = chipClass(info.status);
+          chip.setAttribute("aria-pressed", current === town ? "true" : "false");
+          const when = info.last_success ? formatStamp(info.last_success) : "no successful run yet";
+          chip.title = (info.message ? info.message + " · " : "") + "Last success " + when;
+          const dot = document.createElement("span");
+          dot.className = "dot";
+          chip.append(dot, document.createTextNode(town + " "));
+          const count = document.createElement("strong");
+          count.textContent = String(info.open_count ?? 0);
+          chip.append(count);
+          chip.addEventListener("click", () => {
+            select.value = select.value === town ? "" : town;
+            renderHealth();
+            render();
+          });
+          bar.append(chip);
+        }
+        select.append(group);
+      }
+      for (const town of extraTowns) {
+        const sample = state.bids.find((bid) => bid.town === town);
+        const region = (sample && sample.region) || "Regional";
+        let group = Array.from(select.querySelectorAll("optgroup")).find((item) => item.label === region);
+        if (!group) {
+          group = document.createElement("optgroup");
+          group.label = region;
+          select.append(group);
+        }
+        group.append(new Option(town, town));
       }
       select.value = current;
       const comm = state.status && state.status.commbuys;
       if (comm) {
         const chip = document.createElement("span");
-        chip.className = "chip " + (comm.status === "ok" ? "ok" : "bad");
+        chip.className = chipClass(comm.status);
         chip.textContent = "COMMBUYS " + (comm.status === "ok" ? "checked" : "unavailable");
         chip.title = comm.message || "";
+        bar.append(chip);
+      }
+      const register = state.status && state.status.central_register;
+      if (register) {
+        const chip = document.createElement("span");
+        chip.className = chipClass(register.status);
+        const label = register.status === "ok" ? "read" : register.status === "skipped" ? "skipped" : "unavailable";
+        chip.textContent = "Central Register " + label;
+        chip.title = register.message || "";
         bar.append(chip);
       }
     }
 
     function bind() {
-      ["q", "town", "due-from", "due-to", "show-closed"].forEach((id) => {
+      ["q", "region", "town", "source", "due-from", "due-to", "show-closed"].forEach((id) => {
         document.getElementById(id).addEventListener("input", render);
       });
       document.querySelectorAll(".segment button").forEach((button) => {

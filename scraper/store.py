@@ -18,6 +18,8 @@ from scraper.dates import EASTERN, is_past, today_eastern
 
 FIELDS = (
     "town",
+    "region",
+    "source",
     "title",
     "bid_number",
     "category",
@@ -74,10 +76,11 @@ def load_document(path: Path) -> dict:
 
 def load_status(path: Path) -> dict:
     if not path.exists():
-        return {"updated": None, "towns": {}, "commbuys": {}}
+        return {"updated": None, "towns": {}, "commbuys": {}, "central_register": {}}
     data = json.loads(path.read_text(encoding="utf-8"))
     data.setdefault("towns", {})
     data.setdefault("commbuys", {})
+    data.setdefault("central_register", {})
     return data
 
 
@@ -170,6 +173,8 @@ def _combine(prev: dict | None, item: dict, today: str, now: datetime) -> dict:
     base.update(
         {
             "town": item.get("town") or base.get("town"),
+            "region": item.get("region") or base.get("region"),
+            "source": item.get("source") or base.get("source") or "town",
             "title": item.get("title") or base.get("title"),
             "bid_number": norm_bid_number(item.get("bid_number")) or base.get("bid_number") or None,
             "category": item.get("category") if item.get("category") is not None else base.get("category"),
