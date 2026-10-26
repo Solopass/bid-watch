@@ -1,11 +1,11 @@
 {
-  "updated": "2026-10-26T16:09:52-04:00",
+  "updated": "2026-10-26T17:45:03-04:00",
   "commbuys": {
     "status": "ok",
-    "last_success": "2026-10-26T16:09:52-04:00",
+    "last_success": "2026-10-26T17:45:03-04:00",
     "last_error": null,
-    "message": "879 open statewide; 6 covered rows kept; 18 matched a town bid",
-    "rows": 879,
+    "message": "880 open statewide; 6 covered rows kept; 18 matched a town bid",
+    "rows": 880,
     "covered_rows": 6
   },
   "central_register": {
@@ -15,10 +15,53 @@
     "message": "Skipped: no robots-allowed feed for the latest bulletin. The State Library items list and search are disallowed; OAI returns no records; RSS is absent. sec.state.ma.us was not requested.",
     "rows": 0
   },
+  "feeds": {
+    "legal_notices": {
+      "status": "ok",
+      "label": "Legal notices",
+      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_error": null,
+      "message": "11 covered-town notices in the last 14 days; stopped after 3 pages on a long query; 9 matched an existing bid; 2 added",
+      "open_count": 2
+    },
+    "bid_express": {
+      "status": "ok",
+      "label": "Bid Express",
+      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_error": null,
+      "message": "DCAMM 5; Massport 3",
+      "open_count": 8
+    },
+    "massdevelopment": {
+      "status": "ok",
+      "label": "MassDevelopment",
+      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_error": null,
+      "message": "2 posting(s)",
+      "open_count": 2
+    },
+    "mbta": {
+      "status": "ok",
+      "label": "MBTA",
+      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_error": null,
+      "message": "7 current; 7 upcoming",
+      "open_count": 14
+    },
+    "msba": {
+      "status": "ok",
+      "label": "MSBA",
+      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_error": null,
+      "message": "2 covered-town projects",
+      "open_count": 2,
+      "pdf_url": "https://www.massschoolbuildings.org/sites/default/files/edit-contentfiles/About_Us/Board_Meetings/2026_Board/8.26.2026/Estimated_Bid_Dates_August_2026.pdf"
+    }
+  },
   "towns": {
     "Framingham": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 4,
@@ -35,10 +78,10 @@
     },
     "Natick": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
-      "open_count": 5,
+      "open_count": 6,
       "region": "MetroWest core",
       "sources": [
         {
@@ -52,10 +95,10 @@
     },
     "Marlborough": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
-      "open_count": 3,
+      "open_count": 4,
       "region": "MetroWest core",
       "sources": [
         {
@@ -69,7 +112,7 @@
     },
     "Hudson": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -86,7 +129,7 @@
     },
     "Westborough": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 4,
@@ -110,7 +153,7 @@
     },
     "Ashland": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -127,7 +170,7 @@
     },
     "Hopkinton": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -144,10 +187,10 @@
     },
     "Sudbury": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
-      "open_count": 1,
+      "open_count": 2,
       "region": "MetroWest core",
       "sources": [
         {
@@ -161,7 +204,7 @@
     },
     "Wayland": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -178,7 +221,7 @@
     },
     "Southborough": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -195,7 +238,7 @@
     },
     "Holliston": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 3,
@@ -212,7 +255,7 @@
     },
     "Milford": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -229,7 +272,7 @@
     },
     "Wellesley": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -246,7 +289,7 @@
     },
     "Weston": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -263,10 +306,10 @@
     },
     "Needham": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
-      "open_count": 1,
+      "open_count": 2,
       "region": "Next ring",
       "sources": [
         {
@@ -280,7 +323,7 @@
     },
     "Shrewsbury": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 5,
@@ -297,7 +340,7 @@
     },
     "Stow": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -314,7 +357,7 @@
     },
     "Acton": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -331,7 +374,7 @@
     },
     "Concord": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -348,7 +391,7 @@
     },
     "Dover": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -365,7 +408,7 @@
     },
     "Sherborn": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -382,7 +425,7 @@
     },
     "Bellingham": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -399,7 +442,7 @@
     },
     "Upton": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -416,7 +459,7 @@
     },
     "Grafton": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -433,7 +476,7 @@
     },
     "Maynard": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -450,7 +493,7 @@
     },
     "Lincoln": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -467,7 +510,7 @@
     },
     "Mendon": {
       "status": "ok",
-      "last_success": "2026-10-26T16:09:52-04:00",
+      "last_success": "2026-10-26T17:45:03-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
