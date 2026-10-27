@@ -9,6 +9,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from scraper.commbuys import assign_flags, covered_rows
+from scraper.invites import to_dashboard_bids
 from scraper.legal import apply_notices, parse_notice_page, _primary_town
 from scraper.pdftext import text_from_content
 from scraper.parsers.bidexpress import parse_bid_express
@@ -478,6 +479,11 @@ class ScheduleTest(unittest.TestCase):
         self.assertIn('id="state"', page)
         self.assertIn('id="sector"', page)
         self.assertIn('id="trade"', page)
+        self.assertIn("plan_room", page)
+        self.assertIn("Plan room invite", page)
+        self.assertIn("invites.local.json", page)
+        self.assertIn("data/invites.local.json", (ROOT / ".gitignore").read_text(encoding="utf-8"))
+        self.assertNotIn("plan_room", (ROOT / "data" / "bids.json").read_text(encoding="utf-8"))
         self.assertIn("Cladding only", page)
         self.assertIn("badge-cladding", page)
         self.assertIn(">College<", page)
@@ -818,6 +824,53 @@ class _FakeResponse:
 
     def __exit__(self, *_args):
         return False
+
+
+class InviteParseTest(unittest.TestCase):
+    def test_synthetic_invites_get_region_state_and_cladding(self):
+        import json
+        import subprocess
+
+        script = ROOT / "apps-script" / "test_parse.js"
+        subprocess.check_call(["node", str(script)], cwd=str(ROOT))
+        raw = subprocess.check_output(
+            ["node", str(ROOT / "apps-script" / "parse_cli.js"), str(ROOT / "apps-script" / "fixtures")],
+            cwd=str(ROOT),
+            text=True,
+        )
+        parsed = json.loads(raw)
+        regions = town_regions_from_config()
+        bids = to_dashboard_bids(parsed, regions)
+        by_title = {bid["title"]: bid for bid in bids}
+        framingham = by_title["Framingham Office Curtain Wall"]
+        self.assertEqual(framingham["sector"], "private")
+        self.assertEqual(framingham["source"], "plan_room")
+        self.assertEqual(framingham["town"], "Framingham")
+        self.assertEqual(framingham["region"], "MetroWest core")
+        self.assertEqual(framingham["state"], "Massachusetts")
+        self.assertEqual(framingham["trade"], "cladding")
+        self.assertTrue(framingham["due_date"].startswith("2026-11-12T14:00"))
+        self.assertIn("Harborline Construction", framingham["category"])
+        self.assertNotEqual(framingham["town"], "Concord")
+        natick = by_title["Natick Lab Fit-Out"]
+        self.assertEqual(natick["town"], "Natick")
+        self.assertEqual(natick["region"], "MetroWest core")
+        self.assertIsNone(natick["trade"])
+        self.assertIn("Electrical panel", natick["category"])
+        wellesley = by_title["Wellesley Library Window Replacement"]
+        self.assertEqual(wellesley["town"], "Wellesley")
+        self.assertEqual(wellesley["region"], "Next ring")
+        self.assertEqual(wellesley["trade"], "cladding")
+        self.assertEqual(wellesley["state"], "Massachusetts")
+        partial = by_title["Invitation to Bid"]
+        self.assertEqual(partial["sector"], "private")
+        self.assertEqual(partial["town"], "")
+        self.assertEqual(partial["region"], "")
+        self.assertEqual(partial["due_date"], None)
+        self.assertEqual(partial["url"], "")
+        self.assertIsNone(partial["trade"])
+        doubled = to_dashboard_bids(parsed + parsed, regions)
+        self.assertEqual(len(doubled), len(bids))
 
 
 class CladdingTest(unittest.TestCase):

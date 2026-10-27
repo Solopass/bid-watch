@@ -241,6 +241,14 @@
       border-radius: 0.8rem;
       padding: 1rem;
     }
+    .private-note {
+      background: var(--new-bg);
+      color: var(--ink);
+      border-radius: 0.6rem;
+      padding: 0.55rem 0.75rem;
+      margin: 0.8rem 0 0;
+      font-size: 0.9rem;
+    }
     footer { width: min(1120px, calc(100% - 1.5rem)); margin: 1rem auto 2rem; color: var(--muted); font-size: 0.88rem; }
     @media (max-width: 800px) {
       .filters { grid-template-columns: 1fr 1fr; }
@@ -276,6 +284,7 @@
       </div>
     </div>
     <div class="health" id="health" aria-label="Town scrape status"></div>
+    <p id="private-note" class="private-note" hidden>Private plan-room invites are included from a file on this computer. They are not on the public site.</p>
   </header>
   <main>
     <div class="filters">
@@ -338,6 +347,7 @@
           <option value="massdot">MassDOT</option>
           <option value="dcr">DCR</option>
           <option value="mapc">MAPC</option>
+          <option value="plan_room">Plan room invite</option>
           <option value="central_register">Central Register</option>
         </select>
       </label>
@@ -389,6 +399,7 @@
     A town bid that also ran in a covered legal notice stays one row and links to that notice.
     Sector separates town, school, housing, agency, college, hospital, and private bids. State separates Massachusetts from the RI and NH border towns.
     Cladding only keeps rows whose title or category names exterior cladding, siding, facade, storefront, curtain wall, or a related envelope term. A Cladding badge marks those rows.
+    Plan room invite rows are loaded only when this computer has data/invites.local.json. That file is not part of the public site.
     <a href="https://github.com/Solopass/bid-watch">Source</a>
   </footer>
   <script>
@@ -412,6 +423,7 @@
       massdot: "MassDOT",
       dcr: "DCR",
       mapc: "MAPC",
+      plan_room: "Plan room invite",
       central_register: "Central Register",
     };
     const REGION_ORDER = [
@@ -818,6 +830,16 @@
         const bidsDoc = await bidsRes.json();
         state.status = await statusRes.json();
         state.bids = bidsDoc.bids || [];
+        try {
+          const invitesRes = await fetch("data/invites.local.json", { cache: "no-store" });
+          if (invitesRes.ok) {
+            const invitesDoc = await invitesRes.json();
+            state.bids = state.bids.concat(invitesDoc.bids || []);
+            document.getElementById("private-note").hidden = false;
+          }
+        } catch (inviteErr) {
+          /* The local invite file is optional. A missing file is the public site. */
+        }
         document.getElementById("last-updated").textContent =
           "Last updated: " + formatStamp(state.status.updated);
         renderHealth();

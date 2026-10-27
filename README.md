@@ -4,6 +4,8 @@ A personal tracker for open municipal bids and RFPs around MetroWest Massachuset
 
 A GitHub Actions workflow reads each town's public bid page once a day and writes `data/bids.json`. This repository's GitHub Pages site is a static dashboard of that file. There is no server, no paid API, and no API key.
 
+Plan-room invitations that arrive in Gmail stay in a private Google Sheet. [SETUP.md](SETUP.md) is the one-time setup. Those invites are not written into `data/bids.json`, because this Pages site is public.
+
 The dashboard is [https://solopass.github.io/bid-watch/](https://solopass.github.io/bid-watch/).
 
 ## What it collects
