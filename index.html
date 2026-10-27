@@ -727,8 +727,10 @@
     }
 
     function bind() {
-      ["q", "region", "town", "source", "due-from", "due-to", "show-closed"].forEach((id) => {
-        document.getElementById(id).addEventListener("input", render);
+      ["q", "region", "town", "source", "state", "sector", "due-from", "due-to", "show-closed"].forEach((id) => {
+        const node = document.getElementById(id);
+        node.addEventListener("input", render);
+        node.addEventListener("change", render);
       });
       function bindSegment(id, apply) {
         document.querySelectorAll("#" + id + " button").forEach((button) => {
