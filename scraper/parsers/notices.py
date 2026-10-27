@@ -20,8 +20,9 @@ _MARKERS = (
     "<main",
     'id="content"',
     'class="content',
+    "elementor-widget-container",
 )
-_ANCHOR = re.compile(r"(?is)<a[^>]+href=\"([^\"]+)\"[^>]*>(.*?)</a>")
+_ANCHOR = re.compile(r"(?is)<a\b([^>]*)>(.*?)</a>")
 _TAG = re.compile(r"(?is)<[^>]+>")
 _DOCUMENT = re.compile(
     r"(?i)(\.pdf|\.docx?|\.xlsx?)(?:$|[?#])"
@@ -33,7 +34,8 @@ _DOCUMENT = re.compile(
     r"|/portals/\d+/"
 )
 _KEEP = re.compile(
-    r"(?i)\b(bids?|rfp|rfq|ifb|invitation|procurement|solicitation)\b"
+    r"(?i)(?:\b(bids?|rfp|rfq|ifb|invitation|procurement|solicitation|advertisement)\b"
+    r"|(?:^|[-_/])ad[-_])"
 )
 _SKIP = re.compile(
     r"(?i)\b("
@@ -45,12 +47,6 @@ _SKIP = re.compile(
 _CLOSED_BEFORE = re.compile(r"(?i)\bclosed\b")
 _OPEN_BEFORE = re.compile(r"(?i)\bopen\b")
 _NUMBER = re.compile(r"(?i)\b(?:bid|ifb|rfp|rfq)\s*#?\s*(\d{2,})\b")
-_BID_OPENING = re.compile(
-    r"(?is)<strong>(.*?)</strong>\s*(?:<[^>]+>\s*)*"
-    r"(?:<strong>)?\s*bid opening\s+([^<]{6,80})"
-)
-
-
 class ParseError(Exception):
     pass
 
@@ -62,9 +58,16 @@ def parse_notice_page(html: str, page_url: str) -> list[dict]:
     items: list[dict] = []
     seen: set[str] = set()
     for match in _ANCHOR.finditer(content):
-        href, raw = match.group(1), match.group(2)
-        title = _text(raw)
-        target = unescape(href).strip()
+        attrs, raw = match.group(1), match.group(2)
+        href_match = re.search(r"""(?is)\bhref\s*=\s*(?:"([^"]+)"|'([^']+)')""", attrs)
+        if not href_match:
+            continue
+        target = unescape((href_match.group(1) or href_match.group(2) or "")).strip()
+        label_match = re.search(r"""(?is)\baria-label\s*=\s*(?:"([^"]+)"|'([^']+)')""", attrs)
+        label = _text(label_match.group(1) or label_match.group(2) or "") if label_match else ""
+        title = _title(raw, target)
+        if label and _generic(title):
+            title = re.sub(r"(?i)^learn more about\s+", "", label).strip() or title
         window = _text(content[max(0, match.start() - 280) : match.start()])
         if not title or not target or target.startswith(("#", "mailto:", "javascript:")):
             continue
@@ -95,11 +98,14 @@ def parse_notice_page(html: str, page_url: str) -> list[dict]:
                 "category": None,
             }
         )
-    for title_raw, when_raw in _BID_OPENING.findall(content):
-        title = _text(title_raw)
-        when = _text(when_raw)
-        if not title or _SKIP.search(title):
+    for opening in re.finditer(r"(?i)bid opening\s+([^<]{6,80})", content):
+        when = _text(opening.group(1))
+        before = content[max(0, opening.start() - 700) : opening.start()]
+        titles = [_text(raw) for raw in re.findall(r"(?is)<strong>(.*?)</strong>", before)]
+        titles = [title for title in titles if title and not _SKIP.search(title)]
+        if not titles:
             continue
+        title = titles[-1]
         slug = re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")[:60]
         url = f"{page_url.split('#', 1)[0]}#{slug}"
         if url in seen or any(item["title"].casefold() == title.casefold() for item in items):
@@ -120,12 +126,48 @@ def parse_notice_page(html: str, page_url: str) -> list[dict]:
 
 
 def _slice(html: str) -> str | None:
+    """Use the content region that actually holds the documents.
+
+    The first ``content`` class on a page is often a stylesheet or a footer.
+    """
     lowered = html.lower()
+    best = None
+    best_score = -1
     for marker in _MARKERS:
-        index = lowered.find(marker)
-        if index >= 0:
-            return html[index : index + 80_000]
-    return None
+        start = 0
+        needle = marker.lower()
+        while True:
+            index = lowered.find(needle, start)
+            if index < 0:
+                break
+            chunk = html[index : index + 80_000]
+            score = len(_DOCUMENT.findall(chunk))
+            if _KEEP.search(chunk):
+                score += 3
+            if score > best_score:
+                best = chunk
+                best_score = score
+            start = index + len(needle)
+    return best
+
+
+def _generic(title: str) -> bool:
+    cleaned = title.lower().strip(" ->")
+    return cleaned in {"more info", "click here", "here", "download", "pdf", "view", "read more"}
+
+
+def _title(raw: str, target: str) -> str:
+    from urllib.parse import unquote
+
+    title = _text(raw)
+    words = re.findall(r"[A-Za-z]{3,}", title)
+    if len(words) >= 2 and not title.lower().startswith("m181"):
+        return title
+    name = unquote(target.split("?", 1)[0].rstrip("/").rsplit("/", 1)[-1])
+    name = re.sub(r"(?i)\.(pdf|docx?|xlsx?)$", "", name)
+    name = re.sub(r"[-_]+", " ", name)
+    name = re.sub(r"\s+", " ", name).strip()
+    return name or title
 
 
 def _text(value: str) -> str:

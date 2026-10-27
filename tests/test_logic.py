@@ -22,7 +22,7 @@ from scraper.parsers.civicplus import close_kind, enrich_civicplus_detail, parse
 from scraper.parsers.documents import parse_document_page
 from scraper.parsers.wordpress import enrich_wordpress_post, parse_wordpress_list
 from scraper.robots import parse_robots
-from scraper.scrape import _finish_civicplus
+from scraper.scrape import _finish_civicplus, _label_bids
 from scraper.store import canonical_url, merge_bids, new_open_bids
 
 ROOT = Path(__file__).resolve().parents[1]

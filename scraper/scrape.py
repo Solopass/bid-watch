@@ -722,8 +722,10 @@ def _label_bids(bids: list[dict], town_regions: dict[str, str]) -> None:
             bid["source"] = "town"
         if not bid.get("region"):
             bid["region"] = town_regions.get(bid.get("town") or "")
-        if not bid.get("sector"):
-            bid["sector"] = "agency" if bid.get("source") in AGENCY_SOURCES else "town"
+        if bid.get("source") in AGENCY_SOURCES:
+            bid["sector"] = "agency"
+        elif not bid.get("sector"):
+            bid["sector"] = "town"
         if not bid.get("state"):
             bid["state"] = STATE_BY_REGION.get(bid.get("region") or "", "Massachusetts")
 
