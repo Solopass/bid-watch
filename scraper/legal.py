@@ -219,9 +219,20 @@ def _primary_town(text: str, town_regions: dict[str, str]) -> str | None:
             found.append(town)
     if not found:
         return None
-    for town in found:
-        if re.search(rf"(?<![A-Za-z])(?:town|city) of {re.escape(town)}(?![A-Za-z])", text, re.IGNORECASE):
-            return town
+    explicit = [
+        town
+        for town in found
+        if re.search(
+            rf"(?<![A-Za-z])(?:town|city) of {re.escape(town)}(?![A-Za-z])",
+            text,
+            re.IGNORECASE,
+        )
+    ]
+    if explicit:
+        return explicit[0]
+    # "City of Leominster" mentioning the Nashua River is Leominster's notice.
+    if re.search(r"(?<![A-Za-z])(?:town|city) of [A-Za-z]", text, re.IGNORECASE):
+        return None
     return found[0]
 
 

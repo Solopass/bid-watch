@@ -726,8 +726,11 @@ def _label_bids(bids: list[dict], town_regions: dict[str, str]) -> None:
             bid["sector"] = "agency"
         elif not bid.get("sector"):
             bid["sector"] = "town"
-        if not bid.get("state"):
-            bid["state"] = STATE_BY_REGION.get(bid.get("region") or "", "Massachusetts")
+        border = STATE_BY_REGION.get(bid.get("region") or "")
+        if border:
+            bid["state"] = border
+        elif not bid.get("state"):
+            bid["state"] = "Massachusetts"
 
 
 def _central_register_status() -> dict:

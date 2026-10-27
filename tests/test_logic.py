@@ -9,7 +9,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from scraper.commbuys import assign_flags, covered_rows
-from scraper.legal import apply_notices, parse_notice_page
+from scraper.legal import apply_notices, parse_notice_page, _primary_town
 from scraper.pdftext import text_from_content
 from scraper.parsers.bidexpress import parse_bid_express
 from scraper.parsers.massdevelopment import parse_massdevelopment
@@ -602,6 +602,23 @@ class StatewideSourceTest(unittest.TestCase):
         self.assertIsNone(other["legal_notice_url"])
         self.assertEqual(regions["Marlborough"], "MetroWest core")
 
+    def test_a_named_other_city_does_not_match_a_river(self):
+        regions = {"Nashua": "NH border", "Franklin": "Outer ring", "Marlborough": "MetroWest core"}
+        self.assertIsNone(
+            _primary_town(
+                "CITY OF LEOMINSTER INVITATION TO BID North Nashua River Stabilization",
+                regions,
+            )
+        )
+        self.assertEqual(
+            _primary_town("Town of Franklin invitation to bid crack sealing", regions),
+            "Franklin",
+        )
+        self.assertEqual(
+            _primary_town("CITY OF MARLBOROUGH sealed bids near the Nashua River", regions),
+            "Marlborough",
+        )
+
     def test_kind_defaults_to_open_and_fragments_stay_unique(self):
         source = canonical_url("https://www.example.gov/Bids.aspx")
         merged = merge_bids(
@@ -619,6 +636,10 @@ class StatewideSourceTest(unittest.TestCase):
         self.assertEqual(merged[0]["kind"], "open")
         self.assertEqual(merged[0]["sector"], "town")
         self.assertEqual(merged[0]["state"], "Massachusetts")
+        agency = {"source": "mbta", "region": "Statewide agency", "town": "MBTA", "sector": "town"}
+        _label_bids([agency], {})
+        self.assertEqual(agency["sector"], "agency")
+        self.assertEqual(agency["state"], "Massachusetts")
         self.assertIsNone(merged[0]["legal_notice_url"])
         upcoming = "https://bc.mbta.com/future/#haverhill"
         other = "https://bc.mbta.com/future/#quincy"
