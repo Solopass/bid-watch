@@ -664,6 +664,27 @@
       "agency": "MSBA",
       "url": "https://www.massschoolbuildings.org/building/CP_Information_Project_Info",
       "notes": "Monthly estimated bid schedule PDF. Covered towns only. The PDF is skipped when the link has not changed."
+    },
+    {
+      "id": "massdot",
+      "type": "massdot",
+      "agency": "MassDOT",
+      "url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp",
+      "notes": "Advertised projects bid-opening schedule. Kept when the location names a covered town, Worcester, or Northborough. District-only rows are dropped. Linked from the mass.gov advertised-projects page."
+    },
+    {
+      "id": "dcr",
+      "type": "dcr",
+      "agency": "DCR",
+      "url": "https://www.mass.gov/info-details/dcr-contracts-and-procurement",
+      "notes": "Current construction contracts seeking bids. The awards table is ignored. The table has no town column, so open ads are kept and tagged Statewide agency."
+    },
+    {
+      "id": "mapc",
+      "type": "mapc",
+      "agency": "MAPC",
+      "url": "https://www.mapc.org/about-mapc/legal-notices-meetings/",
+      "notes": "Public legal notices. Kept when the notice names a covered town, MetroWest, Worcester, or Northborough. South Shore and statewide collective buys are dropped."
     }
   ],
   "workers": 8

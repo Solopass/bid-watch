@@ -2,9 +2,12 @@
 
 Town names and regions come from ``sources.json``. A COMMBUYS organization
 matches a covered town, that town's school district, housing authority, or
-water district, or a regional school that serves one of the towns. A similar
-name such as Framingham State University does not match. Light plants and
-statewide agencies do not match on the town name appearing in a description.
+water district, a regional school that serves one of the towns, or an
+institution in ``INSTITUTIONS`` (in-range colleges and regional agencies).
+Framingham State University matches the college, not the town of Framingham.
+Light plants and statewide agencies do not match on the town name appearing
+in a description. MassDOT stays off this list; its highway ads are read
+from the public bid-opening schedule and filtered by location.
 """
 
 from __future__ import annotations
@@ -33,6 +36,23 @@ REGIONAL = (
     ("dover sherborn", "Dover-Sherborn", "Next ring"),
     ("acton boxborough", "Acton-Boxborough", "Next ring"),
     ("mendon upton", "Mendon-Upton", "Next ring"),
+)
+
+# Checked before town names so "Framingham State" is not the town.
+INSTITUTIONS = (
+    ("framingham state", "Framingham State", "MetroWest core", "college"),
+    ("massachusetts bay community college", "MassBay", "MetroWest core", "college"),
+    ("massbay community college", "MassBay", "MetroWest core", "college"),
+    ("mass bay community college", "MassBay", "MetroWest core", "college"),
+    ("worcester state", "Worcester State", "Outer ring", "college"),
+    ("massachusetts water resources authority", "MWRA", "Statewide agency", "agency"),
+    ("mwra", "MWRA", "Statewide agency", "agency"),
+    ("metrowest regional transit", "MWRTA", "MetroWest core", "agency"),
+    ("mwrta", "MWRTA", "MetroWest core", "agency"),
+    ("metropolitan area planning council", "MAPC", "MetroWest core", "agency"),
+    ("mapc", "MAPC", "MetroWest core", "agency"),
+    ("central massachusetts regional planning", "CMRPC", "Outer ring", "agency"),
+    ("cmrpc", "CMRPC", "Outer ring", "agency"),
 )
 
 _RELATED_SUFFIXES = (
@@ -71,6 +91,9 @@ def match_organization(org: str, town_regions: dict[str, str]) -> Place | None:
     cleaned = _clean(org)
     if not cleaned:
         return None
+    for phrase, town, region, sector in INSTITUTIONS:
+        if re.search(rf"(?<![a-z0-9]){re.escape(phrase)}(?![a-z0-9])", cleaned):
+            return Place(town, region, "institution", sector)
     towns = sorted(town_regions, key=len, reverse=True)
     for town in towns:
         name = _clean(town)

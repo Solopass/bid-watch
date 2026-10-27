@@ -15,7 +15,9 @@ from scraper.parsers.bidexpress import parse_bid_express
 from scraper.parsers.massdevelopment import parse_massdevelopment
 from scraper.parsers.mbta import parse_current_solicitations, parse_future_solicitations
 from scraper.parsers.msba import parse_bid_schedule_text
+from scraper.parsers.agencies import parse_dcr, parse_mapc, parse_massdot
 from scraper.places import match_location, match_organization, town_regions_from_config
+from scraper.trades import cladding_trade
 from scraper.dates import format_due, is_past, parse_when
 from scraper.parsers.bidnet import parse_bidnet
 from scraper.parsers.civicplus import close_kind, enrich_civicplus_detail, parse_civicplus
@@ -313,8 +315,28 @@ class StoreTest(unittest.TestCase):
         self.assertEqual(regions["Lincoln"], "Next ring")
         self.assertEqual(regions["Lincoln RI"], "RI border")
         self.assertGreater(len(regions), 27)
-        self.assertIsNone(match_organization("Framingham State University", regions))
+        framingham_state = match_organization("Framingham State University", regions)
+        self.assertEqual(framingham_state.town, "Framingham State")
+        self.assertEqual(framingham_state.sector, "college")
+        self.assertEqual(framingham_state.region, "MetroWest core")
+        self.assertNotEqual(framingham_state.town, "Framingham")
+        massbay = match_organization("Massachusetts Bay Community College", regions)
+        self.assertEqual(massbay.town, "MassBay")
+        self.assertEqual(massbay.sector, "college")
+        worcester_state = match_organization("Worcester State University", regions)
+        self.assertEqual(worcester_state.town, "Worcester State")
+        self.assertEqual(worcester_state.region, "Outer ring")
+        self.assertEqual(
+            match_organization("Massachusetts Water Resources Authority", regions).town,
+            "MWRA",
+        )
+        self.assertEqual(
+            match_organization("Massachusetts Water Resources Authority", regions).region,
+            "Statewide agency",
+        )
+        self.assertEqual(match_organization("MetroWest Regional Transit Authority", regions).town, "MWRTA")
         self.assertIsNone(match_organization("Massachusetts Department of Transportation", regions))
+        self.assertIsNone(match_organization("University of Massachusetts Amherst", regions))
         self.assertEqual(match_organization("Town of Weston", regions).town, "Weston")
         self.assertEqual(match_organization("Town of Westborough", regions).town, "Westborough")
         self.assertEqual(match_organization("Natick Public Schools", regions).town, "Natick")
@@ -389,7 +411,12 @@ class StoreTest(unittest.TestCase):
         extra = covered_rows(bids, rows, regions)
         assign_flags(bids, rows, regions)
         self.assertEqual(bids[0]["on_commbuys"], "yes")
-        self.assertEqual(sorted(item["town"] for item in extra), ["Assabet Valley", "Westborough"])
+        self.assertEqual(
+            sorted(item["town"] for item in extra),
+            ["Assabet Valley", "Framingham State", "Westborough"],
+        )
+        college = next(item for item in extra if item["town"] == "Framingham State")
+        self.assertEqual(college["sector"], "college")
         self.assertEqual({item["source"] for item in extra}, {"commbuys"})
         self.assertTrue(all(item["on_commbuys"] == "yes" for item in extra))
         dispatch = next(item for item in extra if item["town"] == "Westborough")
@@ -450,6 +477,12 @@ class ScheduleTest(unittest.TestCase):
         )
         self.assertIn('id="state"', page)
         self.assertIn('id="sector"', page)
+        self.assertIn('id="trade"', page)
+        self.assertIn("Cladding only", page)
+        self.assertIn("badge-cladding", page)
+        self.assertIn(">College<", page)
+        self.assertIn(">Hospital<", page)
+        self.assertIn(">Private<", page)
         self.assertIn("Outer ring", page)
         self.assertIn("RI border", page)
         self.assertIn("NH border", page)
@@ -457,7 +490,17 @@ class ScheduleTest(unittest.TestCase):
         feed_types = {item["type"] for item in config["feeds"]}
         self.assertEqual(
             feed_types,
-            {"legal_notice", "bid_express", "massdevelopment", "mbta_current", "mbta_future", "msba"},
+            {
+                "legal_notice",
+                "bid_express",
+                "massdevelopment",
+                "mbta_current",
+                "mbta_future",
+                "msba",
+                "massdot",
+                "dcr",
+                "mapc",
+            },
         )
 
 
@@ -637,9 +680,14 @@ class StatewideSourceTest(unittest.TestCase):
         self.assertEqual(merged[0]["sector"], "town")
         self.assertEqual(merged[0]["state"], "Massachusetts")
         agency = {"source": "mbta", "region": "Statewide agency", "town": "MBTA", "sector": "town"}
+        agency["title"] = "Vinyl siding at a bus garage"
         _label_bids([agency], {})
         self.assertEqual(agency["sector"], "agency")
         self.assertEqual(agency["state"], "Massachusetts")
+        self.assertEqual(agency["trade"], "cladding")
+        panel = {"source": "town", "title": "Electrical panel upgrade", "category": "Building"}
+        _label_bids([panel], {})
+        self.assertIsNone(panel["trade"])
         self.assertIsNone(merged[0]["legal_notice_url"])
         upcoming = "https://bc.mbta.com/future/#haverhill"
         other = "https://bc.mbta.com/future/#quincy"
@@ -770,6 +818,119 @@ class _FakeResponse:
 
     def __exit__(self, *_args):
         return False
+
+
+class CladdingTest(unittest.TestCase):
+    def test_envelope_words_match_and_bare_panel_does_not(self):
+        self.assertEqual(cladding_trade("Vinyl siding replacement"), "cladding")
+        self.assertEqual(cladding_trade("Curtain wall at the library"), "cladding")
+        self.assertEqual(cladding_trade("Storefront renovation"), "cladding")
+        self.assertEqual(cladding_trade("EIFS repair"), "cladding")
+        self.assertEqual(cladding_trade("Fiber cement panels"), "cladding")
+        self.assertEqual(cladding_trade("Façade restoration"), "cladding")
+        self.assertEqual(cladding_trade("Window replacement"), "cladding")
+        self.assertEqual(cladding_trade("Building envelope repairs"), "cladding")
+        self.assertEqual(cladding_trade("ACM composite panel"), "cladding")
+        self.assertEqual(cladding_trade("Brick veneer"), "cladding")
+        self.assertIsNone(cladding_trade("Electrical panel upgrade"))
+        self.assertIsNone(cladding_trade("Solar panel installation"))
+        self.assertIsNone(cladding_trade("Catch basin cleaning"))
+        self.assertIsNone(cladding_trade("Guardrail panel repair"))
+        self.assertIsNone(cladding_trade("Residing in the district office"))
+
+
+class AgencyFeedTest(unittest.TestCase):
+    def test_massdot_keeps_covered_towns_and_drops_district_work(self):
+        html = """
+        <div class='sm_hilite'>Bid Opening: 11/3/2026 2:00PM</div>
+        <table>
+          <tr><td><strong>Location:</strong><i> NATICK</i></td></tr>
+          <tr><td><strong>Description:</strong><i> Bridge Replacement, Boden Lane</i></td></tr>
+          <tr><td><strong>Project Number:</strong> 607420</td></tr>
+        </table>
+        <table>
+          <tr><td><strong>Location:</strong><i> DISTRICT5</i></td></tr>
+          <tr><td><strong>Description:</strong><i> Cleaning of Drainage Structures</i></td></tr>
+          <tr><td><strong>Project Number:</strong> 616408</td></tr>
+        </table>
+        <table>
+          <tr><td><strong>Location:</strong><i> BOSTON</i></td></tr>
+          <tr><td><strong>Description:</strong><i> Noise Barriers along Franklin Street</i></td></tr>
+          <tr><td><strong>Project Number:</strong> 616308</td></tr>
+        </table>
+        <table>
+          <tr><td><strong>Location:</strong><i> NORTHBOROUGH - SHREWSBURY</i></td></tr>
+          <tr><td><strong>Description:</strong><i> Route 20 rehabilitation</i></td></tr>
+          <tr><td><strong>Project Number:</strong> 608840</td></tr>
+        </table>
+        """
+        rows = parse_massdot(html, "https://hwy.example/statusReport.asp", {"Natick": "Next ring", "Shrewsbury": "Next ring", "Franklin": "Outer ring"})
+        numbers = [row["bid_number"] for row in rows]
+        self.assertEqual(numbers, ["607420", "608840"])
+        self.assertEqual(rows[0]["town"], "MassDOT")
+        self.assertEqual(rows[0]["region"], "Statewide agency")
+        self.assertEqual(rows[0]["sector"], "agency")
+        self.assertIn("Natick", rows[0]["title"])
+        self.assertTrue(rows[0]["due"].startswith("2026-11-03"))
+
+    def test_dcr_ignores_the_awards_table(self):
+        html = """
+        <h2>Construction Contracts – Bid Responses Sought</h2>
+        <table><tr><th>Contract #</th><th>Name</th><th>Date</th></tr>
+        <tr><td>P27-3707-C1A</td><td>Bellevue Pond Dam Rehabilitation</td><td>10/29/2026</td></tr>
+        <tr><td>P27-3713-M1A</td><td>Fence &amp; Guardrail Maintenance</td><td>12/3/2026</td></tr>
+        </table>
+        <h2>Recent Construction Contract Awards</h2>
+        <table><tr><td>P26-1</td><td>Old roof award</td><td>1/2/2024</td></tr></table>
+        """
+        rows = parse_dcr(html, "https://www.mass.gov/info-details/dcr-contracts-and-procurement")
+        self.assertEqual([row["bid_number"] for row in rows], ["P27-3707-C1A", "P27-3713-M1A"])
+        self.assertEqual(rows[0]["town"], "DCR")
+        self.assertEqual(rows[0]["region"], "Statewide agency")
+        self.assertEqual(rows[1]["due"], "2026-12-03")
+
+    def test_mapc_keeps_metrowest_and_drops_south_shore(self):
+        html = """
+        <div class="fl-module fl-module-rich-text fl-rich-text">
+          <p><strong>Legal Notice of Invitation for Bids for Public Works Services - MW 2027 PW1</strong></p>
+          <p>MetroWest consortium: Ashland, Hopkinton, Natick, and Wellesley.
+          Sealed bids will be accepted until 3:00 PM, October 8, 2026 via Commbuys.</p>
+          <p>Addendum - Bid Due Date Rescheduled to October 15, 2026 at 3:00 PM</p>
+        </div>
+        <div class="fl-module fl-module-rich-text fl-rich-text">
+          <p><strong>Legal Notice of Invitation for Bids - SS 2027 PW1</strong></p>
+          <p>South Shore towns: Braintree, Hingham, and Scituate. Bids due October 8, 2026.</p>
+        </div>
+        <div class="fl-module fl-module-rich-text fl-rich-text">
+          <p><strong>Legal Notice - Franklin Street Garage</strong></p>
+          <p>Boston Franklin Street garage waterproofing. Bids are due November 2, 2026.</p>
+        </div>
+        <div class="fl-module fl-module-rich-text fl-rich-text">
+          <p><strong>Legal Notice of Request for Proposals - Old carshare</strong></p>
+          <p>Framingham and Natick parking lots. Proposals are due by Monday, November 24 at 5:00pm.</p>
+          <p><a href="/uploads/2025/10/carshare-10.27.2025.pdf">RFP</a></p>
+        </div>
+        <div class="fl-module fl-module-rich-text fl-rich-text">
+          <p><strong><a href="/crhsac.pdf">CRHSAC24 - Worcester Area Interoperability</a></strong></p>
+          <p>MAPC invites bids for communication equipment. Sealed bids will be opened on November 10, 2026 at 12:00PM.</p>
+        </div>
+        """
+        regions = {"Natick": "Next ring", "Ashland": "MetroWest core", "Franklin": "Outer ring", "Wellesley": "Next ring"}
+        rows = parse_mapc(html, "https://www.mapc.org/about-mapc/legal-notices-meetings/", regions)
+        titles = [row["title"] for row in rows]
+        self.assertTrue(any("MW 2027" in title for title in titles))
+        self.assertTrue(any("Worcester" in title for title in titles))
+        self.assertFalse(any("SS 2027" in title for title in titles))
+        self.assertFalse(any("Franklin" in title for title in titles))
+        self.assertFalse(any("carshare" in title.casefold() for title in titles))
+        metro = next(row for row in rows if "MW 2027" in row["title"])
+        self.assertEqual(metro["town"], "MAPC")
+        self.assertEqual(metro["region"], "MetroWest core")
+        self.assertEqual(metro["sector"], "agency")
+        self.assertTrue(metro["due"].startswith("2026-10-15T15:00"))
+        worcester = next(row for row in rows if "Worcester" in row["title"])
+        self.assertEqual(worcester["region"], "Outer ring")
+        self.assertTrue(worcester["due"].startswith("2026-11-10"))
 
 
 if __name__ == "__main__":

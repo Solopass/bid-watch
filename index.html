@@ -21,6 +21,8 @@
       --bad-bg: #fde8ee;
       --new-bg: #f6e2c4;
       --new-ink: #7c4a12;
+      --clad-bg: #d5efe6;
+      --clad-ink: #0e4d5c;
       --chip: #efe6d6;
       --shadow: 0 1px 0 rgba(30, 26, 22, 0.04);
     }
@@ -41,6 +43,8 @@
         --bad-bg: #3b222a;
         --new-bg: #3d3424;
         --new-ink: #f0c27a;
+        --clad-bg: #1a3330;
+        --clad-ink: #b7ebe3;
         --chip: #263038;
         --shadow: none;
       }
@@ -61,6 +65,8 @@
       --bad-bg: #3b222a;
       --new-bg: #3d3424;
       --new-ink: #f0c27a;
+      --clad-bg: #1a3330;
+      --clad-ink: #b7ebe3;
       --chip: #263038;
       --shadow: none;
     }
@@ -222,6 +228,10 @@
       padding: 0.05rem 0.4rem;
       vertical-align: 0.1em;
     }
+    .badge-cladding {
+      background: var(--clad-bg);
+      color: var(--clad-ink);
+    }
     .closed-tag { color: var(--muted); font-size: 0.78rem; font-weight: 700; }
     .due-soon { color: var(--hot); font-weight: 700; }
     tr.is-closed { color: var(--muted); }
@@ -301,6 +311,15 @@
           <option value="housing">Housing</option>
           <option value="agency">Agency</option>
           <option value="utility">Utility</option>
+          <option value="college">College</option>
+          <option value="hospital">Hospital</option>
+          <option value="private">Private</option>
+        </select>
+      </label>
+      <label>Trade
+        <select id="trade">
+          <option value="">All trades</option>
+          <option value="cladding">Cladding only</option>
         </select>
       </label>
       <label>Town
@@ -316,6 +335,9 @@
           <option value="massdevelopment">MassDevelopment</option>
           <option value="mbta">MBTA</option>
           <option value="msba">MSBA</option>
+          <option value="massdot">MassDOT</option>
+          <option value="dcr">DCR</option>
+          <option value="mapc">MAPC</option>
           <option value="central_register">Central Register</option>
         </select>
       </label>
@@ -365,7 +387,8 @@
     Town only means the public COMMBUYS list did not have a matching solicitation.
     Source is where the row was found. A town bid that is also on COMMBUYS stays a town-page row and is marked Yes.
     A town bid that also ran in a covered legal notice stays one row and links to that notice.
-    Sector separates town, school, and housing-authority bids. State separates Massachusetts from the RI and NH border towns.
+    Sector separates town, school, housing, agency, college, hospital, and private bids. State separates Massachusetts from the RI and NH border towns.
+    Cladding only keeps rows whose title or category names exterior cladding, siding, facade, storefront, curtain wall, or a related envelope term. A Cladding badge marks those rows.
     <a href="https://github.com/Solopass/bid-watch">Source</a>
   </footer>
   <script>
@@ -386,6 +409,9 @@
       massdevelopment: "MassDevelopment",
       mbta: "MBTA",
       msba: "MSBA",
+      massdot: "MassDOT",
+      dcr: "DCR",
+      mapc: "MAPC",
       central_register: "Central Register",
     };
     const REGION_ORDER = [
@@ -403,6 +429,9 @@
       housing: "Housing",
       agency: "Agency",
       utility: "Utility",
+      college: "College",
+      hospital: "Hospital",
+      private: "Private",
     };
     const FEED_ORDER = [
       ["legal_notices", "Legal notices"],
@@ -410,6 +439,9 @@
       ["massdevelopment", "MassDevelopment"],
       ["mbta", "MBTA"],
       ["msba", "MSBA"],
+      ["massdot", "MassDOT"],
+      ["dcr", "DCR"],
+      ["mapc", "MAPC"],
     ];
 
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -483,9 +515,11 @@
       if (bidState && (bid.state || "Massachusetts") !== bidState) return false;
       const sector = document.getElementById("sector").value;
       if (sector && (bid.sector || "town") !== sector) return false;
+      const trade = document.getElementById("trade").value;
+      if (trade && (bid.trade || "") !== trade) return false;
       const q = document.getElementById("q").value.trim().toLowerCase();
       if (q) {
-        const hay = [bid.town, bid.region, bid.state, bid.sector, bid.title, bid.bid_number, bid.category, bid.paper, bid.source, bid.url].join(" ").toLowerCase();
+        const hay = [bid.town, bid.region, bid.state, bid.sector, bid.trade, bid.title, bid.bid_number, bid.category, bid.paper, bid.source, bid.url].join(" ").toLowerCase();
         if (!hay.includes(q)) return false;
       }
       const from = document.getElementById("due-from").value;
@@ -569,6 +603,12 @@
         link.rel = "noopener noreferrer";
         link.textContent = bid.title;
         title.append(link);
+        if (bid.trade === "cladding") {
+          const clad = document.createElement("span");
+          clad.className = "badge badge-cladding";
+          clad.textContent = "Cladding";
+          title.append(clad);
+        }
         if (isNew(bid) && bid.status === "open") {
           const badge = document.createElement("span");
           badge.className = "badge";
@@ -727,7 +767,7 @@
     }
 
     function bind() {
-      ["q", "region", "town", "source", "state", "sector", "due-from", "due-to", "show-closed"].forEach((id) => {
+      ["q", "region", "town", "source", "state", "sector", "trade", "due-from", "due-to", "show-closed"].forEach((id) => {
         const node = document.getElementById(id);
         node.addEventListener("input", render);
         node.addEventListener("change", render);
