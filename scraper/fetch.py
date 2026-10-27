@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import http.cookiejar
+import threading
 import time
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
@@ -34,8 +35,12 @@ class PoliteFetcher:
         self.user_agent = user_agent
         # The floor is 10 seconds. A config file cannot lower it.
         self.min_interval = max(MIN_INTERVAL_SECONDS, int(min_interval))
-        # One cookie jar so a public form post (COMMBUYS) can reuse its own session.
-        self._opener = build_opener(HTTPCookieProcessor(http.cookiejar.CookieJar()))
+        # Each host has its own cookie jar. A public form post (COMMBUYS,
+        # legal notices) keeps its session, and two hosts can be in flight
+        # at once. The per-host lock covers the wait and the request.
+        self._openers: dict = {}
+        self._locks_guard = threading.Lock()
+        self._host_locks: dict[str, threading.Lock] = {}
         self._last: dict[str, float] = {}
         self._robots: dict[str, RobotsPolicy] = {}
         self._delay: dict[str, int] = {}
@@ -79,42 +84,63 @@ class PoliteFetcher:
         extra_headers: dict | None = None,
         accept: str | None = None,
     ):
-        self._ensure_robots(url)
-        policy = self._robots[_host_key(url)]
-        if not policy.can_fetch(self.user_agent, url):
-            raise RobotsDisallowed(f"robots.txt disallows {url}")
-        self._wait(url)
-        request = Request(url, data=data, method="POST" if data is not None else "GET")
-        request.add_header("User-Agent", self.user_agent)
-        request.add_header(
-            "Accept",
-            accept or "text/html,application/xhtml+xml,text/csv;q=0.9,*/*;q=0.8",
-        )
-        request.add_header("Accept-Language", "en-US,en;q=0.9")
-        for key, value in (extra_headers or {}).items():
-            request.add_header(key, value)
-        print(f"{'POST' if data is not None else 'GET'} {url}", flush=True)
-        try:
-            with self._opener.open(request, timeout=TIMEOUT) as response:
-                status = getattr(response, "status", 200)
-                final_url = response.geturl()
-                content_type = response.headers.get("Content-Type", "")
-                body = response.read(MAX_BYTES + 1)
-        except HTTPError as exc:
-            self._last[_host_key(url)] = time.monotonic()
-            detail = exc.read(500).decode("utf-8", "replace") if exc.fp else ""
-            raise FetchError(f"HTTP {exc.code} for {url} {detail[:180]}".strip(), exc.code) from exc
-        except URLError as exc:
-            self._last[_host_key(url)] = time.monotonic()
-            raise FetchError(f"could not fetch {url}: {exc.reason}") from exc
-        self._last[_host_key(url)] = time.monotonic()
-        if not policy.can_fetch(self.user_agent, final_url):
-            raise RobotsDisallowed(f"robots.txt disallows redirect target {final_url}")
-        if len(body) > MAX_BYTES:
-            raise FetchError(f"response from {url} exceeded {MAX_BYTES} bytes")
-        if status >= 400:
-            raise FetchError(f"HTTP {status} for {url}", status)
-        return status, body, content_type, final_url
+        key = _host_key(url)
+        with self._lock_for(key):
+            self._ensure_robots(url)
+            policy = self._robots[key]
+            if not policy.can_fetch(self.user_agent, url):
+                raise RobotsDisallowed(f"robots.txt disallows {url}")
+            self._wait(url)
+            request = Request(url, data=data, method="POST" if data is not None else "GET")
+            request.add_header("User-Agent", self.user_agent)
+            request.add_header(
+                "Accept",
+                accept or "text/html,application/xhtml+xml,text/csv;q=0.9,*/*;q=0.8",
+            )
+            request.add_header("Accept-Language", "en-US,en;q=0.9")
+            for header, value in (extra_headers or {}).items():
+                request.add_header(header, value)
+            print(f"{'POST' if data is not None else 'GET'} {url}", flush=True)
+            try:
+                with self._opener_for(key).open(request, timeout=TIMEOUT) as response:
+                    status = getattr(response, "status", 200)
+                    final_url = response.geturl()
+                    content_type = response.headers.get("Content-Type", "")
+                    body = response.read(MAX_BYTES + 1)
+            except HTTPError as exc:
+                self._last[key] = time.monotonic()
+                detail = exc.read(500).decode("utf-8", "replace") if exc.fp else ""
+                raise FetchError(
+                    f"HTTP {exc.code} for {url} {detail[:180]}".strip(), exc.code
+                ) from exc
+            except URLError as exc:
+                self._last[key] = time.monotonic()
+                raise FetchError(f"could not fetch {url}: {exc.reason}") from exc
+            self._last[key] = time.monotonic()
+            if not policy.can_fetch(self.user_agent, final_url):
+                raise RobotsDisallowed(f"robots.txt disallows redirect target {final_url}")
+            if len(body) > MAX_BYTES:
+                raise FetchError(f"response from {url} exceeded {MAX_BYTES} bytes")
+            if status >= 400:
+                raise FetchError(f"HTTP {status} for {url}", status)
+            return status, body, content_type, final_url
+
+    def _lock_for(self, key: str) -> threading.Lock:
+        with self._locks_guard:
+            lock = self._host_locks.get(key)
+            if lock is None:
+                lock = threading.Lock()
+                self._host_locks[key] = lock
+            return lock
+
+    def _opener_for(self, key: str):
+        with self._locks_guard:
+            opener = self._openers.get(key)
+            if opener is None:
+                jar = http.cookiejar.CookieJar()
+                opener = build_opener(HTTPCookieProcessor(jar))
+                self._openers[key] = opener
+            return opener
 
     def _ensure_robots(self, url: str) -> None:
         parts = urlsplit(url)
@@ -135,7 +161,7 @@ class PoliteFetcher:
         request.add_header("Accept", "text/plain,*/*;q=0.8")
         print(f"GET {robots_url}", flush=True)
         try:
-            with self._opener.open(request, timeout=TIMEOUT) as response:
+            with self._opener_for(key).open(request, timeout=TIMEOUT) as response:
                 status = getattr(response, "status", 200)
                 final = urlsplit(response.geturl())
                 body = response.read(200_000)

@@ -209,6 +209,411 @@
       "type": "civicplus",
       "url": "https://www.mendonma.gov/Bids.aspx",
       "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Medway",
+      "region": "Next ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "notices",
+      "url": "https://medwayma.gov/rfpifb/",
+      "notes": "Town Web listing. The HeyGov document-request form is not submitted. Due dates are on the page."
+    },
+    {
+      "town": "Franklin",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.franklinma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Wrentham",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.wrentham.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Bedford",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.bedfordma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Boxborough",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.boxborough-ma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Lexington",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.lexingtonma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Littleton",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.littletonma.org/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Carlisle",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.carlislema.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Harvard",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.harvard-ma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Clinton",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.clintonma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Uxbridge",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.uxbridge-ma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Sutton",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.suttonma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Douglas",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.douglas-ma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Oxford",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.oxfordma.us/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Auburn",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.auburnma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Charlton",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.townofcharlton.net/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Webster",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.webster-ma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Southbridge",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.ci.southbridge.ma.us/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Blackstone",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.townofblackstone.org/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "North Attleborough",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.northattleborough.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Plainville",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.plainvillema.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Attleboro",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.cityofattleboro.us/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Norton",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.nortonma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Seekonk",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.seekonk-ma.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Canton",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.town.canton.ma.us/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Stoughton",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.stoughton.org/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Waltham",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.city.waltham.ma.us/Bids.aspx",
+      "notes": "CivicPlus Bids module. About an hour from Framingham."
+    },
+    {
+      "town": "Lincoln RI",
+      "region": "RI border",
+      "sector": "town",
+      "state": "Rhode Island",
+      "type": "civicplus",
+      "url": "https://www.lincolnri.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Cumberland RI",
+      "region": "RI border",
+      "sector": "town",
+      "state": "Rhode Island",
+      "type": "civicplus",
+      "url": "https://www.cumberlandri.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "North Smithfield",
+      "region": "RI border",
+      "sector": "town",
+      "state": "Rhode Island",
+      "type": "civicplus",
+      "url": "https://www.nsmithfieldri.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Nashua",
+      "region": "NH border",
+      "sector": "town",
+      "state": "New Hampshire",
+      "type": "civicplus",
+      "url": "https://www.nashuanh.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Hudson NH",
+      "region": "NH border",
+      "sector": "town",
+      "state": "New Hampshire",
+      "type": "civicplus",
+      "url": "https://www.hudsonnh.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Salem NH",
+      "region": "NH border",
+      "sector": "town",
+      "state": "New Hampshire",
+      "type": "civicplus",
+      "url": "https://www.salemnh.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Pelham",
+      "region": "NH border",
+      "sector": "town",
+      "state": "New Hampshire",
+      "type": "civicplus",
+      "url": "https://www.pelhamweb.com/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Windham NH",
+      "region": "NH border",
+      "sector": "town",
+      "state": "New Hampshire",
+      "type": "civicplus",
+      "url": "https://www.windhamnh.gov/Bids.aspx",
+      "notes": "CivicPlus Bids module."
+    },
+    {
+      "town": "Assabet Valley",
+      "region": "MetroWest core",
+      "sector": "school",
+      "state": "Massachusetts",
+      "type": "notices",
+      "url": "https://www.assabet.org/Do-More/HR--Business-Offices/Legal-Notices/index.html",
+      "notes": "Legal-notice PDFs. Addenda are skipped."
+    },
+    {
+      "town": "Keefe Tech",
+      "region": "MetroWest core",
+      "sector": "school",
+      "state": "Massachusetts",
+      "type": "notices",
+      "url": "https://www.keefetech.org/about-us/business-office",
+      "notes": "Finalsite business office. The notice link is the bid."
+    },
+    {
+      "town": "Lincoln-Sudbury",
+      "region": "MetroWest core",
+      "sector": "school",
+      "state": "Massachusetts",
+      "type": "notices",
+      "url": "https://www.lsrhs.net/80399_4",
+      "notes": "LS Bids page. Documents are on a public Google Drive link."
+    },
+    {
+      "town": "Algonquin Regional",
+      "region": "MetroWest core",
+      "sector": "school",
+      "state": "Massachusetts",
+      "type": "notices",
+      "url": "https://nsboro.k12.ma.us/150206_3",
+      "notes": "Current bid opportunities. Result sheets are skipped."
+    },
+    {
+      "town": "Blackstone Valley Tech",
+      "region": "MetroWest core",
+      "sector": "school",
+      "state": "Massachusetts",
+      "type": "notices",
+      "url": "https://www.valleytech.k12.ma.us/about/district/invitationtobid/",
+      "notes": "Invitation to bid page."
+    },
+    {
+      "town": "Minuteman",
+      "region": "Next ring",
+      "sector": "school",
+      "state": "Massachusetts",
+      "type": "notices",
+      "url": "https://minuteman.org/finance",
+      "notes": "Finance page. Budget hearing PDFs are skipped; RFP documents are kept."
+    },
+    {
+      "town": "Ashland",
+      "region": "MetroWest core",
+      "sector": "school",
+      "state": "Massachusetts",
+      "type": "notices",
+      "url": "https://www.ashland.k12.ma.us/departments/business-office/welcome/bid-notices",
+      "notes": "Ashland Public Schools bid notices."
+    },
+    {
+      "town": "Milford",
+      "region": "MetroWest core",
+      "sector": "school",
+      "state": "Massachusetts",
+      "type": "notices",
+      "url": "https://www.milfordpublicschools.com/departments/business-hr-office",
+      "notes": "Business office Bids panel. Addenda are skipped."
+    },
+    {
+      "town": "Framingham",
+      "region": "MetroWest core",
+      "sector": "housing",
+      "state": "Massachusetts",
+      "type": "notices",
+      "url": "https://framinghamhousingauthority.org/current-procurement-solicitations/",
+      "notes": "Framingham Housing Authority solicitation PDFs."
+    },
+    {
+      "town": "Marlborough",
+      "region": "MetroWest core",
+      "sector": "housing",
+      "state": "Massachusetts",
+      "type": "notices",
+      "url": "https://marlborohousing.org/Procurement",
+      "notes": "Marlborough Housing Authority. Open RFP documents only; closed headings and HUD forms are skipped."
     }
   ],
   "feeds": [
@@ -260,5 +665,6 @@
       "url": "https://www.massschoolbuildings.org/building/CP_Information_Project_Info",
       "notes": "Monthly estimated bid schedule PDF. Covered towns only. The PDF is skipped when the link has not changed."
     }
-  ]
+  ],
+  "workers": 8
 }

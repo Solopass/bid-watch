@@ -306,13 +306,32 @@ class StoreTest(unittest.TestCase):
         regions = town_regions_from_config()
         self.assertEqual(regions["Framingham"], "MetroWest core")
         self.assertEqual(regions["Wellesley"], "Next ring")
-        self.assertEqual(len(regions), 27)
+        self.assertEqual(regions["Medway"], "Next ring")
+        self.assertEqual(regions["Franklin"], "Outer ring")
+        self.assertEqual(regions["Hudson"], "MetroWest core")
+        self.assertEqual(regions["Hudson NH"], "NH border")
+        self.assertEqual(regions["Lincoln"], "Next ring")
+        self.assertEqual(regions["Lincoln RI"], "RI border")
+        self.assertGreater(len(regions), 27)
         self.assertIsNone(match_organization("Framingham State University", regions))
         self.assertIsNone(match_organization("Massachusetts Department of Transportation", regions))
         self.assertEqual(match_organization("Town of Weston", regions).town, "Weston")
         self.assertEqual(match_organization("Town of Westborough", regions).town, "Westborough")
         self.assertEqual(match_organization("Natick Public Schools", regions).town, "Natick")
         self.assertEqual(match_organization("Natick Housing Authority", regions).town, "Natick")
+        self.assertEqual(match_organization("Natick Housing Authority", regions).sector, "housing")
+        self.assertEqual(match_organization("Natick Public Schools", regions).sector, "school")
+        self.assertEqual(match_organization("Town of Dover", regions).town, "Dover")
+        dover = match_organization("Dover-Sherborn Regional School District", regions)
+        self.assertEqual(dover.town, "Dover-Sherborn")
+        self.assertEqual(dover.sector, "school")
+        self.assertEqual(dover.region, "Next ring")
+        acton = match_organization("Acton-Boxborough Regional School District", regions)
+        self.assertEqual(acton.town, "Acton-Boxborough")
+        self.assertEqual(match_organization("Town of Acton", regions).town, "Acton")
+        mendon = match_organization("Mendon-Upton Regional School District", regions)
+        self.assertEqual(mendon.town, "Mendon-Upton")
+        self.assertEqual(mendon.region, "Next ring")
         self.assertEqual(match_organization("Sudbury Water District", regions).town, "Sudbury")
         assabet = match_organization(
             "Assabet Valley Regional Vocational School District", regions
@@ -407,16 +426,34 @@ class ScheduleTest(unittest.TestCase):
         self.assertNotIn("github_pat_", page)
         self.assertNotIn("token", page.lower())
         config = json.loads((ROOT / "sources.json").read_text(encoding="utf-8"))
-        next_ring = [item["town"] for item in config["sources"] if item["region"] == "Next ring"]
+        next_ring = [
+            item["town"]
+            for item in config["sources"]
+            if item["region"] == "Next ring" and item.get("sector", "town") == "town"
+        ]
         self.assertEqual(
             next_ring,
             [
                 "Wellesley", "Weston", "Needham", "Shrewsbury", "Stow", "Acton",
                 "Concord", "Dover", "Sherborn", "Bellingham", "Upton", "Grafton",
-                "Maynard", "Lincoln", "Mendon",
+                "Maynard", "Lincoln", "Mendon", "Medway",
             ],
         )
-        self.assertTrue(all(item["type"] == "civicplus" for item in config["sources"] if item["region"] == "Next ring"))
+        self.assertTrue(
+            all(
+                item["type"] == "civicplus"
+                for item in config["sources"]
+                if item["region"] == "Next ring"
+                and item.get("sector", "town") == "town"
+                and item["town"] != "Medway"
+            )
+        )
+        self.assertIn('id="state"', page)
+        self.assertIn('id="sector"', page)
+        self.assertIn("Outer ring", page)
+        self.assertIn("RI border", page)
+        self.assertIn("NH border", page)
+        self.assertIn("CT border", page)
         feed_types = {item["type"] for item in config["feeds"]}
         self.assertEqual(
             feed_types,
@@ -580,11 +617,138 @@ class StatewideSourceTest(unittest.TestCase):
             NOW,
         )
         self.assertEqual(merged[0]["kind"], "open")
+        self.assertEqual(merged[0]["sector"], "town")
+        self.assertEqual(merged[0]["state"], "Massachusetts")
         self.assertIsNone(merged[0]["legal_notice_url"])
         upcoming = "https://bc.mbta.com/future/#haverhill"
         other = "https://bc.mbta.com/future/#quincy"
         self.assertNotEqual(canonical_url(upcoming), canonical_url(other))
         self.assertIn("haverhill", canonical_url(upcoming))
+
+
+class NoticePageTest(unittest.TestCase):
+    def test_document_links_skip_addenda_and_closed_headings(self):
+        from scraper.parsers.notices import parse_notice_page as parse_html_notices
+
+        html = """
+        <main>
+          <a href="https://cdn.example/bid631.pdf">Bid 631: On-Call Plumbing</a>
+          <a href="https://cdn.example/add.pdf">Bid 631: Addendum #1</a>
+          <a href="https://cdn.example/cancel.pdf">BID 629: On-Call Plumbing CANCELLED</a>
+          <p>CLOSED</p>
+          <a href="/Portals/56/pdf/floor.pdf">Solicitation for Bid - Floor Covering</a>
+          <p>OPEN REQUEST FOR PROPOSALS</p>
+          <a href="/Portals/56/RFPs/Solicitation-RFP-RAD.pdf">RAD CONSULTANT</a>
+          <a href="https://app.heygov.com/town/forms/bid/send">Request Bid Document</a>
+        </main>
+        """
+        items = parse_html_notices(html, "https://example.org/bids")
+        titles = [item["title"] for item in items]
+        self.assertIn("Bid 631: On-Call Plumbing", titles)
+        self.assertIn("RAD CONSULTANT", titles)
+        self.assertNotIn("Bid 631: Addendum #1", titles)
+        self.assertFalse(any("CANCELLED" in title for title in titles))
+        self.assertFalse(any("Floor" in title for title in titles))
+        self.assertFalse(any("Request Bid" in title for title in titles))
+        plumbing = next(item for item in items if "631" in item["title"])
+        self.assertEqual(plumbing["bid_number"], "631")
+
+    def test_dated_heading_without_a_document_link(self):
+        from scraper.parsers.notices import parse_notice_page as parse_html_notices
+
+        html = """
+        <div class="sk-page-content">
+          <strong>38 AND 34 WINTHROP STREET BUILDING STRUCTURE DEMOLITION</strong>
+          <strong>Bid Opening November 19, 2026 @ 10:00 am</strong>
+          <div>No current bids.</div>
+        </div>
+        """
+        items = parse_html_notices(html, "https://medwayma.gov/rfpifb/")
+        self.assertEqual(len(items), 1)
+        self.assertIn("WINTHROP", items[0]["title"])
+        self.assertTrue(items[0]["due"].startswith("2026-11-19"))
+        self.assertIn("#", items[0]["url"])
+
+
+class HostPoolTest(unittest.TestCase):
+    def _fetcher(self, hosts):
+        import scraper.fetch as fetch_mod
+        from scraper.fetch import PoliteFetcher
+        from scraper.robots import RobotsPolicy
+
+        fetcher = PoliteFetcher()
+        for host in hosts:
+            fetcher._robots[host] = RobotsPolicy.allow_everything()
+            fetcher._delay[host] = 10
+            fetcher._last[host] = fetch_mod.time.monotonic()
+            fetcher._openers[host] = _FakeOpener()
+        return fetcher
+
+    def _run_pair(self, fetcher, urls):
+        import threading
+        import time
+        import scraper.fetch as fetch_mod
+
+        order = []
+        real_sleep = time.sleep
+
+        def fake_sleep(_seconds):
+            order.append("start")
+            real_sleep(0.05)
+            order.append("end")
+
+        original = fetch_mod.time.sleep
+        fetch_mod.time.sleep = fake_sleep
+        try:
+            threads = [threading.Thread(target=fetcher.get, args=(url,)) for url in urls]
+            for thread in threads:
+                thread.start()
+            for thread in threads:
+                thread.join(3)
+                self.assertFalse(thread.is_alive())
+        finally:
+            fetch_mod.time.sleep = original
+        return order
+
+    def test_different_hosts_overlap_their_waits(self):
+        fetcher = self._fetcher(("alpha.example", "beta.example"))
+        order = self._run_pair(
+            fetcher,
+            ("https://alpha.example/a", "https://beta.example/b"),
+        )
+        first_end = order.index("end")
+        self.assertGreaterEqual(order[:first_end].count("start"), 2)
+
+    def test_same_host_waits_do_not_overlap(self):
+        fetcher = self._fetcher(("alpha.example",))
+        order = self._run_pair(
+            fetcher,
+            ("https://alpha.example/a", "https://alpha.example/b"),
+        )
+        self.assertEqual(order.index("end"), 1)
+        self.assertEqual(order.count("start"), 2)
+
+
+class _FakeOpener:
+    def open(self, request, timeout=None):
+        return _FakeResponse()
+
+
+class _FakeResponse:
+    status = 200
+    headers = {"Content-Type": "text/html; charset=utf-8"}
+
+    def geturl(self):
+        return "https://alpha.example/a"
+
+    def read(self, _n):
+        return b"ok"
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *_args):
+        return False
 
 
 if __name__ == "__main__":

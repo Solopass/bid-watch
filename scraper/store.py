@@ -19,6 +19,8 @@ from scraper.dates import EASTERN, is_past, today_eastern
 FIELDS = (
     "town",
     "region",
+    "sector",
+    "state",
     "source",
     "kind",
     "title",
@@ -178,6 +180,8 @@ def _combine(prev: dict | None, item: dict, today: str, now: datetime) -> dict:
         {
             "town": item.get("town") or base.get("town"),
             "region": item.get("region") or base.get("region"),
+            "sector": item.get("sector") or base.get("sector") or "town",
+            "state": item.get("state") or base.get("state") or "Massachusetts",
             "source": item.get("source") or base.get("source") or "town",
             "kind": item.get("kind") or base.get("kind") or "open",
             "title": item.get("title") or base.get("title"),
@@ -214,6 +218,10 @@ def _ordered(record: dict) -> dict:
             value = norm_bid_number(value) or None
         elif field == "kind":
             value = value or "open"
+        elif field == "sector":
+            value = value or "town"
+        elif field == "state":
+            value = value or "Massachusetts"
         elif field in ("paper", "legal_notice_url") and not value:
             value = None
         ordered[field] = value

@@ -167,6 +167,8 @@ def _bid_from_row(row: dict, place: Place) -> dict:
     return {
         "town": place.town,
         "region": place.region,
+        "sector": place.sector,
+        "state": "Massachusetts",
         "source": "commbuys",
         "title": description or f"COMMBUYS {doc}".strip(),
         "bid_number": doc or None,
