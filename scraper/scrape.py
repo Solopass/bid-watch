@@ -184,7 +184,7 @@ def main() -> int:
     merged = merge_bids(previous_doc.get("bids", []), fresh, successful, now)
     added = 0
     if commbuys_rows is not None:
-        extras = covered_rows(merged, commbuys_rows, town_regions)
+        extras = covered_rows([*merged, *feed_items], commbuys_rows, town_regions)
         added = len(extras)
         fresh.extend(extras)
         successful.add(canonical_url(SEARCH_URL))

@@ -18,6 +18,7 @@ from urllib.parse import quote
 
 from scraper.dates import parse_when
 from scraper.fetch import FetchError
+from scraper.parsers.agencies import mapc_in_range, names_outside_place
 from scraper.places import Place, match_row, town_regions_from_config
 
 SEARCH_URL = (
@@ -112,7 +113,13 @@ def covered_rows(
     if not rows:
         return []
     regions = town_regions or town_regions_from_config()
-    page_bids = [bid for bid in town_bids if (bid.get("source") or "town") == "town"]
+    # A public listing page (town, MAPC, MassDOT, DCR) absorbs a COMMBUYS
+    # row for the same project instead of storing a second copy.
+    page_bids = [
+        bid
+        for bid in town_bids
+        if (bid.get("source") or "town") in ("town", "mapc", "massdot", "dcr")
+    ]
     used = set(_choose(page_bids, rows, regions).values())
     fresh: list[dict] = []
     for index, row in enumerate(rows):
@@ -120,6 +127,11 @@ def covered_rows(
             continue
         place = match_row(row, regions)
         if place is None:
+            continue
+        description = row.get("Description") or ""
+        if place.town == "MAPC" and not mapc_in_range(description, regions):
+            continue
+        if place.town == "MWRA" and names_outside_place(description, regions):
             continue
         fresh.append(_bid_from_row(row, place))
     return fresh

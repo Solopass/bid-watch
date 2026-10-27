@@ -15,7 +15,7 @@ from scraper.parsers.bidexpress import parse_bid_express
 from scraper.parsers.massdevelopment import parse_massdevelopment
 from scraper.parsers.mbta import parse_current_solicitations, parse_future_solicitations
 from scraper.parsers.msba import parse_bid_schedule_text
-from scraper.parsers.agencies import parse_dcr, parse_mapc, parse_massdot
+from scraper.parsers.agencies import mapc_in_range, names_outside_place, parse_dcr, parse_mapc, parse_massdot
 from scraper.places import match_location, match_organization, town_regions_from_config
 from scraper.trades import cladding_trade
 from scraper.dates import format_due, is_past, parse_when
@@ -931,6 +931,54 @@ class AgencyFeedTest(unittest.TestCase):
         worcester = next(row for row in rows if "Worcester" in row["title"])
         self.assertEqual(worcester["region"], "Outer ring")
         self.assertTrue(worcester["due"].startswith("2026-11-10"))
+
+    def test_commbuys_mapc_keeps_worcester_and_drops_south_shore(self):
+        regions = {"Natick": "Next ring", "Needham": "Next ring"}
+        self.assertFalse(mapc_in_range("SS 2027 PW2", regions))
+        self.assertFalse(mapc_in_range("FCAM 2027 Ambulances", regions))
+        self.assertTrue(mapc_in_range("CRHSAC24 Worcester Area Interoperability", regions))
+        self.assertTrue(names_outside_place("South Boston Neighborhood Working Group", regions))
+        self.assertFalse(names_outside_place("Needham Dewatering Drainage Line", regions))
+        rows = [
+            {
+                "Bid Solicitation #": "BD-SS",
+                "Organization Name": "Metropolitan Area Planning Council",
+                "Description": "SS 2027 PW2",
+                "Alternate Id": "",
+                "Bid Opening Date": "11/01/2026",
+            },
+            {
+                "Bid Solicitation #": "BD-W",
+                "Organization Name": "MAPC",
+                "Description": "CRHSAC24 Worcester Area Interoperability System Upgrades",
+                "Alternate Id": "",
+                "Bid Opening Date": "11/10/2026",
+            },
+            {
+                "Bid Solicitation #": "BD-BOS",
+                "Organization Name": "Massachusetts Water Resources Authority",
+                "Description": "Technical Assistance to the South Boston Neighborhood Working Group",
+                "Alternate Id": "",
+                "Bid Opening Date": "12/01/2026",
+            },
+            {
+                "Bid Solicitation #": "BD-NEED",
+                "Organization Name": "MWRA",
+                "Description": "Needham Dewatering Drainage Line",
+                "Alternate Id": "",
+                "Bid Opening Date": "12/01/2026",
+            },
+        ]
+        page = [{
+            "town": "MAPC",
+            "source": "mapc",
+            "title": "CRHSAC24 - Worcester Area Interoperability System Upgrades",
+            "bid_number": "CRHSAC24",
+        }]
+        extra = covered_rows(page, rows, regions)
+        self.assertEqual([item["bid_number"] for item in extra], ["BD-NEED"])
+        self.assertEqual(extra[0]["town"], "MWRA")
+        self.assertEqual(extra[0]["region"], "Statewide agency")
 
 
 if __name__ == "__main__":

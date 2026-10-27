@@ -168,6 +168,50 @@ def parse_mapc(html: str, page_url: str, town_regions: dict[str, str]) -> list[d
     return items
 
 
+def mapc_in_range(text: str, town_regions: dict[str, str]) -> bool:
+    """MAPC buys cover many regions. Keep MetroWest, Worcester, and Northborough."""
+    if mentions_covered(
+        text, town_regions, extras=("metrowest", "worcester", "northborough")
+    ):
+        return True
+    return bool(re.search(r"(?i)(?<![a-z0-9])(?:mw\s*\d{4}|crhsac\s*\d+)", text or ""))
+
+
+# Towns named in a title that are outside the ring. Used when a list has no
+# location column but the title itself names a place.
+_OUTSIDE_PLACES = (
+    "boston",
+    "cambridge",
+    "chelsea",
+    "somerville",
+    "quincy",
+    "brockton",
+    "springfield",
+    "lowell",
+    "lawrence",
+    "lynn",
+    "newton",
+    "plymouth",
+    "pittsfield",
+    "fall river",
+    "new bedford",
+)
+
+
+def names_outside_place(text: str, town_regions: dict[str, str]) -> bool:
+    """True when the text names an outside city and no covered town."""
+    if mentions_covered(
+        text, town_regions, extras=("metrowest", "worcester", "northborough")
+    ):
+        return False
+    cleaned = re.sub(r"[^a-z0-9 ]+", " ", (text or "").casefold())
+    cleaned = re.sub(r"\s+", " ", cleaned)
+    for place in _OUTSIDE_PLACES:
+        if re.search(rf"(?<![a-z0-9]){re.escape(place)}(?![a-z0-9])", cleaned):
+            return True
+    return False
+
+
 def mentions_covered(
     text: str,
     town_regions: dict[str, str],
