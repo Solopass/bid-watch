@@ -1,12 +1,12 @@
 {
-  "updated": "2026-10-26T17:45:03-04:00",
+  "updated": "2026-10-26T23:56:31-04:00",
   "commbuys": {
     "status": "ok",
-    "last_success": "2026-10-26T17:45:03-04:00",
+    "last_success": "2026-10-26T23:56:31-04:00",
     "last_error": null,
-    "message": "880 open statewide; 6 covered rows kept; 18 matched a town bid",
-    "rows": 880,
-    "covered_rows": 6
+    "message": "881 open statewide; 10 covered rows kept; 22 matched a town bid",
+    "rows": 881,
+    "covered_rows": 10
   },
   "central_register": {
     "status": "skipped",
@@ -19,15 +19,15 @@
     "legal_notices": {
       "status": "ok",
       "label": "Legal notices",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
-      "message": "11 covered-town notices in the last 14 days; stopped after 3 pages on a long query; 9 matched an existing bid; 2 added",
+      "message": "18 covered-town notices in the last 14 days; stopped after 3 pages on a long query; 16 matched an existing bid; 2 added",
       "open_count": 2
     },
     "bid_express": {
       "status": "ok",
       "label": "Bid Express",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": "DCAMM 5; Massport 3",
       "open_count": 8
@@ -35,7 +35,7 @@
     "massdevelopment": {
       "status": "ok",
       "label": "MassDevelopment",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": "2 posting(s)",
       "open_count": 2
@@ -43,7 +43,7 @@
     "mbta": {
       "status": "ok",
       "label": "MBTA",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": "7 current; 7 upcoming",
       "open_count": 14
@@ -51,9 +51,9 @@
     "msba": {
       "status": "ok",
       "label": "MSBA",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
-      "message": "2 covered-town projects",
+      "message": "Estimated bid schedule unchanged; PDF not downloaded",
       "open_count": 2,
       "pdf_url": "https://www.massschoolbuildings.org/sites/default/files/edit-contentfiles/About_Us/Board_Meetings/2026_Board/8.26.2026/Estimated_Bid_Dates_August_2026.pdf"
     }
@@ -61,10 +61,10 @@
   "towns": {
     "Framingham": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
-      "open_count": 4,
+      "open_count": 12,
       "region": "MetroWest core",
       "sources": [
         {
@@ -73,12 +73,19 @@
           "status": "ok",
           "count": 4,
           "message": null
+        },
+        {
+          "type": "notices",
+          "url": "https://framinghamhousingauthority.org/current-procurement-solicitations/",
+          "status": "ok",
+          "count": 8,
+          "message": null
         }
       ]
     },
     "Natick": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 6,
@@ -95,10 +102,10 @@
     },
     "Marlborough": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
-      "open_count": 4,
+      "open_count": 5,
       "region": "MetroWest core",
       "sources": [
         {
@@ -107,12 +114,19 @@
           "status": "ok",
           "count": 3,
           "message": null
+        },
+        {
+          "type": "notices",
+          "url": "https://marlborohousing.org/Procurement",
+          "status": "ok",
+          "count": 1,
+          "message": null
         }
       ]
     },
     "Hudson": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -129,7 +143,7 @@
     },
     "Westborough": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 4,
@@ -153,10 +167,10 @@
     },
     "Ashland": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
-      "open_count": 1,
+      "open_count": 2,
       "region": "MetroWest core",
       "sources": [
         {
@@ -165,12 +179,19 @@
           "status": "ok",
           "count": 1,
           "message": null
+        },
+        {
+          "type": "notices",
+          "url": "https://www.ashland.k12.ma.us/departments/business-office/welcome/bid-notices",
+          "status": "ok",
+          "count": 1,
+          "message": null
         }
       ]
     },
     "Hopkinton": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -187,10 +208,10 @@
     },
     "Sudbury": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
-      "open_count": 2,
+      "open_count": 1,
       "region": "MetroWest core",
       "sources": [
         {
@@ -204,7 +225,7 @@
     },
     "Wayland": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -221,7 +242,7 @@
     },
     "Southborough": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -238,7 +259,7 @@
     },
     "Holliston": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 3,
@@ -255,10 +276,10 @@
     },
     "Milford": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
-      "open_count": 0,
+      "open_count": 1,
       "region": "MetroWest core",
       "sources": [
         {
@@ -267,12 +288,19 @@
           "status": "ok",
           "count": 0,
           "message": null
+        },
+        {
+          "type": "notices",
+          "url": "https://www.milfordpublicschools.com/departments/business-hr-office",
+          "status": "ok",
+          "count": 1,
+          "message": null
         }
       ]
     },
     "Wellesley": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -289,7 +317,7 @@
     },
     "Weston": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -306,7 +334,7 @@
     },
     "Needham": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -323,7 +351,7 @@
     },
     "Shrewsbury": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 5,
@@ -340,7 +368,7 @@
     },
     "Stow": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -357,7 +385,7 @@
     },
     "Acton": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -374,7 +402,7 @@
     },
     "Concord": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -391,7 +419,7 @@
     },
     "Dover": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -408,7 +436,7 @@
     },
     "Sherborn": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -425,7 +453,7 @@
     },
     "Bellingham": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -442,7 +470,7 @@
     },
     "Upton": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -459,7 +487,7 @@
     },
     "Grafton": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -476,7 +504,7 @@
     },
     "Maynard": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -493,7 +521,7 @@
     },
     "Lincoln": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -510,7 +538,7 @@
     },
     "Mendon": {
       "status": "ok",
-      "last_success": "2026-10-26T17:45:03-04:00",
+      "last_success": "2026-10-26T23:56:31-04:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -521,6 +549,703 @@
           "url": "https://www.mendonma.gov/bids.aspx",
           "status": "ok",
           "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Medway": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 2,
+      "region": "Next ring",
+      "sources": [
+        {
+          "type": "notices",
+          "url": "https://medwayma.gov/rfpifb/",
+          "status": "ok",
+          "count": 1,
+          "message": null
+        }
+      ]
+    },
+    "Franklin": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 2,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.franklinma.gov/bids.aspx",
+          "status": "ok",
+          "count": 2,
+          "message": null
+        }
+      ]
+    },
+    "Wrentham": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.wrentham.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Bedford": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.bedfordma.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Boxborough": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.boxborough-ma.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Lexington": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 1,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.lexingtonma.gov/bids.aspx",
+          "status": "ok",
+          "count": 1,
+          "message": null
+        }
+      ]
+    },
+    "Littleton": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 1,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.littletonma.org/bids.aspx",
+          "status": "ok",
+          "count": 1,
+          "message": null
+        }
+      ]
+    },
+    "Carlisle": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.carlislema.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Harvard": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.harvard-ma.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Clinton": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.clintonma.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Uxbridge": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 1,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.uxbridge-ma.gov/bids.aspx",
+          "status": "ok",
+          "count": 1,
+          "message": null
+        }
+      ]
+    },
+    "Sutton": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 1,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.suttonma.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Douglas": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.douglas-ma.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Oxford": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.oxfordma.us/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Auburn": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 1,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.auburnma.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Charlton": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.townofcharlton.net/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Webster": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.webster-ma.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Southbridge": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.ci.southbridge.ma.us/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Blackstone": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.townofblackstone.org/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "North Attleborough": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.northattleborough.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Plainville": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.plainvillema.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Attleboro": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 2,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.cityofattleboro.us/bids.aspx",
+          "status": "ok",
+          "count": 3,
+          "message": null
+        }
+      ]
+    },
+    "Norton": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.nortonma.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Seekonk": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.seekonk-ma.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Canton": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.town.canton.ma.us/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Stoughton": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 2,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.stoughton.org/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Waltham": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 1,
+      "region": "Outer ring",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.city.waltham.ma.us/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Lincoln RI": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "RI border",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.lincolnri.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Cumberland RI": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "RI border",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.cumberlandri.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "North Smithfield": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "RI border",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.nsmithfieldri.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Nashua": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 3,
+      "region": "NH border",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.nashuanh.gov/bids.aspx",
+          "status": "ok",
+          "count": 6,
+          "message": null
+        }
+      ]
+    },
+    "Hudson NH": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "NH border",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.hudsonnh.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Salem NH": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 3,
+      "region": "NH border",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.salemnh.gov/bids.aspx",
+          "status": "ok",
+          "count": 3,
+          "message": null
+        }
+      ]
+    },
+    "Pelham": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "NH border",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.pelhamweb.com/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Windham NH": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "NH border",
+      "sources": [
+        {
+          "type": "civicplus",
+          "url": "https://www.windhamnh.gov/bids.aspx",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Assabet Valley": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 9,
+      "region": "MetroWest core",
+      "sources": [
+        {
+          "type": "notices",
+          "url": "https://www.assabet.org/Do-More/HR--Business-Offices/Legal-Notices/index.html",
+          "status": "ok",
+          "count": 11,
+          "message": null
+        }
+      ]
+    },
+    "Keefe Tech": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 2,
+      "region": "MetroWest core",
+      "sources": [
+        {
+          "type": "notices",
+          "url": "https://www.keefetech.org/about-us/business-office",
+          "status": "ok",
+          "count": 2,
+          "message": null
+        }
+      ]
+    },
+    "Lincoln-Sudbury": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 2,
+      "region": "MetroWest core",
+      "sources": [
+        {
+          "type": "notices",
+          "url": "https://www.lsrhs.net/80399_4",
+          "status": "ok",
+          "count": 1,
+          "message": null
+        }
+      ]
+    },
+    "Algonquin Regional": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "MetroWest core",
+      "sources": [
+        {
+          "type": "notices",
+          "url": "https://nsboro.k12.ma.us/150206_3",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Blackstone Valley Tech": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 0,
+      "region": "MetroWest core",
+      "sources": [
+        {
+          "type": "notices",
+          "url": "https://www.valleytech.k12.ma.us/about/district/invitationtobid/",
+          "status": "ok",
+          "count": 0,
+          "message": null
+        }
+      ]
+    },
+    "Minuteman": {
+      "status": "ok",
+      "last_success": "2026-10-26T23:56:31-04:00",
+      "last_error": null,
+      "message": null,
+      "open_count": 2,
+      "region": "Next ring",
+      "sources": [
+        {
+          "type": "notices",
+          "url": "https://minuteman.org/finance",
+          "status": "ok",
+          "count": 2,
           "message": null
         }
       ]
