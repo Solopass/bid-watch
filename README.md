@@ -80,7 +80,7 @@ Add an object to the `sources` array in `sources.json`:
 }
 ```
 
-`region` is `MetroWest core`, `Next ring`, `Outer ring`, `RI border`, `NH border`, or `CT border`. Optional `sector` is `town` (the default), `school`, or `housing`. Optional `state` defaults to Massachusetts. Statewide boards live in `feeds`, not in this town list. The dashboard groups towns by region and adds `Statewide agency` for DCAMM, Massport, MassDevelopment, and the MBTA.
+`region` is `MetroWest core`, `Next ring`, `Outer ring`, `RI border`, `NH border`, or `CT border`. Optional `sector` is `town` (the default), `school`, `housing`, `college`, `hospital`, `agency`, `utility`, or `private`. Optional `state` defaults to Massachusetts. Statewide boards live in `feeds`, not in this town list. The dashboard groups towns by region and adds `Statewide agency` for DCAMM, Massport, MassDevelopment, the MBTA, MassDOT, and DCR. A row is tagged Cladding when the title or category names siding, facade, curtain wall, storefront, or a related exterior-envelope term. The Trade filter shows only those rows.
 
 Use `bidnet`, `wordpress`, `documents`, or `notices` when the page matches those shapes. `notices` is a plain HTML list of bid documents or a heading with a bid-opening date. CivicPlus options:
 
@@ -90,7 +90,7 @@ Use `bidnet`, `wordpress`, `documents`, or `notices` when the page matches those
 
 ## Pages that were checked and not added
 
-These were public-page or robots problems, or there was no bid list to parse. COMMBUYS still covers a Massachusetts organization when its name matches a covered town or a regional district already in the matcher (Dover-Sherborn, Acton-Boxborough, Mendon-Upton, Nashoba, Tri-County, and the vocational districts).
+These were public-page or robots problems, or there was no bid list to parse. COMMBUYS still covers a Massachusetts organization when its name matches a covered town, a regional district already in the matcher (Dover-Sherborn, Acton-Boxborough, Mendon-Upton, Nashoba, Tri-County, and the vocational districts), or an in-range college or regional agency (Framingham State, MassBay, Worcester State, MWRA, MWRTA, MAPC, CMRPC).
 
 - Millis, Northborough, Dedham, Westwood, Newton, Woonsocket, Burrillville, Smithfield, Thompson, and Putnam: the bid URL answered with a human check or an access denial.
 - Hopedale, Foxborough, Walpole, Norwood, Sharon, Boylston, Bolton's Bids.aspx, Woodstock, Killingly, and Pawtucket: no CivicPlus bid module at the public URL.
@@ -103,6 +103,14 @@ These were public-page or robots problems, or there was no bid list to parse. CO
 - New Hampshire Purchasing: the site returned access denied.
 - Connecticut CTsource: the public page links to guides. The bid board itself is not an open HTML list.
 - Central Register: still skipped. Its bulletin list is disallowed by robots.txt.
+- MWRA Supplier Portal: the public mwra.com page has no bid table. New bids are posted on an Infor CloudSuite site that requires registration. MWRA rows on COMMBUYS are kept. The portal itself is not opened.
+- MWRTA: `/procurement` and `/doing-business` return 404, and the homepage is a transit schedule, not a bid list. COMMBUYS organization matches are kept.
+- CMRPC: `/bids/` is 404. The procurement page describes accounting, auctioneer, and fuel programs, not an open solicitation list. News posts for past RFPs are closed archives. COMMBUYS organization matches are kept.
+- Mass Maritime, UMass Amherst, UMass Boston, UMass Lowell, and UMass Dartmouth: outside the roughly one-hour ring.
+- UMass Chan Medical School procurement page: the public URL answered with a human check and was not opened.
+- Framingham State, Worcester State, and MassBay: the guessed procurement HTML paths are not bid lists (Framingham's offices page has no bid link; the others 404). Their COMMBUYS organization names are matched. Framingham State's 2025 bid-log PDF is an archive, not a live list.
+- Hospitals: MetroWest Medical Center's hostname does not resolve. Milford Regional's public page is a hospital site with no bid list. No other hospital system published an open bid list without a login.
+- Private commercial cladding listings: BuildingConnected, Dodge, ConstructConnect, and PlanHub require an account and were not opened. BidDocs (biddocs.com) is a commercial plan room, not a public project list. No public, no-login GC or developer board of commercial exterior-cladding invitations was found, so nothing was added under sector `private`. The sector and the Cladding filter are on the dashboard for rows from the public sources.
 
 Run it locally with Python 3.11 or newer. The standard library is enough:
 

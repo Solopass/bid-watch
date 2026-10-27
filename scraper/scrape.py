@@ -50,8 +50,11 @@ from scraper.parsers.mbta import ParseError as MbtaParseError
 from scraper.parsers.mbta import due_from_detail, parse_current_solicitations, parse_future_solicitations
 from scraper.parsers.msba import ParseError as MsbaParseError
 from scraper.parsers.msba import latest_bid_schedule_url, parse_bid_schedule
+from scraper.parsers.agencies import ParseError as AgencyParseError
+from scraper.parsers.agencies import parse_dcr, parse_mapc, parse_massdot
 from scraper.parsers.notices import ParseError as NoticeParseError
 from scraper.parsers.notices import parse_notice_page
+from scraper.trades import cladding_trade
 from scraper.parsers.wordpress import ParseError as WpParseError
 from scraper.parsers.wordpress import enrich_wordpress_post, parse_wordpress_list
 from scraper.store import (
@@ -87,6 +90,7 @@ PARSE_ERRORS = (
     MsbaParseError,
     NoticeParseError,
     LegalNoticeError,
+    AgencyParseError,
 )
 STATE_BY_REGION = {
     "RI border": "Rhode Island",
@@ -100,6 +104,9 @@ FEED_LABELS = {
     "massdevelopment": "MassDevelopment",
     "mbta": "MBTA",
     "msba": "MSBA",
+    "massdot": "MassDOT",
+    "dcr": "DCR",
+    "mapc": "MAPC",
 }
 CHALLENGE_TITLES = (
     "just a moment",
@@ -177,7 +184,7 @@ def main() -> int:
     merged = merge_bids(previous_doc.get("bids", []), fresh, successful, now)
     added = 0
     if commbuys_rows is not None:
-        extras = covered_rows(merged, commbuys_rows, town_regions)
+        extras = covered_rows([*merged, *feed_items], commbuys_rows, town_regions)
         added = len(extras)
         fresh.extend(extras)
         successful.add(canonical_url(SEARCH_URL))
@@ -385,6 +392,27 @@ def _scrape_one_feed(feed, fetcher, known, town_regions, previous_feeds, now) ->
             notices, message = fetch_notices(fetcher, town_regions)
             result["legal"] = notices
             result["report"] = _feed_ok(now, "legal_notices", message)
+        elif kind == "massdot":
+            html = fetcher.get(url)
+            _reject_challenge(html, url)
+            found = parse_massdot(html, url, town_regions)
+            result["items"] = found
+            result["ok_url"] = canonical_url(url)
+            result["report"] = _feed_ok(now, "massdot", f"{len(found)} in-range project(s)")
+        elif kind == "dcr":
+            html = fetcher.get(url)
+            _reject_challenge(html, url)
+            found = parse_dcr(html, url)
+            result["items"] = found
+            result["ok_url"] = canonical_url(url)
+            result["report"] = _feed_ok(now, "dcr", f"{len(found)} current construction ad(s)")
+        elif kind == "mapc":
+            html = fetcher.get(url)
+            _reject_challenge(html, url)
+            found = parse_mapc(html, url, town_regions)
+            result["items"] = found
+            result["ok_url"] = canonical_url(url)
+            result["report"] = _feed_ok(now, "mapc", f"{len(found)} in-range notice(s)")
         else:
             raise FetchError(f"unknown feed type {kind!r}")
     except (FetchError, RobotsDisallowed, *PARSE_ERRORS) as exc:
@@ -539,6 +567,9 @@ def _feed_counts(reports: dict, bids: list[dict]) -> dict:
         "massdevelopment": "massdevelopment",
         "mbta": "mbta",
         "msba": "msba",
+        "massdot": "massdot",
+        "dcr": "dcr",
+        "mapc": "mapc",
     }
     cleaned = {}
     for key in FEED_LABELS:
@@ -726,6 +757,7 @@ def _label_bids(bids: list[dict], town_regions: dict[str, str]) -> None:
             bid["sector"] = "agency"
         elif not bid.get("sector"):
             bid["sector"] = "town"
+        bid["trade"] = cladding_trade(bid.get("title"), bid.get("category"))
         border = STATE_BY_REGION.get(bid.get("region") or "")
         if border:
             bid["state"] = border
@@ -813,6 +845,9 @@ def _print_summary(town_order, bids, status_doc, opened, elapsed: float) -> None
         ("massdevelopment", "MassDevelopment"),
         ("mbta", "MBTA"),
         ("msba", "MSBA"),
+        ("massdot", "MassDOT"),
+        ("dcr", "DCR"),
+        ("mapc", "MAPC"),
     ):
         open_count = sum(
             1
@@ -843,7 +878,7 @@ def _print_summary(town_order, bids, status_doc, opened, elapsed: float) -> None
         )
         print(f"{region:<22} {open_count:>4}", flush=True)
     print("\nSector                 open", flush=True)
-    for sector in ("town", "school", "housing", "agency", "utility"):
+    for sector in ("town", "school", "housing", "agency", "utility", "college", "hospital", "private"):
         open_count = sum(
             1
             for bid in bids
@@ -852,6 +887,14 @@ def _print_summary(town_order, bids, status_doc, opened, elapsed: float) -> None
             and (bid.get("kind") or "open") == "open"
         )
         print(f"{sector:<22} {open_count:>4}", flush=True)
+    cladding = [
+        bid
+        for bid in bids
+        if bid.get("trade") == "cladding" and bid.get("status") == "open"
+    ]
+    print(f"\nCladding tag               {len(cladding):>4}", flush=True)
+    for bid in cladding[:8]:
+        print(f"  {bid.get('town')}: {bid.get('title')}", flush=True)
     print("\nTown                           region            open  closed  status", flush=True)
     for town in town_order:
         info = (status_doc.get("towns") or {}).get(town) or {}

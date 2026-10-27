@@ -26,6 +26,7 @@ FIELDS = (
     "title",
     "bid_number",
     "category",
+    "trade",
     "posted_date",
     "due_date",
     "url",
@@ -187,6 +188,7 @@ def _combine(prev: dict | None, item: dict, today: str, now: datetime) -> dict:
             "title": item.get("title") or base.get("title"),
             "bid_number": norm_bid_number(item.get("bid_number")) or base.get("bid_number") or None,
             "category": item.get("category") if item.get("category") is not None else base.get("category"),
+            "trade": item.get("trade") if "trade" in item else base.get("trade"),
             "posted_date": item.get("posted_date") or base.get("posted_date"),
             "due_date": due or base.get("due_date"),
             "url": canonical_url(item.get("url") or base.get("url") or ""),
@@ -220,6 +222,8 @@ def _ordered(record: dict) -> dict:
             value = value or "open"
         elif field == "sector":
             value = value or "town"
+        elif field == "trade":
+            value = value if value == "cladding" else None
         elif field == "state":
             value = value or "Massachusetts"
         elif field in ("paper", "legal_notice_url") and not value:

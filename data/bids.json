@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T23:56:31-04:00",
+  "updated": "2026-10-27T09:45:36-04:00",
   "bids": [
     {
       "town": "Framingham",
@@ -11,6 +11,7 @@
       "title": "DPW Office Trailer Roof Replacement Project",
       "bid_number": "9255",
       "category": "Bids",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-04T10:00:00-05:00",
       "url": "https://www.framinghamma.gov/bids.aspx?bidID=550",
@@ -21,7 +22,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=922241",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -34,6 +35,7 @@
       "title": "Cushing Memorial Chapel Accessible Walkway Project",
       "bid_number": "9261",
       "category": "Bids",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-12T10:00:00-05:00",
       "url": "https://www.framinghamma.gov/bids.aspx?bidID=551",
@@ -44,7 +46,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -57,6 +59,7 @@
       "title": "Automotive & Light Duty Vehicle Body Repair",
       "bid_number": "1289",
       "category": "Bids",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-18T10:00:00-05:00",
       "url": "https://www.framinghamma.gov/bids.aspx?bidID=552",
@@ -67,7 +70,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -80,6 +83,7 @@
       "title": "Cameron Middle School Fire Alarm Upgrade Project",
       "bid_number": "9256",
       "category": "Bids",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-23T10:00:00-05:00",
       "url": "https://www.framinghamma.gov/bids.aspx?bidID=553",
@@ -90,7 +94,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=924465",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -103,6 +107,7 @@
       "title": "Bathtub and Kitchen Counter Refinishing",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://framinghamhousingauthority.org/wp-content/uploads/2026/07/Ad-Bathtub-and-Kitchen-2026.pdf",
@@ -113,7 +118,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -126,6 +131,7 @@
       "title": "GC Carlson Crossing East",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://framinghamhousingauthority.org/wp-content/uploads/2026/04/ADVERTISEMENT-TO-BID-EAST-FINAL-REV2.pdf",
@@ -136,7 +142,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -149,6 +155,7 @@
       "title": "Hastings Intercom Replacement",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://framinghamhousingauthority.org/wp-content/uploads/2026/07/00-11-13-Advertisement-to-Bid.pdf",
@@ -159,7 +166,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -172,6 +179,7 @@
       "title": "Interior Vacant Unit Painting",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://framinghamhousingauthority.org/wp-content/uploads/2026/07/Ad-Interior-Vacant-Unit-Painting-2026.pdf",
@@ -182,7 +190,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -195,6 +203,7 @@
       "title": "John J. Brady Drive Bathroom Renovations Phase 2",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://framinghamhousingauthority.org/wp-content/uploads/2026/02/Framingham-Brady-Bathrooms-Phase-II_Advertisement-to-Bid.pdf",
@@ -205,7 +214,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -218,6 +227,7 @@
       "title": "On-Call Carpentry 2026",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://framinghamhousingauthority.org/wp-content/uploads/2026/08/Ad-On-Call-Carpentry-Services-2026.pdf",
@@ -228,7 +238,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -241,6 +251,7 @@
       "title": "Paving and Walkway Improvements RKL #100275",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://framinghamhousingauthority.org/wp-content/uploads/2026/09/FraminghamHA_100275_00-11-13-Advertisement-to-Bid.pdf",
@@ -251,7 +262,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -264,6 +275,7 @@
       "title": "Prequalification RFP GC Carlson Crossing East",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://framinghamhousingauthority.org/wp-content/uploads/2025/09/Advertisement-GC.pdf",
@@ -274,7 +286,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -287,6 +299,7 @@
       "title": "IFB: Generator Maintenance, Repair, Emer. Repair- 3 Years - 2026 Avail. 10/21/26. Do not req. prior.",
       "bid_number": null,
       "category": "Building Construction",
+      "trade": null,
       "posted_date": "2026-10-13",
       "due_date": "2026-11-05T09:00:00-05:00",
       "url": "https://www.natickma.gov/bids.aspx?bidID=1168",
@@ -297,7 +310,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=921656",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -310,6 +323,7 @@
       "title": "IFB: Virtual Infrastructure - Equipment - Available 10/19. Do not req. prior. Req. reg. hrs. only,",
       "bid_number": null,
       "category": "Goods",
+      "trade": null,
       "posted_date": "2026-10-13",
       "due_date": "2026-11-05T09:00:00-05:00",
       "url": "https://www.natickma.gov/bids.aspx?bidID=1167",
@@ -320,7 +334,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -333,6 +347,7 @@
       "title": "IFB: Furnish & Install GAC Carbon Media Avail. Haley Ward beg. on 11/4/26. Do not request from Town.",
       "bid_number": "W-175",
       "category": "Public Works",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-20T09:00:00-05:00",
       "url": "https://www.natickma.gov/bids.aspx?bidID=1173",
@@ -343,7 +358,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -356,6 +371,7 @@
       "title": "IFB: Sassamon Trace Bunker Rehabilitation Phase II . Avail. 11/4/26. Do not request prior.",
       "bid_number": null,
       "category": "Public Works",
+      "trade": null,
       "posted_date": "2026-10-26",
       "due_date": "2026-11-20T09:00:00-05:00",
       "url": "https://www.natickma.gov/bids.aspx?bidID=1174",
@@ -366,7 +382,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -379,6 +395,7 @@
       "title": "RFQ: Cole Center Space Needs. Avail. 11/4/26. Do not request prior",
       "bid_number": null,
       "category": "Engineering",
+      "trade": null,
       "posted_date": "2026-10-26",
       "due_date": "2026-12-04T09:00:00-05:00",
       "url": "https://www.natickma.gov/bids.aspx?bidID=1175",
@@ -389,7 +406,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -402,6 +419,7 @@
       "title": "LEGAL NOTICE NOTICE TO BIDDERS Pursuant to Chapter 30B of the Massachusetts General Laws (M.G.L. c. 30B), the Town of Natick, Natick Town Hall, 13 East Central Street, Natick, MA 01760 (“the Town”), invites the submission of sealed Bids for",
       "bid_number": null,
       "category": "MetroWest Daily News, The",
+      "trade": null,
       "posted_date": "2026-10-16",
       "due_date": null,
       "url": "https://www.masspublicnotices.org/Details.aspx?ID=921655",
@@ -412,7 +430,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -425,6 +443,7 @@
       "title": "Maple Street Park (Renovations)- REBID",
       "bid_number": "ED 2026-11",
       "category": "Construction",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-10-29T09:00:00-04:00",
       "url": "https://www.marlborough-ma.gov/bids.aspx?bidID=48",
@@ -435,7 +454,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -448,6 +467,7 @@
       "title": "Wireless Communications Facility Leases - Sligo Historical Water Tank",
       "bid_number": "PF 2026-11",
       "category": "Goods and Services",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-10-30T13:00:00-04:00",
       "url": "https://www.marlborough-ma.gov/bids.aspx?bidID=47",
@@ -458,7 +478,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -471,6 +491,7 @@
       "title": "Marlborough HS Field House Seating Replacement Project",
       "bid_number": "MPS 2027-01",
       "category": "Construction",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-12T14:00:00-05:00",
       "url": "https://www.marlborough-ma.gov/bids.aspx?bidID=49",
@@ -481,7 +502,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=922962",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -494,6 +515,7 @@
       "title": "Marlborough elementary school — new (MSBA estimated bid)",
       "bid_number": "MSBA Marlborough ES 950 New",
       "category": "GMP targeted October 2027",
+      "trade": null,
       "posted_date": null,
       "due_date": "2027-08-02",
       "url": "https://www.massschoolbuildings.org/sites/default/files/edit-contentfiles/About_Us/Board_Meetings/2026_Board/8.26.2026/Estimated_Bid_Dates_August_2026.pdf#Marlborough-ES-950-New",
@@ -517,6 +539,7 @@
       "title": "RAD CONSULTANT",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://marlborohousing.org/Portals/56/RFPs/Solicitation for Proposal (RFP) RAD (1).pdf?ver=2026-09-22-091153-533",
@@ -527,7 +550,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -540,6 +563,7 @@
       "title": "RFQ General and FSB Contractor for New Dispatch Facility",
       "bid_number": "BD-27-1348-PD34-PD45-134756",
       "category": "Town of Westborough",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-04T13:00:00-05:00",
       "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1348-PD34-PD45-134756&external=true",
@@ -550,7 +574,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -563,6 +587,7 @@
       "title": "Conservation Land Management Plans",
       "bid_number": "FY2027-003",
       "category": null,
+      "trade": null,
       "posted_date": "2026-10-26",
       "due_date": "2026-11-18",
       "url": "https://www.bidnetdirect.com/massachusetts/solicitations/open-bids/FY2027-003-Conservation-Land-Management-Plans/0000441514?origin=2&purchasingGroupId=12556701",
@@ -573,7 +598,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -586,6 +611,7 @@
       "title": "School Department Mowing and Maintenance",
       "bid_number": "FY2027-002",
       "category": null,
+      "trade": null,
       "posted_date": "2026-10-26",
       "due_date": "2026-11-24",
       "url": "https://www.bidnetdirect.com/massachusetts/solicitations/open-bids/FY2027-002-School-Department-Mowing-and-Maintenance/0000440904?origin=2&purchasingGroupId=12556701",
@@ -596,7 +622,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -609,6 +635,7 @@
       "title": "Golf Course Maintenance Services",
       "bid_number": "FY2027-001",
       "category": null,
+      "trade": null,
       "posted_date": "2026-10-26",
       "due_date": "2026-12-01",
       "url": "https://www.bidnetdirect.com/massachusetts/solicitations/open-bids/FY2027-001-Golf-Course-Maintenance-Services/0000440999?origin=2&purchasingGroupId=12556701",
@@ -619,7 +646,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -632,6 +659,7 @@
       "title": "Riverwalk Bridges Construction and Installation",
       "bid_number": "TM-27-004",
       "category": "Town Owned Properties",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-10-29T11:00:00-04:00",
       "url": "https://www.ashlandmass.com/bids.aspx?bidID=147",
@@ -642,7 +670,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -655,6 +683,7 @@
       "title": "Click here for Bid Information",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://www.ashland.k12.ma.us/fs/resource-manager/view/f191f534-aff3-49f6-a03b-831f5cf7ff95",
@@ -665,7 +694,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -678,6 +707,7 @@
       "title": "Invitation for Bids - Nixon Fire Alarm",
       "bid_number": null,
       "category": "Facilities Department",
+      "trade": null,
       "posted_date": "2026-10-21",
       "due_date": "2026-11-05T12:00:00-05:00",
       "url": "https://sudbury.ma.us/facilities/2026/10/21/invitation-for-bids-nixon-fire-alarm/",
@@ -688,7 +718,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=923206",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -701,6 +731,7 @@
       "title": "Planned Residential Development for People with Disabilities - Disposition of 212 Cochituate Road",
       "bid_number": "RFP-1220-001-27",
       "category": "Request for Proposals (RFP)",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-12T11:00:00-05:00",
       "url": "https://www.wayland.ma.us/bids.aspx?bidID=11",
@@ -711,7 +742,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -724,6 +755,7 @@
       "title": "2026-2027 Crack Seal Projects",
       "bid_number": "101626B",
       "category": "Public Works Bids",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-06T11:00:00-05:00",
       "url": "https://www.southboroughma.gov/bids.aspx?bidID=23",
@@ -734,7 +766,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=922916",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -747,6 +779,7 @@
       "title": "2027 Cape Seal Projects",
       "bid_number": "101626A",
       "category": "Public Works Bids",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-06T11:30:00-05:00",
       "url": "https://www.southboroughma.gov/bids.aspx?bidID=22",
@@ -757,7 +790,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -770,6 +803,7 @@
       "title": "Peninsula Trail Project",
       "bid_number": null,
       "category": "Town Administrator Bids",
+      "trade": null,
       "posted_date": "2025-11-19",
       "due_date": "2025-12-10T11:00:00-05:00",
       "url": "https://www.southboroughma.gov/bids.aspx?bidID=15",
@@ -780,7 +814,7 @@
       "legal_notice_url": null,
       "status": "closed",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": "2026-10-26"
     },
     {
@@ -793,6 +827,7 @@
       "title": "Baseball/Softball Dugout Construction IFB",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-10-30T10:00:00-04:00",
       "url": "https://www.townofholliston.us/DocumentCenter/View/11171/Dugout-Construction-Bid-Document",
@@ -803,7 +838,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -816,6 +851,7 @@
       "title": "SOW - Pinecrest Rock Formation Restoration",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-10-30T10:00:00-04:00",
       "url": "https://www.townofholliston.us/DocumentCenter/View/11239/SOW--Pinecrest-Rock-Formation-Restoration",
@@ -826,7 +862,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -839,6 +875,7 @@
       "title": "Wastewater Treatment Plant - Yard Piping Phase 1D IFB",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-12T10:00:00-05:00",
       "url": "https://www.townofholliston.us/DocumentCenter/View/11304/IFB---Holliston-WWTP-Yard-Piping-Phase-1D",
@@ -849,7 +886,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=924656",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -862,6 +899,7 @@
       "title": "Holliston Trails Inventory RFP",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-09-30T16:00:00-04:00",
       "url": "https://www.townofholliston.us/DocumentCenter/View/11075/Holliston-Trail-Inventory-Scope-of-Work--",
@@ -872,7 +910,7 @@
       "legal_notice_url": null,
       "status": "closed",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": "2026-10-26"
     },
     {
@@ -885,6 +923,7 @@
       "title": "Bid Solicitation for Nursing Services",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-10-01T16:00:00-04:00",
       "url": "https://www.townofholliston.us/DocumentCenter/View/10992/Bid-Solicitation-for-Nursing",
@@ -895,7 +934,7 @@
       "legal_notice_url": null,
       "status": "closed",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": "2026-10-26"
     },
     {
@@ -908,6 +947,7 @@
       "title": "RFP for HR Services",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-10-05T12:00:00-04:00",
       "url": "https://www.townofholliston.us/DocumentCenter/View/11132/RFP-Holliston-HR-Services",
@@ -918,7 +958,7 @@
       "legal_notice_url": null,
       "status": "closed",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": "2026-10-26"
     },
     {
@@ -931,6 +971,7 @@
       "title": "Milford Public Schools Transportation Invitation for Bids",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://drive.google.com/file/d/1Yn0GVODKDj84XLBUy-aadmS48ovLk52Q/view?usp=drive_link",
@@ -941,7 +982,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -954,6 +995,7 @@
       "title": "Snow Plowing Contract 2026/2027 Winter Season",
       "bid_number": null,
       "category": "Other Construction Projects",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-02T15:00:00-05:00",
       "url": "https://www.wellesleyma.gov/bids.aspx?bidID=248",
@@ -964,7 +1006,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -977,6 +1019,7 @@
       "title": "Snow Shoveling Contract 2026/2027 Winter Season",
       "bid_number": null,
       "category": "Other Construction Projects",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-02T15:00:00-05:00",
       "url": "https://www.wellesleyma.gov/bids.aspx?bidID=247",
@@ -987,7 +1030,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1000,6 +1043,7 @@
       "title": "LEAD SERVICE LINE INSPECTION",
       "bid_number": null,
       "category": "Weston Public Works Bids",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-10-27T10:00:00-04:00",
       "url": "https://www.westonma.gov/bids.aspx?bidID=176",
@@ -1010,7 +1054,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1023,6 +1067,7 @@
       "title": "0 Riverside RFP",
       "bid_number": null,
       "category": "Town of Weston Bids",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-19T14:00:00-05:00",
       "url": "https://www.westonma.gov/bids.aspx?bidID=174",
@@ -1033,7 +1078,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1046,6 +1091,7 @@
       "title": "Miscellaneous Water & Sewer Supplies IFB - 27DPW151G",
       "bid_number": "27DPW151G",
       "category": "Bids for Commodities, Equipment & Services",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-05T13:30:00-05:00",
       "url": "https://www.needhamma.gov/bids.aspx?bidID=1433",
@@ -1056,7 +1102,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=921230",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1069,6 +1115,7 @@
       "title": "Needham middle school — addition/renovation (MSBA estimated bid)",
       "bid_number": "MSBA Needham MS 1335 Add/Reno",
       "category": "GMP targeted April 2028",
+      "trade": null,
       "posted_date": null,
       "due_date": "2028-02-28",
       "url": "https://www.massschoolbuildings.org/sites/default/files/edit-contentfiles/About_Us/Board_Meetings/2026_Board/8.26.2026/Estimated_Bid_Dates_August_2026.pdf#Needham-MS-1335-Add%2FReno",
@@ -1092,6 +1139,7 @@
       "title": "SHOWER REPAIRS AT THE FIRE STATION HEADQUARTERS-Invitation for Bids",
       "bid_number": null,
       "category": "Public Buildings Bids",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-04T13:00:00-05:00",
       "url": "https://www.shrewsburyma.gov/bids.aspx?bidID=422",
@@ -1102,7 +1150,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=921709",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1115,6 +1163,7 @@
       "title": "Full RFP for Legal Services",
       "bid_number": null,
       "category": "Retirement Board",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-13T12:00:00-05:00",
       "url": "https://www.shrewsburyma.gov/bids.aspx?bidID=424",
@@ -1125,7 +1174,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1138,6 +1187,7 @@
       "title": "Public Notice : RFP Legal Services",
       "bid_number": null,
       "category": "Retirement Board",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-13T12:00:00-05:00",
       "url": "https://www.shrewsburyma.gov/bids.aspx?bidID=423",
@@ -1148,7 +1198,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1161,6 +1211,7 @@
       "title": "YARD WASTE COLLECTION SERVICES-Request for Proposals",
       "bid_number": null,
       "category": "Solid Waste & Recycling",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-19T13:00:00-05:00",
       "url": "https://www.shrewsburyma.gov/bids.aspx?bidID=425",
@@ -1171,7 +1222,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1184,6 +1235,7 @@
       "title": "SNOW PLOW CONTRACTORS WANTED",
       "bid_number": "BD-25-1324-TMNGR-0421M-133466",
       "category": "Town of Shrewsbury",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-12-31T12:00:00-05:00",
       "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-25-1324-TMNGR-0421M-133466&external=true",
@@ -1194,7 +1246,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1207,6 +1259,7 @@
       "title": "Kelley’s Corner - Sidewalk Winter Maintenance",
       "bid_number": "10/28/2026–1176",
       "category": "Bid Postings",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-10-28T10:00:00-04:00",
       "url": "https://www.acton-ma.gov/bids.aspx?bidID=192",
@@ -1217,7 +1270,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1230,6 +1283,7 @@
       "title": "Housing Coordinator",
       "bid_number": "RFP27-2033",
       "category": "Town of Concord Bids/RFPs",
+      "trade": null,
       "posted_date": null,
       "due_date": "2033-10-23T10:00:00-04:00",
       "url": "https://www.concordma.gov/bids.aspx?bidID=215",
@@ -1240,7 +1294,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1253,6 +1307,7 @@
       "title": "DPW Constructions Facility for Town of Upton.",
       "bid_number": "BD-26-1723-DPW09-DPW09-134097",
       "category": "Town of Upton",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-04T14:00:00-05:00",
       "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-26-1723-DPW09-DPW09-134097&external=true",
@@ -1263,7 +1318,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1276,6 +1331,7 @@
       "title": "5, 16, 95 High Point Drive",
       "bid_number": "BD-27-1274-TAOFF-TAOFF-133611",
       "category": "Town of Grafton",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-12T13:00:00-05:00",
       "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1274-TAOFF-TAOFF-133611&external=true",
@@ -1286,7 +1342,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1299,6 +1355,7 @@
       "title": "Request for Trade Contractor Qualifications for the Medway Municipal Complex Project",
       "bid_number": "BD-27-1429-TABOS-TABOS-134581",
       "category": "Town of Medway",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-10T13:00:00-05:00",
       "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1429-TABOS-TABOS-134581&external=true",
@@ -1309,7 +1366,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=923205",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1322,6 +1379,7 @@
       "title": "38 AND 34 WINTHROP STREET BUILDING STRUCTURE DEMOLITION",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-19T10:00:00-05:00",
       "url": "https://medwayma.gov/rfpifb/#38-and-34-winthrop-street-building-structure-demolition",
@@ -1332,7 +1390,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1345,6 +1403,7 @@
       "title": "RFP - Conservation and Restoration of Mural at Franklin Public Library",
       "bid_number": null,
       "category": "Purchasing/Bid Postings",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-09T10:00:00-05:00",
       "url": "https://www.franklinma.gov/bids.aspx?bidID=90",
@@ -1355,7 +1414,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=922249",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1368,6 +1427,7 @@
       "title": "RFQ - Designer Services for the Washington Street Elementary School Project",
       "bid_number": null,
       "category": "Purchasing/Bid Postings",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-13T12:00:00-05:00",
       "url": "https://www.franklinma.gov/bids.aspx?bidID=91",
@@ -1378,7 +1438,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=922973",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1391,6 +1451,7 @@
       "title": "On-Call Public Address (PA) System Services",
       "bid_number": "27-36",
       "category": "Purchasing",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-05T12:00:00-05:00",
       "url": "https://www.lexingtonma.gov/bids.aspx?bidID=248",
@@ -1401,7 +1462,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=923348",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1414,6 +1475,7 @@
       "title": "Disposition and Development of approximately 5 acres of Littleton Affordable Housing Trust property",
       "bid_number": "2026-12",
       "category": "Town Hall Bids",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-18T12:00:00-05:00",
       "url": "https://www.littletonma.org/bids.aspx?bidID=58",
@@ -1424,7 +1486,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1437,6 +1499,7 @@
       "title": "FY 2027 SNOW AND ICE CONTROL AT MUNICIPAL FACILITIES",
       "bid_number": "2027-17",
       "category": "Public Works",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-12-08T23:59:00-05:00",
       "url": "https://www.uxbridge-ma.gov/bids.aspx?bidID=51",
@@ -1447,7 +1510,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1460,6 +1523,7 @@
       "title": "Bathroom fan installation.",
       "bid_number": "BD-27-1595-SHA02-SHA02-134306",
       "category": "Sutton Housing Authority",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-06T13:00:00-05:00",
       "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1595-SHA02-SHA02-134306&external=true",
@@ -1470,7 +1534,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=922207",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1483,6 +1547,7 @@
       "title": "400KW LOAD BANK UNIT",
       "bid_number": "BD-25-1242-ARN22-ARN22-133646",
       "category": "Town of Auburn",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-10-30T13:00:00-04:00",
       "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-25-1242-ARN22-ARN22-133646&external=true",
@@ -1493,7 +1558,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1506,6 +1571,7 @@
       "title": "Surplus For Sale - 2017 Ford Explorer PI Utility",
       "bid_number": "SUR-102926-7470",
       "category": "Surplus For Sale",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-10-29T15:30:00-04:00",
       "url": "https://www.cityofattleboro.us/bids.aspx?bidID=568",
@@ -1516,7 +1582,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1529,6 +1595,7 @@
       "title": "Request for Information (RFI) Capron Park Zoo",
       "bid_number": "ZOO-111626-1200",
       "category": "Request For Bids",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-16T12:00:00-05:00",
       "url": "https://www.cityofattleboro.us/bids.aspx?bidID=558",
@@ -1539,7 +1606,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1552,6 +1619,7 @@
       "title": "IFB #100726-S Snow Removal Services",
       "bid_number": "BD-18-1969-SHAU2-SHAU2-134172",
       "category": "Stoughton Housing Authority",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-10-28T10:00:00-04:00",
       "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-18-1969-SHAU2-SHAU2-134172&external=true",
@@ -1562,7 +1630,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1575,6 +1643,7 @@
       "title": "Request for Proposal FY27 Restoration 1853 Hunneman Hand Tub Fire Apparatus",
       "bid_number": "BD-25-1328-PO138-PO138-134327",
       "category": "Town of Stoughton",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-10-29T15:00:00-04:00",
       "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-25-1328-PO138-PO138-134327&external=true",
@@ -1585,7 +1654,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1598,6 +1667,7 @@
       "title": "TRASH AND RECYCLING COLLECTION AND TRANSPORTATION",
       "bid_number": "BD-24-1169-WLTHM-WLTHM-132953",
       "category": "City of Waltham",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-18T10:00:00-05:00",
       "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-24-1169-WLTHM-WLTHM-132953&external=true",
@@ -1608,7 +1678,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1621,6 +1691,7 @@
       "title": "Biodiesel Fuel",
       "bid_number": "IFB0464-110226",
       "category": "City",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-02T12:00:00-05:00",
       "url": "https://www.nashuanh.gov/bids.aspx?bidID=622",
@@ -1631,7 +1702,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1644,6 +1715,7 @@
       "title": "Rotary Pool Replacement Construction",
       "bid_number": "IFB0897-110426",
       "category": "City",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-04T15:00:00-05:00",
       "url": "https://www.nashuanh.gov/bids.aspx?bidID=621",
@@ -1654,7 +1726,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1667,6 +1739,7 @@
       "title": "Comprehensive Firefighter Occupational Health Evaluations & Early Detection Cancer Screenings",
       "bid_number": "RFP0589-111326",
       "category": "Administrative Services",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-13T14:00:00-05:00",
       "url": "https://www.nashuanh.gov/bids.aspx?bidID=620",
@@ -1677,7 +1750,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1690,6 +1763,7 @@
       "title": "CITY OF LEOMINSTER INVITATION TO BID: North Nashua River Stabilization Phase II Sealed proposals will be received at the Office of the Purchasing Agent, City Hall, 25 West St., Leominster, MA 01453, Until: 11:00 A.M. on October 29, 2026. an",
       "bid_number": null,
       "category": "Sentinel & Enterprise",
+      "trade": null,
       "posted_date": "2026-10-14",
       "due_date": "2026-10-29",
       "url": "https://www.masspublicnotices.org/Details.aspx?ID=920884",
@@ -1713,6 +1787,7 @@
       "title": "2026-011 Transfer Station Operation Services",
       "bid_number": "2026-011",
       "category": "Bids",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-10-29T10:00:00-04:00",
       "url": "https://www.salemnh.gov/bids.aspx?bidID=109",
@@ -1723,7 +1798,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1736,6 +1811,7 @@
       "title": "2026-013 Pipeline Rehabilitation Project",
       "bid_number": "2026-013",
       "category": "Construction Projects",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-04T10:00:00-05:00",
       "url": "https://www.salemnh.gov/bids.aspx?bidID=108",
@@ -1746,7 +1822,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1759,6 +1835,7 @@
       "title": "2026-012 Lake St & Bluff St Water Main Project",
       "bid_number": "2026-012",
       "category": "Construction Projects",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-20T11:00:00-05:00",
       "url": "https://www.salemnh.gov/bids.aspx?bidID=107",
@@ -1769,7 +1846,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1782,6 +1859,7 @@
       "title": "Bid 619: On Call Architectural Design Services",
       "bid_number": "619",
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://d16k74nzx9emoe.cloudfront.net/0889a3cc-15e6-472c-8721-153edf49f0e5/LEGAL%20NOTICE%20RFQ%20619.pdf",
@@ -1792,7 +1870,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1805,6 +1883,7 @@
       "title": "Bid 620: Demo, Prep, Installation",
       "bid_number": "620",
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://d16k74nzx9emoe.cloudfront.net/5b9e3650-7765-4b05-a0a2-3a30ec161e19/Legal%20Notice%20Bid%20620.pdf",
@@ -1815,7 +1894,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1828,6 +1907,7 @@
       "title": "Bid 621: Lease of Space for Satellite Vocational Program",
       "bid_number": "621",
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://d16k74nzx9emoe.cloudfront.net/100824f9-e6f3-4fd0-945d-c1255d303ae1/LEGAL%20NOTICE%20-%20RFP%20621.docx.pdf",
@@ -1838,7 +1918,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1851,6 +1931,7 @@
       "title": "Bid 623: Cleaning Services",
       "bid_number": "623",
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://d16k74nzx9emoe.cloudfront.net/d0845b78-5c8d-46e3-a81b-9db6498f7cd1/Contracted_20Cleaning_20Services_20Legal_20Notice.pdf",
@@ -1861,7 +1942,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1874,6 +1955,7 @@
       "title": "Bid 626: Commercial Refrigeration",
       "bid_number": "626",
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://d16k74nzx9emoe.cloudfront.net/bddee6a2-5c2c-47e0-9cc3-9b85f875685f/Commercial%20Refrigeration%20Legal%20Notice.pdf",
@@ -1884,7 +1966,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1897,6 +1979,7 @@
       "title": "Bid 627: ACE Catalog",
       "bid_number": "627",
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://d16k74nzx9emoe.cloudfront.net/d6231360-7e5a-443c-9c4b-7746cd8002a7/ACE%20Catalog%20IFB%20627%20Legal%20Notice.pdf",
@@ -1907,7 +1990,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1920,6 +2003,7 @@
       "title": "BID 628: ACE Catalog REBID",
       "bid_number": "628",
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://d16k74nzx9emoe.cloudfront.net/9494984b-0eb9-4349-a12e-58ddc65f884e/ACE%20Catalog%20IFB%20628%20LEGAL%20NOTICE.pdf",
@@ -1930,7 +2014,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1943,6 +2027,7 @@
       "title": "BID 630: On-Call Electrical Services",
       "bid_number": "630",
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://d16k74nzx9emoe.cloudfront.net/d74a2dce-ba36-444d-a161-1b1c6b2c9bc2/On%20Call%20Electrical%20Legal%20Notice.pdf",
@@ -1953,7 +2038,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=922473",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1966,6 +2051,7 @@
       "title": "Bid 631: On-Call Plumbing",
       "bid_number": "631",
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://d16k74nzx9emoe.cloudfront.net/e93d74a2-0c0c-4fdf-a48b-a568b16025a5/On%20Call%20Plumbing%20Legal%20Notice.pdf",
@@ -1976,7 +2062,31 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=923210",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
+      "closed_on": null
+    },
+    {
+      "town": "Assabet Valley",
+      "region": "MetroWest core",
+      "sector": "school",
+      "state": "Massachusetts",
+      "source": "town",
+      "kind": "open",
+      "title": "BID 632: Building Automation System",
+      "bid_number": "632",
+      "category": null,
+      "trade": null,
+      "posted_date": null,
+      "due_date": null,
+      "url": "https://d16k74nzx9emoe.cloudfront.net/c2adf3f3-def3-48ff-8a63-54974e113eec/Building%20Automation%20and%20Energy%20Management%20Legal%20Notice.pdf",
+      "source_url": "https://www.assabet.org/Do-More/HR--Business-Offices/Legal-Notices/index.html",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -1989,6 +2099,7 @@
       "title": "Bid 622: Site Work.",
       "bid_number": "622",
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-06-15T10:00:00-04:00",
       "url": "https://d16k74nzx9emoe.cloudfront.net/864e1fa7-155d-40d2-991c-3d4934fc4859/Bid%20622%20House%20Carpentry%20Project%20Legal%20Notice.pdf",
@@ -1999,7 +2110,7 @@
       "legal_notice_url": null,
       "status": "closed",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": "2026-10-26"
     },
     {
@@ -2012,6 +2123,7 @@
       "title": "On-Call Electrical Services for Assabet Valley Regional High",
       "bid_number": "BD-27-1121-AVRTV-AVRTV-134128",
       "category": "Assabet Valley Regional Vocational School District",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-09T10:00:00-05:00",
       "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1121-AVRTV-AVRTV-134128&external=true",
@@ -2035,6 +2147,7 @@
       "title": "Assabet IFB #631 On-Call Plumbing Services",
       "bid_number": "BD-27-1121-AVRTV-AVRTV-134498",
       "category": "Assabet Valley Regional Vocational School District",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-10T10:00:00-05:00",
       "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1121-AVRTV-AVRTV-134498&external=true",
@@ -2058,6 +2171,7 @@
       "title": "Advertisement - Keefe Tech Horticulture/Carpentry Sprinkler System",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://drive.google.com/file/d/1Jem42-kN69dPupGfGe9yNIw5a_rhfJ_Q/view?usp=sharing",
@@ -2068,7 +2182,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2081,6 +2195,7 @@
       "title": "Notice to bid -",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://www.keefetech.org/fs/resource-manager/view/1a1665ff-89b5-4eec-a603-43e21af77e69",
@@ -2091,7 +2206,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2104,6 +2219,7 @@
       "title": "SCHOOL BUS TRANSPORTATION BIDS LEGAL NOTICE The Sudbury Public School Committee and the Lincoln-Sudbury Regional School Committee of Sudbury, Massachusetts, will receive sealed bids for furnishing school bus transportation for public school",
       "bid_number": null,
       "category": "MetroWest Daily News, The",
+      "trade": null,
       "posted_date": "2026-10-15",
       "due_date": null,
       "url": "https://www.masspublicnotices.org/Details.aspx?ID=921219",
@@ -2114,7 +2230,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2127,6 +2243,7 @@
       "title": "Transportation Bid Package",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://drive.google.com/drive/folders/1XbVztzskNnuW63HufG6effsm4kEK60Gu?usp=drive_link",
@@ -2137,7 +2254,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2150,6 +2267,7 @@
       "title": "RFP - Legal Services: Minuteman Retirement Board",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://files.smartsites.parentsquare.com/12006/minuteman_rfp-for-legal-services.pdf",
@@ -2160,7 +2278,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2173,6 +2291,7 @@
       "title": "RFP - Minuteman East Campus P3",
       "bid_number": null,
       "category": null,
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://files.smartsites.parentsquare.com/12006/minutemaneastcampusp3rfpvetraniaryscienceandlifescienceeducationcenter32526_1.pdf",
@@ -2183,7 +2302,151 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
+      "closed_on": null
+    },
+    {
+      "town": "MWRA",
+      "region": "Statewide agency",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "commbuys",
+      "kind": "open",
+      "title": "MWRA Contract No. 8086 Needham Dewatering Drainage Line",
+      "bid_number": "BD-19-1212-MWRA-DITP-133722",
+      "category": "Massachusetts Water Resources Authority",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-10-28T14:00:00-04:00",
+      "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-19-1212-MWRA-DITP-133722&external=true",
+      "source_url": "https://www.commbuys.com/bso/view/search/external/advancedSearchBid.xhtml?openBids=true",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-19-1212-MWRA-DITP-133722&external=true",
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
+      "closed_on": null
+    },
+    {
+      "town": "MWRA",
+      "region": "Statewide agency",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "commbuys",
+      "kind": "open",
+      "title": "MWRA Contract No. OP-539 Metropolitan Operations Paving",
+      "bid_number": "BD-19-1212-MWRA-DITP-134229",
+      "category": "Massachusetts Water Resources Authority",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-10-28T14:00:00-04:00",
+      "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-19-1212-MWRA-DITP-134229&external=true",
+      "source_url": "https://www.commbuys.com/bso/view/search/external/advancedSearchBid.xhtml?openBids=true",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-19-1212-MWRA-DITP-134229&external=true",
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
+      "closed_on": null
+    },
+    {
+      "town": "MWRA",
+      "region": "Statewide agency",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "commbuys",
+      "kind": "open",
+      "title": "MWRA Contract No. OP-540 Fuel Storage Tank Maintenance Services",
+      "bid_number": "BD-19-1212-MWRA-DITP-133919",
+      "category": "Massachusetts Water Resources Authority",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-10-29T14:00:00-04:00",
+      "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-19-1212-MWRA-DITP-133919&external=true",
+      "source_url": "https://www.commbuys.com/bso/view/search/external/advancedSearchBid.xhtml?openBids=true",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-19-1212-MWRA-DITP-133919&external=true",
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
+      "closed_on": null
+    },
+    {
+      "town": "MWRA",
+      "region": "Statewide agency",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "commbuys",
+      "kind": "open",
+      "title": "MWRA Contract No. 7615B Armoring and Overtopping Protection Foss Reservoir Dam",
+      "bid_number": "BD-19-1212-MWRA-DITP-134569",
+      "category": "Massachusetts Water Resources Authority",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-12-02T14:00:00-05:00",
+      "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-19-1212-MWRA-DITP-134569&external=true",
+      "source_url": "https://www.commbuys.com/bso/view/search/external/advancedSearchBid.xhtml?openBids=true",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-19-1212-MWRA-DITP-134569&external=true",
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
+      "closed_on": null
+    },
+    {
+      "town": "Framingham State",
+      "region": "MetroWest core",
+      "sector": "college",
+      "state": "Massachusetts",
+      "source": "commbuys",
+      "kind": "open",
+      "title": "Renovation at 860 Worcester Road, project# C02604",
+      "bid_number": "BD-27-1047-1047C-1047L-134039",
+      "category": "Framingham State University",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-10-28T15:00:00-04:00",
+      "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1047-1047C-1047L-134039&external=true",
+      "source_url": "https://www.commbuys.com/bso/view/search/external/advancedSearchBid.xhtml?openBids=true",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1047-1047C-1047L-134039&external=true",
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
+      "closed_on": null
+    },
+    {
+      "town": "Framingham State",
+      "region": "MetroWest core",
+      "sector": "college",
+      "state": "Massachusetts",
+      "source": "commbuys",
+      "kind": "open",
+      "title": "RFP-27-01 Public Safety Radio Communication Upgrade",
+      "bid_number": "BD-27-1047-1047C-1047L-134106",
+      "category": "Framingham State University",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-11-10T16:00:00-05:00",
+      "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1047-1047C-1047L-134106&external=true",
+      "source_url": "https://www.commbuys.com/bso/view/search/external/advancedSearchBid.xhtml?openBids=true",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1047-1047C-1047L-134106&external=true",
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2196,6 +2459,7 @@
       "title": "DCP - MITC Building - Occupancy Upgrades DTA, Chelsea, MA. This Project is for renovation of an office facility, including new entryway and new windows. All systems will be tied into the building base systems. This Project includes the following Filed Sub-Bids: Masonry; Tile; Acoustical Tile; Resilient Floors; Painting; Fire Protection; Plumbing; HVAC; Electrical. The Category of Work is General Building Construction.",
       "bid_number": "DCP2604 Sub Bids",
       "category": "DCAMM",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-03T12:00:00-05:00",
       "url": "https://www.bidexpress.com/solicitations/48902",
@@ -2206,7 +2470,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2219,6 +2483,7 @@
       "title": "EPS – North Shore Regional 911 Call Center Water Leaks, Middleton, MA. The work consists of the renovation of a one-story 9,500 GSF building that houses the North Shore Regional 911 Call Center. This Project includes the following Filed Sub-Bid Categories: Roofing & Flashing; Plumbing; HVAC; Electrical. The Category of Work is General Building Construction.",
       "bid_number": "EPS2401 Sub Bids",
       "category": "DCAMM",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-06T12:00:00-05:00",
       "url": "https://www.bidexpress.com/solicitations/49425",
@@ -2229,7 +2494,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2242,6 +2507,7 @@
       "title": "Request for Bids for Prequalified Trade Contractors for SDE - Middleton Jail and HOC - Medical & Kitchen Building/ISB Replacement, Phase 2, Middleton, MA, for the following Trade Bid Sections: Masonry; Miscellaneous and Ornamental Iron; Waterproofing, Dampproofing and Caulking; Roofing and Flashing; Metal Windows; Glass and Glazing; Tile; Acoustical Tile; Resilient Floors; Painting; Fire Protection Sprinkler System; Plumbing; HVAC; Electrical. The Construction Manager is Commodore Builders, LLC.",
       "bid_number": "SDE1902 Phase 2 Trade RFB",
       "category": "DCAMM",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-09T12:00:00-05:00",
       "url": "https://www.bidexpress.com/solicitations/49386",
@@ -2252,7 +2518,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2265,6 +2531,7 @@
       "title": "DCP - MITC Building - Occupancy Upgrades DTA, Chelsea, MA. This Project is for renovation of an office facility, including new entryway and new windows. All systems will be tied into the building base systems. This Project includes the following Filed Sub-Bids: Masonry; Tile; Acoustical Tile; Resilient Floors; Painting; Fire Protection; Plumbing; HVAC; Electrical. The Category of Work is General Building Construction.",
       "bid_number": "DCP2604",
       "category": "DCAMM",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-18T14:00:00-05:00",
       "url": "https://www.bidexpress.com/solicitations/48901",
@@ -2275,7 +2542,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2288,6 +2555,7 @@
       "title": "EPS – North Shore Regional 911 Call Center Water Leaks, Middleton, MA. The work consists of the renovation of a one-story 9,500 GSF building that houses the North Shore Regional 911 Call Center. This Project includes the following Filed Sub-Bid Categories: Roofing & Flashing; Plumbing; HVAC; Electrical. The Category of Work is General Building Construction.",
       "bid_number": "EPS2401",
       "category": "DCAMM",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-20T14:00:00-05:00",
       "url": "https://www.bidexpress.com/solicitations/49426",
@@ -2298,7 +2566,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2311,6 +2579,7 @@
       "title": "MP2700-C1 TERM EAST BOSTON PARKS REPAIRS TERM CONTRACT FY27 – 29 EAST BOSTON,MASSACHUSETTS OCTOBER, 2026",
       "bid_number": "MP2700-C1 TERM",
       "category": "Massport",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-04T11:00:00-05:00",
       "url": "https://www.bidexpress.com/solicitations/49547",
@@ -2321,7 +2590,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2334,6 +2603,7 @@
       "title": "L1973 CMAR RFQ CENTRAL PARKING FACILITY OPTIMIZATION LOGAN INTERNATIONAL AIRPORT EAST BOSTON OCTOBER, 2026",
       "bid_number": "L1973 CMAR RFQ",
       "category": "Massport",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-05T12:00:00-05:00",
       "url": "https://www.bidexpress.com/solicitations/49420",
@@ -2344,7 +2614,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2357,6 +2627,7 @@
       "title": "A460 DIGITAL BUILDING DATA CAPTURE, Professional Consultant Services LOGAN OFFICE CENTER ONE HARBORSIDE DRIVE EAST BOSTON, MA 02128 OCTOBER,2026",
       "bid_number": "A460 RFQ Professional Consultant Services",
       "category": "Massport",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-12-03T12:00:00-05:00",
       "url": "https://www.bidexpress.com/solicitations/49662",
@@ -2367,7 +2638,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2380,6 +2651,7 @@
       "title": "Capital Providers for the Commercial Property Assessed Clean Energy Massachusetts Program",
       "bid_number": null,
       "category": "MassDevelopment",
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://www.massdevelopment.com/assets/document/pace-massachusetts/Pace_RFI-5-2022.pdf",
@@ -2390,7 +2662,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2403,6 +2675,7 @@
       "title": "NOTICE TO BID: New Gas Access Path Clearing & Grading Project, Devens, MA MassDevelopment Project No. 26-021",
       "bid_number": "26-021",
       "category": "MassDevelopment",
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://www.massdevelopment.com/assets/document/RFP/Legal_Notice_26-021_FINAL.pdf",
@@ -2413,7 +2686,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2426,6 +2699,7 @@
       "title": "24 Factory Street Demolition, Hyde Park, MA",
       "bid_number": "E79CN01",
       "category": "Current Construction Contract Bid Solicitations",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-10-29T14:00:00-04:00",
       "url": "https://bc.mbta.com/business_center/bidding_solicitations/design_and_construction/construction_bid/?cbid=7505",
@@ -2436,7 +2710,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2449,6 +2723,7 @@
       "title": "Electric Manhole Replacement, Systemwide, MA",
       "bid_number": "P90CN03",
       "category": "Current Construction Contract Bid Solicitations",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-10-29T14:00:00-04:00",
       "url": "https://bc.mbta.com/business_center/bidding_solicitations/design_and_construction/construction_bid/?cbid=7506",
@@ -2459,7 +2734,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2472,6 +2747,7 @@
       "title": "South Station Crew Base, Boston, MA",
       "bid_number": "F79CN01",
       "category": "Current Construction Contract Bid Solicitations",
+      "trade": null,
       "posted_date": null,
       "due_date": "2026-11-05T14:00:00-05:00",
       "url": "https://bc.mbta.com/business_center/bidding_solicitations/design_and_construction/construction_bid/?cbid=7507",
@@ -2482,7 +2758,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2495,6 +2771,7 @@
       "title": "Haverhill Layover Building Demolition",
       "bid_number": "F64CN01",
       "category": "Demolition · $560,000",
+      "trade": null,
       "posted_date": "2026-11-04",
       "due_date": "2026-12-03",
       "url": "https://bc.mbta.com/business_center/bidding_solicitations/future_solicitations/#f64cn01",
@@ -2505,7 +2782,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2518,6 +2795,7 @@
       "title": "Escalator Replacement Andrew and Broadway Stations, Boston, MA",
       "bid_number": null,
       "category": "Station Improvements · $8,000,000",
+      "trade": null,
       "posted_date": "2026-11-11",
       "due_date": "2026-12-10",
       "url": "https://bc.mbta.com/business_center/bidding_solicitations/future_solicitations/#escalator-replacement-andrew-and-broadway-stations-boston-ma",
@@ -2528,7 +2806,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2541,6 +2819,7 @@
       "title": "Commuter Rail Stations and Facilities On Call, Systemwide, MA",
       "bid_number": "F90CN01",
       "category": "Station Improvements · $6,000,000",
+      "trade": null,
       "posted_date": "2026-12-02",
       "due_date": "2027-01-07",
       "url": "https://bc.mbta.com/business_center/bidding_solicitations/future_solicitations/#f90cn01",
@@ -2551,7 +2830,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2564,6 +2843,7 @@
       "title": "Widett Circle Layover Facility, Boston, MA",
       "bid_number": "F60CN01",
       "category": "Facility Improvements · $120,598,793",
+      "trade": null,
       "posted_date": "2026-12-16",
       "due_date": "2027-01-21",
       "url": "https://bc.mbta.com/business_center/bidding_solicitations/future_solicitations/#f60cn01",
@@ -2574,7 +2854,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2587,6 +2867,7 @@
       "title": "Mill Creek Bridge Repairs",
       "bid_number": "B92CN01",
       "category": "Improvements · $17,500,000",
+      "trade": null,
       "posted_date": "2027-02-25",
       "due_date": "2027-03-25",
       "url": "https://bc.mbta.com/business_center/bidding_solicitations/future_solicitations/#b92cn01",
@@ -2597,7 +2878,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2610,6 +2891,7 @@
       "title": "Airport Portal Flood Doors",
       "bid_number": null,
       "category": "Facility Improvements · $19,536,000",
+      "trade": null,
       "posted_date": "2027-06-09",
       "due_date": "2027-07-08",
       "url": "https://bc.mbta.com/business_center/bidding_solicitations/future_solicitations/#airport-portal-flood-doors",
@@ -2620,7 +2902,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2633,6 +2915,7 @@
       "title": "Quincy Ferry Dock Replacement",
       "bid_number": "X03XN01",
       "category": "Improvements · $6,800,000",
+      "trade": null,
       "posted_date": "2027-07-07",
       "due_date": "2027-08-05",
       "url": "https://bc.mbta.com/business_center/bidding_solicitations/future_solicitations/#x03xn01",
@@ -2643,7 +2926,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2656,6 +2939,7 @@
       "title": "CMAR Arborway Bus Maintenance Facility",
       "bid_number": null,
       "category": "Current CM at Risk Solicitations",
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://bc.mbta.com/business_center/bidding_solicitations/current_solicitations/?cmarid=50233",
@@ -2666,7 +2950,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2679,6 +2963,7 @@
       "title": "CMAR Downtown Crossing Phase 2 and Central Square Station Accessibility Improvements Trade RFQ",
       "bid_number": null,
       "category": "Current CM at Risk Solicitations",
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://bc.mbta.com/business_center/bidding_solicitations/current_solicitations/?cmarid=50151",
@@ -2689,7 +2974,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2702,6 +2987,7 @@
       "title": "CMAR Green Line Riverside and Innerbelt Vehicle Maintenance Facility \"VMF\" Upgrades - Riverside Package 2B Trade RFQ",
       "bid_number": null,
       "category": "Current CM at Risk Solicitations",
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://bc.mbta.com/business_center/bidding_solicitations/current_solicitations/?cmarid=60277",
@@ -2712,7 +2998,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
     },
     {
@@ -2725,6 +3011,7 @@
       "title": "Design Build (DB) Red Line Hi-Rail Access Tunnel",
       "bid_number": null,
       "category": "CURRENT DESIGN BUILD SOLICITATIONS",
+      "trade": null,
       "posted_date": null,
       "due_date": null,
       "url": "https://bc.mbta.com/business_center/bidding_solicitations/current_solicitations/?dbid=40142",
@@ -2735,8 +3022,200 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
       "closed_on": null
+    },
+    {
+      "town": "MassDOT",
+      "region": "Statewide agency",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "massdot",
+      "kind": "open",
+      "title": "Natick — Bridge Replacement, N-03-012, Boden Lane over CSX/MBTA",
+      "bid_number": "607420",
+      "category": "NATICK",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-10-27T14:00:00-04:00",
+      "url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp#607420",
+      "source_url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
+      "closed_on": null
+    },
+    {
+      "town": "MassDOT",
+      "region": "Statewide agency",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "massdot",
+      "kind": "open",
+      "title": "Northborough - Shrewsbury — Rehabilitation & Box Widening on Route 20, from Route 9 to South Street",
+      "bid_number": "610825",
+      "category": "NORTHBOROUGH - SHREWSBURY",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-10-27T14:00:00-04:00",
+      "url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp#610825",
+      "source_url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
+      "closed_on": null
+    },
+    {
+      "town": "MassDOT",
+      "region": "Statewide agency",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "massdot",
+      "kind": "open",
+      "title": "Shrewsbury - Worcester — Bridge Preservation, S-14-021=W-44-115, I-290 (EB and WB) over Lake Quinsigamond and Lake Avenue North",
+      "bid_number": "612874",
+      "category": "SHREWSBURY - WORCESTER",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-10-27T14:00:00-04:00",
+      "url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp#612874",
+      "source_url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
+      "closed_on": null
+    },
+    {
+      "town": "DCR",
+      "region": "Statewide agency",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "dcr",
+      "kind": "open",
+      "title": "Bellevue Pond Dam Réhabilitation",
+      "bid_number": "P27-3707-C1A",
+      "category": "Construction",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-10-29",
+      "url": "https://www.mass.gov/info-details/dcr-contracts-and-procurement#P273707C1A",
+      "source_url": "https://www.mass.gov/info-details/dcr-contracts-and-procurement",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
+      "closed_on": null
+    },
+    {
+      "town": "DCR",
+      "region": "Statewide agency",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "dcr",
+      "kind": "open",
+      "title": "Western - Water & Sewer Maintenance",
+      "bid_number": "P27-3681-M2A",
+      "category": "Construction",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-10-29",
+      "url": "https://www.mass.gov/info-details/dcr-contracts-and-procurement#P273681M2A",
+      "source_url": "https://www.mass.gov/info-details/dcr-contracts-and-procurement",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
+      "closed_on": null
+    },
+    {
+      "town": "DCR",
+      "region": "Statewide agency",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "dcr",
+      "kind": "open",
+      "title": "Fence & Guardrail Maintenance",
+      "bid_number": "P27-3713-M1A",
+      "category": "Construction",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-12-03",
+      "url": "https://www.mass.gov/info-details/dcr-contracts-and-procurement#P273713M1A",
+      "source_url": "https://www.mass.gov/info-details/dcr-contracts-and-procurement",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
+      "closed_on": null
+    },
+    {
+      "town": "MAPC",
+      "region": "Outer ring",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "mapc",
+      "kind": "open",
+      "title": "CRHSAC24 - Worcester Area Interoperability System Upgrades",
+      "bid_number": "CRHSAC24",
+      "category": "Worcester",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-11-10T12:00:00-05:00",
+      "url": "https://www.mapc.org/about-mapc/legal-notices-meetings/#crhsac24-worcester-area-interoperability-system-upgrades",
+      "source_url": "https://www.mapc.org/about-mapc/legal-notices-meetings/",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1217-MAP01-MAP01-134692&external=true",
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
+      "closed_on": null
+    },
+    {
+      "town": "MAPC",
+      "region": "MetroWest core",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "mapc",
+      "kind": "open",
+      "title": "Legal Notice of Invitation for Bids for Public Works Services - MW 2027 PW1",
+      "bid_number": "MW 2027 PW1",
+      "category": "Southborough",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-10-15T15:00:00-04:00",
+      "url": "https://www.mapc.org/about-mapc/legal-notices-meetings/#legal-notice-of-invitation-for-bids-for-public-works-services-mw-2027-pw1",
+      "source_url": "https://www.mapc.org/about-mapc/legal-notices-meetings/",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "closed",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
+      "closed_on": "2026-10-27"
     }
   ]
 }
