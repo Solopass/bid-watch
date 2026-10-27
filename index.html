@@ -257,7 +257,7 @@
       <div>
         <p class="kicker">MetroWest Massachusetts</p>
         <h1>Bid watch</h1>
-        <p class="lede">Open bids and RFPs for 27 towns, MetroWest core and the next ring, plus COMMBUYS, legal notices, Bid Express, MassDevelopment, and the MBTA. Upcoming school and MBTA projects are on their own tab. Personal use. Public pages only.</p>
+        <p class="lede">Open bids and RFPs for MetroWest, the outer ring, and nearby RI and NH towns, plus schools, housing authorities, COMMBUYS, legal notices, Bid Express, MassDevelopment, and the MBTA. Upcoming school and MBTA projects are on their own tab. Personal use. Public pages only.</p>
       </div>
       <div class="actions">
         <p class="updated" id="last-updated">Last updated: loading…</p>
@@ -278,6 +278,29 @@
           <option value="MetroWest core">MetroWest core</option>
           <option value="Next ring">Next ring</option>
           <option value="Statewide agency">Statewide agency</option>
+          <option value="Outer ring">Outer ring</option>
+          <option value="RI border">RI border</option>
+          <option value="NH border">NH border</option>
+          <option value="CT border">CT border</option>
+        </select>
+      </label>
+      <label>State
+        <select id="state">
+          <option value="">All states</option>
+          <option value="Massachusetts">Massachusetts</option>
+          <option value="Rhode Island">Rhode Island</option>
+          <option value="New Hampshire">New Hampshire</option>
+          <option value="Connecticut">Connecticut</option>
+        </select>
+      </label>
+      <label>Sector
+        <select id="sector">
+          <option value="">All sectors</option>
+          <option value="town">Town</option>
+          <option value="school">School</option>
+          <option value="housing">Housing</option>
+          <option value="agency">Agency</option>
+          <option value="utility">Utility</option>
         </select>
       </label>
       <label>Town
@@ -342,6 +365,7 @@
     Town only means the public COMMBUYS list did not have a matching solicitation.
     Source is where the row was found. A town bid that is also on COMMBUYS stays a town-page row and is marked Yes.
     A town bid that also ran in a covered legal notice stays one row and links to that notice.
+    Sector separates town, school, and housing-authority bids. State separates Massachusetts from the RI and NH border towns.
     <a href="https://github.com/Solopass/bid-watch">Source</a>
   </footer>
   <script>
@@ -364,7 +388,22 @@
       msba: "MSBA",
       central_register: "Central Register",
     };
-    const REGION_ORDER = ["MetroWest core", "Next ring", "Statewide agency"];
+    const REGION_ORDER = [
+      "MetroWest core",
+      "Next ring",
+      "Outer ring",
+      "RI border",
+      "NH border",
+      "CT border",
+      "Statewide agency",
+    ];
+    const SECTOR_LABELS = {
+      town: "Town",
+      school: "School",
+      housing: "Housing",
+      agency: "Agency",
+      utility: "Utility",
+    };
     const FEED_ORDER = [
       ["legal_notices", "Legal notices"],
       ["bid_express", "Bid Express"],
@@ -440,9 +479,13 @@
       if (region && bid.region !== region) return false;
       const source = document.getElementById("source").value;
       if (source && (bid.source || "town") !== source) return false;
+      const bidState = document.getElementById("state").value;
+      if (bidState && (bid.state || "Massachusetts") !== bidState) return false;
+      const sector = document.getElementById("sector").value;
+      if (sector && (bid.sector || "town") !== sector) return false;
       const q = document.getElementById("q").value.trim().toLowerCase();
       if (q) {
-        const hay = [bid.town, bid.region, bid.title, bid.bid_number, bid.category, bid.paper, bid.source, bid.url].join(" ").toLowerCase();
+        const hay = [bid.town, bid.region, bid.state, bid.sector, bid.title, bid.bid_number, bid.category, bid.paper, bid.source, bid.url].join(" ").toLowerCase();
         if (!hay.includes(q)) return false;
       }
       const from = document.getElementById("due-from").value;
@@ -486,7 +529,11 @@
 
     function sourceNode(bid) {
       const wrap = document.createElement("div");
-      wrap.append(document.createTextNode(SOURCE_LABELS[bid.source || "town"] || bid.source || "—"));
+      const sectorLabel = SECTOR_LABELS[bid.sector || "town"] || "";
+      const sourceLabel = SOURCE_LABELS[bid.source || "town"] || bid.source || "—";
+      wrap.append(document.createTextNode(
+        bid.sector && bid.sector !== "town" ? sourceLabel + " · " + sectorLabel : sourceLabel
+      ));
       if (bid.legal_notice_url && (bid.source || "town") !== "legal_notice") {
         const line = document.createElement("div");
         const link = document.createElement("a");
@@ -680,8 +727,10 @@
     }
 
     function bind() {
-      ["q", "region", "town", "source", "due-from", "due-to", "show-closed"].forEach((id) => {
-        document.getElementById(id).addEventListener("input", render);
+      ["q", "region", "town", "source", "state", "sector", "due-from", "due-to", "show-closed"].forEach((id) => {
+        const node = document.getElementById(id);
+        node.addEventListener("input", render);
+        node.addEventListener("change", render);
       });
       function bindSegment(id, apply) {
         document.querySelectorAll("#" + id + " button").forEach((button) => {

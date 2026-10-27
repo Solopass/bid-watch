@@ -30,6 +30,9 @@ REGIONAL = (
     ("tri county regional", "Tri-County", "Next ring"),
     ("blackstone valley", "Blackstone Valley Tech", "MetroWest core"),
     ("minuteman regional", "Minuteman", "Next ring"),
+    ("dover sherborn", "Dover-Sherborn", "Next ring"),
+    ("acton boxborough", "Acton-Boxborough", "Next ring"),
+    ("mendon upton", "Mendon-Upton", "Next ring"),
 )
 
 _RELATED_SUFFIXES = (
@@ -45,13 +48,14 @@ _RELATED_SUFFIXES = (
 
 
 class Place:
-    def __init__(self, town: str, region: str, kind: str):
+    def __init__(self, town: str, region: str, kind: str, sector: str = "town"):
         self.town = town
         self.region = region
         self.kind = kind
+        self.sector = sector
 
     def __repr__(self) -> str:
-        return f"Place({self.town!r}, {self.region!r}, {self.kind!r})"
+        return f"Place({self.town!r}, {self.region!r}, {self.kind!r}, {self.sector!r})"
 
 
 def town_regions_from_config(config: dict | None = None) -> dict[str, str]:
@@ -72,12 +76,12 @@ def match_organization(org: str, town_regions: dict[str, str]) -> Place | None:
         name = _clean(town)
         region = town_regions[town]
         if cleaned in {name, f"town of {name}", f"city of {name}"}:
-            return Place(town, region, "municipality")
+            return Place(town, region, "municipality", "town")
         if _related(cleaned, name):
-            return Place(town, region, "related")
+            return Place(town, region, "related", _sector_from_name(cleaned))
     for phrase, town, region in REGIONAL:
         if re.search(rf"(?<![a-z0-9]){re.escape(phrase)}(?![a-z0-9])", cleaned):
-            return Place(town, region, "regional")
+            return Place(town, region, "regional", "school")
     return None
 
 
@@ -124,6 +128,16 @@ def _related(cleaned: str, name: str) -> bool:
         f"water district of {name}",
     )
     return cleaned in extras or any(cleaned.startswith(item + " ") for item in extras)
+
+
+def _sector_from_name(cleaned: str) -> str:
+    if "housing authority" in cleaned or "community development authority" in cleaned:
+        return "housing"
+    if "school" in cleaned:
+        return "school"
+    if "water" in cleaned:
+        return "utility"
+    return "town"
 
 
 def _clean(text: str) -> str:

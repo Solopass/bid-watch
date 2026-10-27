@@ -1,6 +1,6 @@
 # bid-watch
 
-A personal tracker for open municipal bids and RFPs in MetroWest Massachusetts. MetroWest core is Framingham, Natick, Marlborough, Hudson, Westborough, Ashland, Hopkinton, Sudbury, Wayland, Southborough, Holliston, and Milford. The next ring is Wellesley, Weston, Needham, Shrewsbury, Stow, Acton, Concord, Dover, Sherborn, Bellingham, Upton, Grafton, Maynard, Lincoln, and Mendon.
+A personal tracker for open municipal bids and RFPs around MetroWest Massachusetts, plus nearby Rhode Island and New Hampshire towns. MetroWest core is Framingham, Natick, Marlborough, Hudson, Westborough, Ashland, Hopkinton, Sudbury, Wayland, Southborough, Holliston, and Milford. The next ring adds Medway to Wellesley, Weston, Needham, Shrewsbury, Stow, Acton, Concord, Dover, Sherborn, Bellingham, Upton, Grafton, Maynard, Lincoln, and Mendon. The outer ring is the next band of towns with a public CivicPlus bid list, roughly an hour from Framingham. RI border and NH border are the CivicPlus lists in northern Rhode Island and southern New Hampshire.
 
 A GitHub Actions workflow reads each town's public bid page once a day and writes `data/bids.json`. This repository's GitHub Pages site is a static dashboard of that file. There is no server, no paid API, and no API key.
 
@@ -8,7 +8,9 @@ The dashboard is [https://solopass.github.io/bid-watch/](https://solopass.github
 
 ## What it collects
 
-For each posting: town, region, source, kind (`open` or `upcoming`), title, bid number when the page has one, posted date when the page has one, due date when the page has one, category when the page has one, and the public URL. `first_seen` is the day the bid first appeared. A bid is marked closed when its due date has passed, or when a successful scrape of its listing no longer shows it. A town or feed that fails does not close the bids it previously found. Region is `MetroWest core`, `Next ring`, or `Statewide agency`.
+For each posting: town, region, state, sector, source, kind (`open` or `upcoming`), title, bid number when the page has one, posted date when the page has one, due date when the page has one, category when the page has one, and the public URL. `first_seen` is the day the bid first appeared. A bid is marked closed when its due date has passed, or when a successful scrape of its listing no longer shows it. A town or feed that fails does not close the bids it previously found. Region is `MetroWest core`, `Next ring`, `Outer ring`, `RI border`, `NH border`, `CT border`, or `Statewide agency`. Sector is `town`, `school`, `housing`, `agency`, or `utility`, so a school or housing-authority bid can be filtered without hiding the town. State is Massachusetts unless the row is a border town.
+
+Different hosts are fetched together, up to 8 at a time. The wait between requests to the same host stays at least 10 seconds.
 
 `data/status.json` records each town as `ok` or `error`, plus the time of the last successful scrape. The dashboard shows that as **Last updated** in America/New_York.
 
@@ -78,13 +80,29 @@ Add an object to the `sources` array in `sources.json`:
 }
 ```
 
-`region` is `MetroWest core` or `Next ring`. Statewide boards live in `feeds`, not in this town list. The dashboard groups towns by region and adds `Statewide agency` for DCAMM, Massport, MassDevelopment, and the MBTA.
+`region` is `MetroWest core`, `Next ring`, `Outer ring`, `RI border`, `NH border`, or `CT border`. Optional `sector` is `town` (the default), `school`, or `housing`. Optional `state` defaults to Massachusetts. Statewide boards live in `feeds`, not in this town list. The dashboard groups towns by region and adds `Statewide agency` for DCAMM, Massport, MassDevelopment, and the MBTA.
 
-Use `bidnet`, `wordpress`, or `documents` when the page matches those shapes. CivicPlus options:
+Use `bidnet`, `wordpress`, `documents`, or `notices` when the page matches those shapes. `notices` is a plain HTML list of bid documents or a heading with a bid-opening date. CivicPlus options:
 
 - `when_contract`: `skip` (default) or `detail` for "Upon Contract" rows.
 - `when_blank`: `detail` (default) or `skip` when the close line is empty.
 - `detail_if_missing_number`: open the detail page when a dated row has no bid number.
+
+## Pages that were checked and not added
+
+These were public-page or robots problems, or there was no bid list to parse. COMMBUYS still covers a Massachusetts organization when its name matches a covered town or a regional district already in the matcher (Dover-Sherborn, Acton-Boxborough, Mendon-Upton, Nashoba, Tri-County, and the vocational districts).
+
+- Millis, Northborough, Dedham, Westwood, Newton, Woonsocket, Burrillville, Smithfield, Thompson, and Putnam: the bid URL answered with a human check or an access denial.
+- Hopedale, Foxborough, Walpole, Norwood, Sharon, Boylston, Bolton's Bids.aspx, Woodstock, Killingly, and Pawtucket: no CivicPlus bid module at the public URL.
+- Berlin: procurement page is behind a captcha.
+- Nashoba Regional, Natick Public Schools, and Marlborough Public Schools: the bid page is a client challenge. Nashoba stays on COMMBUYS.
+- Dover-Sherborn, Acton-Boxborough, and Mendon-Upton: no separate public bid list. Their COMMBUYS organization names are matched.
+- Tri-County and Hopkinton Public Schools: no working public bid page.
+- Hudson Public Schools facilities page: no bid documents.
+- Providence purchasing and the Rhode Island OSP bid board: the public page is a landing page, not a filterable solicitation list. RIVIP's external search is a form with no open list.
+- New Hampshire Purchasing: the site returned access denied.
+- Connecticut CTsource: the public page links to guides. The bid board itself is not an open HTML list.
+- Central Register: still skipped. Its bulletin list is disallowed by robots.txt.
 
 Run it locally with Python 3.11 or newer. The standard library is enough:
 

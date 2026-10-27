@@ -12,6 +12,7 @@ import json
 import sys
 import time
 import traceback
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from pathlib import Path
 
@@ -49,6 +50,8 @@ from scraper.parsers.mbta import ParseError as MbtaParseError
 from scraper.parsers.mbta import due_from_detail, parse_current_solicitations, parse_future_solicitations
 from scraper.parsers.msba import ParseError as MsbaParseError
 from scraper.parsers.msba import latest_bid_schedule_url, parse_bid_schedule
+from scraper.parsers.notices import ParseError as NoticeParseError
+from scraper.parsers.notices import parse_notice_page
 from scraper.parsers.wordpress import ParseError as WpParseError
 from scraper.parsers.wordpress import enrich_wordpress_post, parse_wordpress_list
 from scraper.store import (
@@ -82,8 +85,15 @@ PARSE_ERRORS = (
     MassDevParseError,
     MbtaParseError,
     MsbaParseError,
+    NoticeParseError,
     LegalNoticeError,
 )
+STATE_BY_REGION = {
+    "RI border": "Rhode Island",
+    "NH border": "New Hampshire",
+    "CT border": "Connecticut",
+}
+AGENCY_SOURCES = {"bid_express", "massdevelopment", "mbta", "msba"}
 FEED_LABELS = {
     "legal_notices": "Legal notices",
     "bid_express": "Bid Express",
@@ -121,64 +131,43 @@ def main() -> int:
     fresh: list[dict] = []
     source_reports: list[dict] = []
     successful: set[str] = set()
+    workers = max(1, int(config.get("workers") or 8))
+    feeds = config.get("feeds") or []
+    previous_feeds = previous_status.get("feeds") or {}
 
-    for source in config["sources"]:
-        report = {
-            "town": source["town"],
-            "type": source["type"],
-            "url": canonical_url(source["url"]),
-            "status": "ok",
-            "count": 0,
-            "message": None,
-        }
-        try:
-            found = scrape_source(source, fetcher, known)
-        except (FetchError, RobotsDisallowed, *PARSE_ERRORS) as exc:
-            report["status"] = "error"
-            report["message"] = str(exc)
-            print(f"ERROR {source['town']} ({source['type']}): {exc}", flush=True)
-        except Exception as exc:  # a parser bug should not sink the other towns
-            report["status"] = "error"
-            report["message"] = f"{type(exc).__name__}: {exc}"
-            print(f"ERROR {source['town']} ({source['type']}): {exc}", flush=True)
-            traceback.print_exc()
-        else:
-            report["count"] = len(found)
-            successful.add(canonical_url(source["url"]))
-            fresh.extend(found)
-            print(f"OK {source['town']} ({source['type']}): {len(found)} listing(s)", flush=True)
+    # Different hosts run together. The fetcher still waits 10 seconds
+    # between requests to the same host.
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        town_futures = [
+            pool.submit(_scrape_listed_source, source, fetcher, known)
+            for source in config["sources"]
+        ]
+        feed_futures = [
+            pool.submit(
+                _scrape_one_feed,
+                feed,
+                fetcher,
+                known,
+                town_regions,
+                previous_feeds,
+                now,
+            )
+            for feed in feeds
+        ]
+        commbuys_future = pool.submit(_run_commbuys, fetcher, previous_status, now)
+        town_results = [future.result() for future in town_futures]
+        feed_results = [future.result() for future in feed_futures]
+        commbuys_rows, commbuys_report = commbuys_future.result()
+
+    for report, found in town_results:
         source_reports.append(report)
+        if report["status"] == "ok":
+            successful.add(report["url"])
+            fresh.extend(found)
 
-    feed_items, feed_ok, feed_reports, legal_notices = collect_feeds(
-        config, fetcher, known, town_regions, previous_status, now
+    feed_items, feed_ok, feed_reports, legal_notices = _finish_feeds(
+        feed_results, previous_feeds, now
     )
-
-    commbuys_rows = None
-    commbuys_report = _commbuys_status(previous_status, now)
-    try:
-        commbuys_rows = fetch_open_solicitations(fetcher)
-    except (CommBuysError, FetchError, RobotsDisallowed) as exc:
-        commbuys_report["status"] = "error"
-        commbuys_report["message"] = str(exc)
-        commbuys_report["last_success"] = (previous_status.get("commbuys") or {}).get("last_success")
-        commbuys_report["last_error"] = _iso(now)
-        print(f"COMMBUYS check failed ({exc}); flags left unknown where unset", flush=True)
-    except Exception as exc:
-        commbuys_report["status"] = "error"
-        commbuys_report["message"] = f"{type(exc).__name__}: {exc}"
-        commbuys_report["last_success"] = (previous_status.get("commbuys") or {}).get("last_success")
-        commbuys_report["last_error"] = _iso(now)
-        print(f"COMMBUYS check failed ({exc}); flags left unknown where unset", flush=True)
-        traceback.print_exc()
-    else:
-        commbuys_report = {
-            "status": "ok",
-            "last_success": _iso(now),
-            "last_error": None,
-            "message": f"{len(commbuys_rows)} open solicitations",
-            "rows": len(commbuys_rows),
-        }
-        print(f"OK COMMBUYS: {len(commbuys_rows)} open solicitations", flush=True)
 
     # Merge town pages first. COMMBUYS rows that match a town bid, open or
     # closed, update that bid instead of being copied. Unmatched covered
@@ -281,15 +270,136 @@ def main() -> int:
     return 0
 
 
-def collect_feeds(config, fetcher, known, town_regions, previous_status, now):
-    """Statewide pages that are not town bid lists.
+def _scrape_listed_source(source: dict, fetcher: PoliteFetcher, known: dict):
+    report = {
+        "town": source["town"],
+        "type": source["type"],
+        "url": canonical_url(source["url"]),
+        "status": "ok",
+        "count": 0,
+        "message": None,
+    }
+    try:
+        found = scrape_source(source, fetcher, known)
+    except (FetchError, RobotsDisallowed, *PARSE_ERRORS) as exc:
+        report["status"] = "error"
+        report["message"] = str(exc)
+        print(f"ERROR {source['town']} ({source['type']}): {exc}", flush=True)
+        return report, []
+    except Exception as exc:  # a parser bug should not sink the other towns
+        report["status"] = "error"
+        report["message"] = f"{type(exc).__name__}: {exc}"
+        print(f"ERROR {source['town']} ({source['type']}): {exc}", flush=True)
+        traceback.print_exc()
+        return report, []
+    report["count"] = len(found)
+    print(f"OK {source['town']} ({source['type']}): {len(found)} listing(s)", flush=True)
+    return report, found
 
-    Legal notices are returned separately so they can be matched against
-    town and COMMBUYS rows before they are stored. An unchanged MSBA PDF
-    is not downloaded and is not treated as a fresh listing, so the
-    projects already stored stay in place.
-    """
-    previous_feeds = previous_status.get("feeds") or {}
+
+def _run_commbuys(fetcher, previous_status, now):
+    report = _commbuys_status(previous_status, now)
+    try:
+        rows = fetch_open_solicitations(fetcher)
+    except (CommBuysError, FetchError, RobotsDisallowed) as exc:
+        report["status"] = "error"
+        report["message"] = str(exc)
+        report["last_success"] = (previous_status.get("commbuys") or {}).get("last_success")
+        report["last_error"] = _iso(now)
+        print(f"COMMBUYS check failed ({exc}); flags left unknown where unset", flush=True)
+        return None, report
+    except Exception as exc:
+        report["status"] = "error"
+        report["message"] = f"{type(exc).__name__}: {exc}"
+        report["last_success"] = (previous_status.get("commbuys") or {}).get("last_success")
+        report["last_error"] = _iso(now)
+        print(f"COMMBUYS check failed ({exc}); flags left unknown where unset", flush=True)
+        traceback.print_exc()
+        return None, report
+    print(f"OK COMMBUYS: {len(rows)} open solicitations", flush=True)
+    return rows, {
+        "status": "ok",
+        "last_success": _iso(now),
+        "last_error": None,
+        "message": f"{len(rows)} open solicitations",
+        "rows": len(rows),
+    }
+
+
+def _scrape_one_feed(feed, fetcher, known, town_regions, previous_feeds, now) -> dict:
+    """One statewide page. Legal notices stay unmatched until the main thread."""
+    kind = feed.get("type")
+    url = feed.get("url") or ""
+    agency = feed.get("agency") or kind
+    result = {
+        "kind": kind,
+        "agency": agency,
+        "items": [],
+        "ok_url": None,
+        "part": None,
+        "error": None,
+        "report": None,
+        "legal": None,
+    }
+    try:
+        if kind == "bid_express":
+            html = fetcher.get(url)
+            _reject_challenge(html, url)
+            found = parse_bid_express(html, url, agency)
+            result["items"] = found
+            result["ok_url"] = canonical_url(url)
+            result["part"] = f"{agency} {len(found)}"
+        elif kind == "massdevelopment":
+            html = fetcher.get(url)
+            _reject_challenge(html, url)
+            found = parse_massdevelopment(html, url)
+            result["items"] = found
+            result["ok_url"] = canonical_url(url)
+            result["report"] = _feed_ok(now, "massdevelopment", f"{len(found)} posting(s)")
+        elif kind == "mbta_current":
+            html = fetcher.get(url)
+            _reject_challenge(html, url)
+            found = parse_current_solicitations(html, url)
+            _finish_mbta(found, fetcher, known)
+            result["items"] = found
+            result["ok_url"] = canonical_url(url)
+            result["part"] = f"{len(found)} current"
+        elif kind == "mbta_future":
+            html = fetcher.get(url)
+            _reject_challenge(html, url)
+            found = parse_future_solicitations(html, url)
+            result["items"] = found
+            result["ok_url"] = canonical_url(url)
+            result["part"] = f"{len(found)} upcoming"
+        elif kind == "msba":
+            found, refreshed, pdf_url, message = _scrape_msba(
+                feed, fetcher, town_regions, previous_feeds.get("msba") or {}
+            )
+            report = _feed_ok(now, "msba", message)
+            report["pdf_url"] = pdf_url
+            result["report"] = report
+            if refreshed:
+                result["items"] = found
+                result["ok_url"] = canonical_url(url)
+        elif kind == "legal_notice":
+            notices, message = fetch_notices(fetcher, town_regions)
+            result["legal"] = notices
+            result["report"] = _feed_ok(now, "legal_notices", message)
+        else:
+            raise FetchError(f"unknown feed type {kind!r}")
+    except (FetchError, RobotsDisallowed, *PARSE_ERRORS) as exc:
+        result["error"] = str(exc)
+        print(f"ERROR {agency} ({kind}): {exc}", flush=True)
+    except Exception as exc:
+        traceback.print_exc()
+        result["error"] = f"{type(exc).__name__}: {exc}"
+        print(f"ERROR {agency} ({kind}): {exc}", flush=True)
+    else:
+        print(f"OK {agency} ({kind})", flush=True)
+    return result
+
+
+def _finish_feeds(results: list[dict], previous_feeds: dict, now):
     items: list[dict] = []
     ok_sources: set[str] = set()
     reports: dict[str, dict] = {}
@@ -298,66 +408,31 @@ def collect_feeds(config, fetcher, known, town_regions, previous_status, now):
         "bid_express": {"parts": [], "errors": []},
         "mbta": {"parts": [], "errors": []},
     }
-
-    for feed in config.get("feeds") or []:
-        kind = feed.get("type")
-        url = feed.get("url") or ""
-        agency = feed.get("agency") or kind
-        try:
-            if kind == "bid_express":
-                html = fetcher.get(url)
-                _reject_challenge(html, url)
-                found = parse_bid_express(html, url, agency)
-                items.extend(found)
-                ok_sources.add(canonical_url(url))
-                grouped["bid_express"]["parts"].append(f"{agency} {len(found)}")
-            elif kind == "massdevelopment":
-                html = fetcher.get(url)
-                _reject_challenge(html, url)
-                found = parse_massdevelopment(html, url)
-                items.extend(found)
-                ok_sources.add(canonical_url(url))
-                reports["massdevelopment"] = _feed_ok(
-                    now, "massdevelopment", f"{len(found)} posting(s)"
-                )
-            elif kind == "mbta_current":
-                html = fetcher.get(url)
-                _reject_challenge(html, url)
-                found = parse_current_solicitations(html, url)
-                _finish_mbta(found, fetcher, known)
-                items.extend(found)
-                ok_sources.add(canonical_url(url))
-                grouped["mbta"]["parts"].append(f"{len(found)} current")
-            elif kind == "mbta_future":
-                html = fetcher.get(url)
-                _reject_challenge(html, url)
-                found = parse_future_solicitations(html, url)
-                items.extend(found)
-                ok_sources.add(canonical_url(url))
-                grouped["mbta"]["parts"].append(f"{len(found)} upcoming")
-            elif kind == "msba":
-                found, refreshed, pdf_url, message = _scrape_msba(
-                    feed, fetcher, town_regions, previous_feeds.get("msba") or {}
-                )
-                report = _feed_ok(now, "msba", message)
-                report["pdf_url"] = pdf_url
-                reports["msba"] = report
-                if refreshed:
-                    items.extend(found)
-                    ok_sources.add(canonical_url(url))
-            elif kind == "legal_notice":
-                legal_notices, message = fetch_notices(fetcher, town_regions)
-                reports["legal_notices"] = _feed_ok(now, "legal_notices", message)
-            else:
-                raise FetchError(f"unknown feed type {kind!r}")
-        except (FetchError, RobotsDisallowed, *PARSE_ERRORS) as exc:
-            _note_feed_error(grouped, reports, previous_feeds, now, kind, agency, exc)
-        except Exception as exc:
-            traceback.print_exc()
-            _note_feed_error(grouped, reports, previous_feeds, now, kind, agency, exc)
-        else:
-            print(f"OK {agency} ({kind})", flush=True)
-
+    for result in results:
+        kind = result["kind"]
+        if result["error"]:
+            _note_feed_error(
+                grouped,
+                reports,
+                previous_feeds,
+                now,
+                kind,
+                result["agency"],
+                result["error"],
+            )
+            continue
+        items.extend(result["items"])
+        if result["ok_url"]:
+            ok_sources.add(result["ok_url"])
+        if result["part"] and kind == "bid_express":
+            grouped["bid_express"]["parts"].append(result["part"])
+        elif result["part"] and kind in ("mbta_current", "mbta_future"):
+            grouped["mbta"]["parts"].append(result["part"])
+        if result["report"]:
+            key = "legal_notices" if kind == "legal_notice" else kind
+            reports[key] = result["report"]
+        if result["legal"] is not None:
+            legal_notices = result["legal"]
     for key in ("bid_express", "mbta"):
         parts = grouped[key]["parts"]
         errors = grouped[key]["errors"]
@@ -421,7 +496,6 @@ def _finish_mbta(items: list[dict], fetcher: PoliteFetcher, known: dict) -> None
 
 
 def _note_feed_error(grouped, reports, previous_feeds, now, kind, agency, exc) -> None:
-    print(f"ERROR {agency} ({kind}): {exc}", flush=True)
     if kind == "bid_express":
         grouped["bid_express"]["errors"].append(f"{agency}: {exc}")
         return
@@ -502,12 +576,18 @@ def scrape_source(source: dict, fetcher: PoliteFetcher, known: dict) -> list[dic
         listings = _finish_wordpress(listings, options, fetcher, known)
     elif kind == "documents":
         listings = parse_document_page(html, page_url)
+    elif kind == "notices":
+        listings = parse_notice_page(html, page_url)
     else:
         raise FetchError(f"unknown page type {kind!r}")
     source_url = canonical_url(page_url)
     for item in listings:
         item["town"] = source["town"]
         item["region"] = source.get("region")
+        item["sector"] = source.get("sector") or "town"
+        item["state"] = source.get("state") or STATE_BY_REGION.get(
+            source.get("region") or "", "Massachusetts"
+        )
         item["source"] = "town"
         item["kind"] = item.get("kind") or "open"
         item["source_url"] = source_url
@@ -642,6 +722,15 @@ def _label_bids(bids: list[dict], town_regions: dict[str, str]) -> None:
             bid["source"] = "town"
         if not bid.get("region"):
             bid["region"] = town_regions.get(bid.get("town") or "")
+        if bid.get("source") in AGENCY_SOURCES:
+            bid["sector"] = "agency"
+        elif not bid.get("sector"):
+            bid["sector"] = "town"
+        border = STATE_BY_REGION.get(bid.get("region") or "")
+        if border:
+            bid["state"] = border
+        elif not bid.get("state"):
+            bid["state"] = "Massachusetts"
 
 
 def _central_register_status() -> dict:
@@ -740,7 +829,30 @@ def _print_summary(town_order, bids, status_doc, opened, elapsed: float) -> None
             and bid.get("kind") == "upcoming"
         )
         print(f"{label:<18} {open_count:>4}  {upcoming_count:>8}", flush=True)
-    print("\nTown                  region           open  closed  status", flush=True)
+    print("\nRegion                 open", flush=True)
+    regions = []
+    for bid in bids:
+        region = bid.get("region") or ""
+        if region and region not in regions:
+            regions.append(region)
+    for region in regions:
+        open_count = sum(
+            1
+            for bid in bids
+            if bid.get("region") == region and bid.get("status") == "open" and (bid.get("kind") or "open") == "open"
+        )
+        print(f"{region:<22} {open_count:>4}", flush=True)
+    print("\nSector                 open", flush=True)
+    for sector in ("town", "school", "housing", "agency", "utility"):
+        open_count = sum(
+            1
+            for bid in bids
+            if (bid.get("sector") or "town") == sector
+            and bid.get("status") == "open"
+            and (bid.get("kind") or "open") == "open"
+        )
+        print(f"{sector:<22} {open_count:>4}", flush=True)
+    print("\nTown                           region            open  closed  status", flush=True)
     for town in town_order:
         info = (status_doc.get("towns") or {}).get(town) or {}
         open_count = sum(1 for bid in bids if bid["town"] == town and bid["status"] == "open")
@@ -753,7 +865,7 @@ def _print_summary(town_order, bids, status_doc, opened, elapsed: float) -> None
         region = region or info.get("region") or ""
         state = info.get("status") or "n/a"
         message = info.get("message") or ""
-        print(f"{town:<21} {region:<16} {open_count:>4}  {closed_count:>6}  {state}  {message}", flush=True)
+        print(f"{town:<30} {region:<16} {open_count:>4}  {closed_count:>6}  {state}  {message}", flush=True)
     dupes = _duplicate_open(bids)
     print(f"\nDuplicate open bids: {len(dupes)}", flush=True)
     for kind, key in dupes:
