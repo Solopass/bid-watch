@@ -12,6 +12,10 @@ import zlib
 
 
 def pdf_to_text(data: bytes) -> str:
+    # Agenda packets can be image-heavy. Skip those instead of scanning
+    # every byte of a multi-megabyte content stream.
+    if len(data) > 800_000:
+        return ""
     chunks = []
     for stream in _streams(data):
         text = text_from_content(stream)
@@ -43,11 +47,16 @@ def _streams(data: bytes):
         if end < 0:
             continue
         raw = data[start:end].rstrip(b"\r\n")
-        try:
-            yield zlib.decompress(raw)
+        if len(raw) > 200_000:
             continue
+        try:
+            decoded = zlib.decompress(raw)
         except zlib.error:
-            pass
+            decoded = b""
+        if decoded:
+            if len(decoded) <= 200_000:
+                yield decoded
+            continue
         if b"Tj" in raw or b"TJ" in raw:
             yield raw
 

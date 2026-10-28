@@ -27,6 +27,8 @@ jobs:
           python-version: "3.12"
 
       - name: Scrape public bid pages
+        env:
+          SAM_GOV_API_KEY: ${{ secrets.SAM_GOV_API_KEY }}
         run: python -m scraper.scrape
 
       - name: Commit data if it changed

@@ -297,6 +297,7 @@
           <option value="MetroWest core">MetroWest core</option>
           <option value="Next ring">Next ring</option>
           <option value="Statewide agency">Statewide agency</option>
+          <option value="Cities">Cities</option>
           <option value="Outer ring">Outer ring</option>
           <option value="RI border">RI border</option>
           <option value="NH border">NH border</option>
@@ -323,6 +324,7 @@
           <option value="college">College</option>
           <option value="hospital">Hospital</option>
           <option value="private">Private</option>
+          <option value="federal">Federal</option>
         </select>
       </label>
       <label>Trade
@@ -348,6 +350,9 @@
           <option value="dcr">DCR</option>
           <option value="mapc">MAPC</option>
           <option value="plan_room">Plan room invite</option>
+          <option value="sam_gov">SAM.gov</option>
+          <option value="boston_planning">Boston Planning</option>
+          <option value="planning_board">Planning board</option>
           <option value="central_register">Central Register</option>
         </select>
       </label>
@@ -362,6 +367,7 @@
       <div class="segment" id="kind-segment" role="group" aria-label="Open bids or upcoming projects">
         <button type="button" data-kind="open" aria-pressed="true">Open bids</button>
         <button type="button" data-kind="upcoming" aria-pressed="false">Upcoming projects</button>
+        <button type="button" data-kind="lead" aria-pressed="false">Early leads</button>
       </div>
       <div class="segment" id="origin-segment" role="group" aria-label="Town site or COMMBUYS">
         <button type="button" data-view="all" aria-pressed="true">All</button>
@@ -400,6 +406,7 @@
     Sector separates town, school, housing, agency, college, hospital, and private bids. State separates Massachusetts from the RI and NH border towns.
     Cladding only keeps rows whose title or category names exterior cladding, siding, facade, storefront, curtain wall, or a related envelope term. A Cladding badge marks those rows.
     Plan room invite rows are loaded only when this computer has data/invites.local.json. That file is not part of the public site.
+    Early leads are Boston Planning development projects and planning-board agenda items. They stay off the open-bid list. Cities is the region for Boston, Worcester, Cambridge, Somerville, Quincy, and Lowell.
     <a href="https://github.com/Solopass/bid-watch">Source</a>
   </footer>
   <script>
@@ -424,6 +431,9 @@
       dcr: "DCR",
       mapc: "MAPC",
       plan_room: "Plan room invite",
+      sam_gov: "SAM.gov",
+      boston_planning: "Boston Planning",
+      planning_board: "Planning board",
       central_register: "Central Register",
     };
     const REGION_ORDER = [
@@ -434,6 +444,7 @@
       "NH border",
       "CT border",
       "Statewide agency",
+      "Cities",
     ];
     const SECTOR_LABELS = {
       town: "Town",
@@ -444,6 +455,7 @@
       college: "College",
       hospital: "Hospital",
       private: "Private",
+      federal: "Federal",
     };
     const FEED_ORDER = [
       ["legal_notices", "Legal notices"],
@@ -454,6 +466,8 @@
       ["massdot", "MassDOT"],
       ["dcr", "DCR"],
       ["mapc", "MAPC"],
+      ["sam_gov", "SAM.gov"],
+      ["boston_planning", "Boston Planning"],
     ];
 
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -599,8 +613,9 @@
       body.replaceChildren();
       const openCount = state.bids.filter((bid) => bid.status === "open" && (bid.kind || "open") === "open").length;
       const upcomingCount = state.bids.filter((bid) => bid.status === "open" && bid.kind === "upcoming").length;
+      const leadCount = state.bids.filter((bid) => bid.status === "open" && bid.kind === "lead").length;
       document.getElementById("count").textContent =
-        rows.length + " shown · " + openCount + " open bids · " + upcomingCount + " upcoming";
+        rows.length + " shown · " + openCount + " open bids · " + upcomingCount + " upcoming · " + leadCount + " early leads";
       document.getElementById("empty").hidden = rows.length !== 0;
       document.querySelector(".table-wrap").hidden = rows.length === 0;
       for (const bid of rows) {

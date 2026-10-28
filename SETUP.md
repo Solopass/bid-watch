@@ -38,3 +38,12 @@ Skip this if the Sheet is enough.
 3. That writes `data/invites.local.json`. The file is listed in `.gitignore`. Open the dashboard from a local web server (not the public Pages URL). A note at the top says the private rows are local. Sector **Private** and source **Plan room invite** show them. The cladding tag uses the project name and the scope text.
 
 Do not commit `data/invites.local.json` or paste the Sheet into `data/bids.json`.
+
+## SAM.gov federal opportunities
+
+The scraper reads active construction solicitations from the public Opportunities API when a key is available. It makes two calls per run (Massachusetts, then New Hampshire) and does not page further. Rhode Island is not requested on that run so the daily cap stays low. Award notices are ignored. NAICS codes starting with 236, 237, or 238 are kept.
+
+1. Sign in at [sam.gov](https://sam.gov) and open Account Details. Request a public API key. This is not a plan-room login.
+2. In the GitHub repository, open **Settings → Secrets and variables → Actions → New repository secret**.
+3. Name the secret `SAM_GOV_API_KEY`. Paste the key as the value. Do not put the key in a file in this repository.
+4. The daily workflow already passes that secret into the scrape. If the secret is missing, the run records SAM.gov as skipped and does not call the API.

@@ -614,6 +614,63 @@
       "type": "notices",
       "url": "https://marlborohousing.org/Procurement",
       "notes": "Marlborough Housing Authority. Open RFP documents only; closed headings and HUD forms are skipped."
+    },
+    {
+      "town": "Boston",
+      "region": "Cities",
+      "state": "Massachusetts",
+      "type": "boston",
+      "url": "https://www.boston.gov/bid-listings",
+      "notes": "Public Bids and RFPs list. The supplier portal at procurement.boston.gov requires a login and is not opened."
+    },
+    {
+      "town": "Boston Housing",
+      "region": "Cities",
+      "sector": "housing",
+      "state": "Massachusetts",
+      "type": "bha",
+      "url": "https://www.bostonhousing.org/en/Bid-Opportunities/Current-Bid-Opportunities.aspx",
+      "notes": "Boston Housing Authority current opportunities. Descriptions are on the same page."
+    },
+    {
+      "town": "Worcester",
+      "region": "Cities",
+      "state": "Massachusetts",
+      "type": "worcester",
+      "url": "https://www.worcesterma.gov/finance/purchasing-bids/bids/open-bids",
+      "notes": "City open-bid table. Worcester Public Schools purchases on this list are included. A separate schools site was not a bid list."
+    },
+    {
+      "town": "Cambridge",
+      "region": "Cities",
+      "state": "Massachusetts",
+      "type": "skipped",
+      "url": "https://www.cambridgema.gov/Departments/Purchasing/currentbidlist",
+      "notes": "Skipped: the current bid list and the OpenGov portal answered with a human check. City of Cambridge, Cambridge Public Schools, and Cambridge Housing Authority rows on COMMBUYS are kept."
+    },
+    {
+      "town": "Somerville",
+      "region": "Cities",
+      "state": "Massachusetts",
+      "type": "somerville",
+      "url": "https://www.somervillema.gov/departments/finance/procurement-and-contracting-services",
+      "notes": "Open bids table on the procurement page."
+    },
+    {
+      "town": "Quincy",
+      "region": "Cities",
+      "state": "Massachusetts",
+      "type": "quincy",
+      "url": "https://www.quincyma.gov/departments/purchasing/current_bids.php",
+      "notes": "Current bids table. robots.txt is absent, so the page is allowed."
+    },
+    {
+      "town": "Lowell",
+      "region": "Cities",
+      "state": "Massachusetts",
+      "type": "civicplus",
+      "url": "https://www.lowellma.gov/Bids.aspx",
+      "notes": "CivicPlus bid module."
     }
   ],
   "feeds": [
@@ -685,6 +742,20 @@
       "agency": "MAPC",
       "url": "https://www.mapc.org/about-mapc/legal-notices-meetings/",
       "notes": "Public legal notices. Kept when the notice names a covered town, MetroWest, Worcester, or Northborough. South Shore and statewide collective buys are dropped."
+    },
+    {
+      "id": "boston_planning",
+      "type": "boston_planning",
+      "agency": "Boston Planning",
+      "url": "https://www.bostonplans.org/projects/development-projects",
+      "notes": "Public development projects under review or approved. Residential-only filings are left out. kind lead."
+    },
+    {
+      "id": "sam_gov",
+      "type": "sam_gov",
+      "agency": "SAM.gov",
+      "url": "https://api.sam.gov/opportunities/v2/search",
+      "notes": "Official Opportunities API. Two calls (MA and NH) when SAM_GOV_API_KEY is set. Skipped with no request when the key is absent. Active construction solicitations only."
     }
   ],
   "workers": 8

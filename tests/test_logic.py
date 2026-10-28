@@ -17,6 +17,9 @@ from scraper.parsers.massdevelopment import parse_massdevelopment
 from scraper.parsers.mbta import parse_current_solicitations, parse_future_solicitations
 from scraper.parsers.msba import parse_bid_schedule_text
 from scraper.parsers.agencies import mapc_in_range, names_outside_place, parse_dcr, parse_mapc, parse_massdot
+from scraper.parsers.agendas import agenda_links, lead_lines
+from scraper.parsers.cities import parse_boston_bids, parse_boston_projects
+from scraper.samgov import filter_opportunities, search_opportunities
 from scraper.places import match_location, match_organization, town_regions_from_config
 from scraper.trades import cladding_trade
 from scraper.dates import format_due, is_past, parse_when
@@ -450,6 +453,10 @@ class ScheduleTest(unittest.TestCase):
         self.assertIn("MSBA", page)
         self.assertIn("Statewide agency", page)
         self.assertIn("Upcoming projects", page)
+        self.assertIn("Early leads", page)
+        self.assertIn("Cities", page)
+        self.assertIn(">Federal<", page)
+        self.assertIn("SAM.gov", page)
         self.assertNotIn("ghp_", page)
         self.assertNotIn("github_pat_", page)
         self.assertNotIn("token", page.lower())
@@ -506,8 +513,12 @@ class ScheduleTest(unittest.TestCase):
                 "massdot",
                 "dcr",
                 "mapc",
+                "boston_planning",
+                "sam_gov",
             },
         )
+        workflow = (ROOT / ".github" / "workflows" / "scrape.yml").read_text(encoding="utf-8")
+        self.assertIn("SAM_GOV_API_KEY", workflow)
 
 
 class StatewideSourceTest(unittest.TestCase):
@@ -990,7 +1001,13 @@ class AgencyFeedTest(unittest.TestCase):
         self.assertFalse(mapc_in_range("SS 2027 PW2", regions))
         self.assertFalse(mapc_in_range("FCAM 2027 Ambulances", regions))
         self.assertTrue(mapc_in_range("CRHSAC24 Worcester Area Interoperability", regions))
-        self.assertTrue(names_outside_place("South Boston Neighborhood Working Group", regions))
+        self.assertFalse(
+            names_outside_place(
+                "South Boston Neighborhood Working Group",
+                {"Boston": "Cities", "Needham": "Next ring"},
+            )
+        )
+        self.assertTrue(names_outside_place("Chelsea office renovation", {"Boston": "Cities"}))
         self.assertFalse(names_outside_place("Needham Dewatering Drainage Line", regions))
         rows = [
             {
@@ -1029,9 +1046,137 @@ class AgencyFeedTest(unittest.TestCase):
             "bid_number": "CRHSAC24",
         }]
         extra = covered_rows(page, rows, regions)
-        self.assertEqual([item["bid_number"] for item in extra], ["BD-NEED"])
-        self.assertEqual(extra[0]["town"], "MWRA")
-        self.assertEqual(extra[0]["region"], "Statewide agency")
+        self.assertEqual(sorted(item["bid_number"] for item in extra), ["BD-BOS", "BD-NEED"])
+        self.assertTrue(all(item["town"] == "MWRA" for item in extra))
+
+
+class CityAndSamTest(unittest.TestCase):
+    def test_city_parsers_and_boston_projects(self):
+        boston = parse_boston_bids(
+            """
+            <div class="views-row">
+              <div class="n-li-t"><a href="/bid-listings/ev1">Curtain wall at City Hall</a></div>
+              <span class="dl-t">Due:</span><span class="dl-d">01/06/2027 - 5:00pm</span>
+            </div>
+            """,
+            "https://www.boston.gov/bid-listings",
+        )
+        self.assertEqual(boston[0]["title"], "Curtain wall at City Hall")
+        self.assertTrue(boston[0]["due"].startswith("2027-01-06"))
+        projects = parse_boston_projects(
+            """
+            <table class='devprojectTable projectTable'>
+              <caption><a href='/projects/development-projects/liberty'>Liberty Mutual</a></caption>
+              <h2>Letter of Intent<span>Project Status</span></h2>
+              <h2><span>Project Type</span></h2>
+              <h2>Oct 14 2026</h2>
+            </table>
+            <table class='devprojectTable projectTable'>
+              <caption><a href='/projects/development-projects/house'>295 Waldemar</a></caption>
+              <h2>Under Review<span>Project Status</span></h2>
+              <h2>Rental / Residential<span>Project Type</span></h2>
+              <h2>Oct 16 2026</h2>
+            </table>
+            <table class='devprojectTable projectTable'>
+              <caption><a href='/projects/development-projects/lab'>Kendall Lab</a></caption>
+              <h2>Under Review<span>Project Status</span></h2>
+              <h2>Commercial / Lab<span>Project Type</span></h2>
+              <h2>Oct 10 2026</h2>
+            </table>
+            """,
+            "https://www.bostonplans.org/projects/development-projects",
+        )
+        names = [row["title"] for row in projects]
+        self.assertIn("Liberty Mutual", names)
+        self.assertIn("Kendall Lab", names)
+        self.assertNotIn("295 Waldemar", names)
+        self.assertTrue(all(row["kind"] == "lead" for row in projects))
+
+    def test_sam_fixture_keeps_construction_solicitations(self):
+        regions = town_regions_from_config()
+        records = [
+            {
+                "noticeId": "keep-ma",
+                "title": "Siding replacement, curtain wall",
+                "solicitationNumber": "W912WJ-26-B-0001",
+                "type": "Solicitation",
+                "baseType": "Solicitation",
+                "active": "Yes",
+                "naicsCode": "238170",
+                "responseDeadLine": "12/15/2026",
+                "uiLink": "https://sam.gov/opp/keep-ma/view",
+                "department": "DEPT OF DEFENSE",
+                "placeOfPerformance": {"city": {"name": "Natick"}, "state": {"code": "MA"}},
+            },
+            {
+                "noticeId": "award",
+                "title": "Awarded roof",
+                "type": "Award Notice",
+                "baseType": "Solicitation",
+                "active": "Yes",
+                "naicsCode": "236220",
+                "placeOfPerformance": {"city": {"name": "Boston"}, "state": {"code": "MA"}},
+            },
+            {
+                "noticeId": "goods",
+                "title": "Office supplies",
+                "type": "Solicitation",
+                "active": "Yes",
+                "naicsCode": "339940",
+                "placeOfPerformance": {"city": {"name": "Boston"}, "state": {"code": "MA"}},
+            },
+            {
+                "noticeId": "nashua",
+                "title": "Hangar repair",
+                "type": "Solicitation",
+                "active": "Yes",
+                "naicsCode": "236220",
+                "uiLink": "https://sam.gov/opp/nashua/view",
+                "placeOfPerformance": {"city": {"name": "Nashua"}, "state": {"code": "NH"}},
+            },
+            {
+                "noticeId": "manchester",
+                "title": "Remote hangar",
+                "type": "Solicitation",
+                "active": "Yes",
+                "naicsCode": "236220",
+                "placeOfPerformance": {"city": {"name": "Manchester"}, "state": {"code": "NH"}},
+            },
+        ]
+        rows = filter_opportunities(records, regions)
+        ids = {row["bid_number"] or row["url"] for row in rows}
+        self.assertEqual(len(rows), 2)
+        kept = {row["title"] for row in rows}
+        self.assertIn("Siding replacement, curtain wall", kept)
+        self.assertIn("Hangar repair", kept)
+        natick = next(row for row in rows if "Siding" in row["title"])
+        self.assertEqual(natick["town"], "Natick")
+        self.assertEqual(natick["sector"], "federal")
+        nashua = next(row for row in rows if "Hangar" in row["title"])
+        self.assertEqual(nashua["town"], "Nashua")
+        self.assertEqual(nashua["state_code"], "NH")
+        from scraper.scrape import _sam_item
+        from scraper.trades import cladding_trade
+        labeled = _sam_item(natick, regions)
+        self.assertEqual(labeled["region"], "MetroWest core")
+        self.assertEqual(labeled["source"], "sam_gov")
+        self.assertEqual(cladding_trade(labeled["title"], labeled["category"]), "cladding")
+        skipped = search_opportunities(None, datetime(2026, 10, 28, tzinfo=EASTERN), api_key="")
+        self.assertEqual(skipped[1], "skipped")
+        self.assertIsNone(skipped[0])
+
+    def test_agenda_lines_keep_construction_items(self):
+        text = """
+        Approval of minutes
+        Site plan review for a new commercial building at 10 Main Street
+        Pledge of allegiance
+        Special permit for mixed-use development
+        Dog license hearing
+        """
+        lines = lead_lines(text)
+        self.assertEqual(len(lines), 2)
+        self.assertTrue(any("commercial" in line.casefold() for line in lines))
+        self.assertFalse(agenda_links("<p>No files</p>", "https://example.gov/AgendaCenter"))
 
 
 if __name__ == "__main__":
