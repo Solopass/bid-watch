@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27T12:04:56-04:00",
+  "updated": "2026-10-28T12:51:37-04:00",
   "bids": [
     {
       "town": "Framingham",
@@ -22,7 +22,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=922241",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -42,11 +42,11 @@
       "source_url": "https://www.framinghamma.gov/bids.aspx",
       "on_commbuys": "no",
       "commbuys_url": null,
-      "paper": null,
-      "legal_notice_url": null,
+      "paper": "MetroWest Daily News, The",
+      "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=925200",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -64,13 +64,37 @@
       "due_date": "2026-11-18T10:00:00-05:00",
       "url": "https://www.framinghamma.gov/bids.aspx?bidID=552",
       "source_url": "https://www.framinghamma.gov/bids.aspx",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-24-1270-TOF01-TOF01-134673&external=true",
+      "paper": "MetroWest Daily News, The",
+      "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=925199",
+      "status": "open",
+      "first_seen": "2026-10-26",
+      "last_seen": "2026-10-28",
+      "closed_on": null
+    },
+    {
+      "town": "Framingham",
+      "region": "MetroWest core",
+      "sector": "town",
+      "state": "Massachusetts",
+      "source": "town",
+      "kind": "open",
+      "title": "Nuisance Aquatic Vegetation Management Services For City Of Framingham’s Ponds And Sudbury River",
+      "bid_number": "9222",
+      "category": "Bids",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-11-19T10:00:00-05:00",
+      "url": "https://www.framinghamma.gov/bids.aspx?bidID=554",
+      "source_url": "https://www.framinghamma.gov/bids.aspx",
       "on_commbuys": "no",
       "commbuys_url": null,
       "paper": null,
       "legal_notice_url": null,
       "status": "open",
-      "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "first_seen": "2026-10-28",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -88,13 +112,13 @@
       "due_date": "2026-11-23T10:00:00-05:00",
       "url": "https://www.framinghamma.gov/bids.aspx?bidID=553",
       "source_url": "https://www.framinghamma.gov/bids.aspx",
-      "on_commbuys": "no",
-      "commbuys_url": null,
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-24-1270-TOF01-TOF01-134668&external=true",
       "paper": "MetroWest Daily News, The",
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=924465",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -118,7 +142,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -142,7 +166,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -166,7 +190,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -190,7 +214,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -214,7 +238,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -238,7 +262,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -262,7 +286,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -286,7 +310,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -306,11 +330,11 @@
       "source_url": "https://www.natickma.gov/bids.aspx",
       "on_commbuys": "yes",
       "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-23-1302-NAT01-CPO-134389&external=true",
-      "paper": "MetroWest Daily News, The",
-      "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=921656",
+      "paper": null,
+      "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -334,7 +358,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -358,7 +382,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -382,7 +406,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -406,7 +430,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -428,10 +452,10 @@
       "commbuys_url": null,
       "paper": "MetroWest Daily News, The",
       "legal_notice_url": null,
-      "status": "open",
+      "status": "closed",
       "first_seen": "2026-10-26",
       "last_seen": "2026-10-27",
-      "closed_on": null
+      "closed_on": "2026-10-28"
     },
     {
       "town": "Marlborough",
@@ -454,7 +478,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -478,7 +502,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -502,7 +526,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=922962",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -550,7 +574,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -574,7 +598,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -598,7 +622,31 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
+      "closed_on": null
+    },
+    {
+      "town": "Westborough",
+      "region": "MetroWest core",
+      "sector": "town",
+      "state": "Massachusetts",
+      "source": "town",
+      "kind": "open",
+      "title": "Route 9 Water Main Rehabilitation - Phase I",
+      "bid_number": "27-2100",
+      "category": null,
+      "trade": null,
+      "posted_date": "2026-10-28",
+      "due_date": "2026-11-19",
+      "url": "https://www.bidnetdirect.com/massachusetts/solicitations/open-bids/27-2100-Route-9-Water-Main-Rehabilitation-Phase-I/0000441650?origin=2&purchasingGroupId=12556701",
+      "source_url": "https://www.bidnetdirect.com/massachusetts/townwestborough",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1348-DPW34-131-134850&external=true",
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-28",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -622,7 +670,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -646,7 +694,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -670,7 +718,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -694,7 +742,31 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
+      "closed_on": null
+    },
+    {
+      "town": "Hopkinton",
+      "region": "MetroWest core",
+      "sector": "town",
+      "state": "Massachusetts",
+      "source": "commbuys",
+      "kind": "open",
+      "title": "GROVE STREET TANK REHABILIATION",
+      "bid_number": "BD-27-1282-HOPKI-PROCR-134822",
+      "category": "Town of Hopkinton",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-11-18T10:00:00-05:00",
+      "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1282-HOPKI-PROCR-134822&external=true",
+      "source_url": "https://www.commbuys.com/bso/view/search/external/advancedSearchBid.xhtml?openBids=true",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1282-HOPKI-PROCR-134822&external=true",
+      "paper": "MetroWest Daily News, The",
+      "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=925201",
+      "status": "open",
+      "first_seen": "2026-10-28",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -718,7 +790,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=923206",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -742,7 +814,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -766,7 +838,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=922916",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -790,7 +862,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -814,7 +886,7 @@
       "legal_notice_url": null,
       "status": "closed",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": "2026-10-26"
     },
     {
@@ -838,7 +910,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -862,7 +934,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -886,7 +958,31 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=924656",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
+      "closed_on": null
+    },
+    {
+      "town": "Holliston",
+      "region": "MetroWest core",
+      "sector": "town",
+      "state": "Massachusetts",
+      "source": "town",
+      "kind": "open",
+      "title": "Pinecrest Golf Course Cart Park Improvements IFB",
+      "bid_number": null,
+      "category": null,
+      "trade": null,
+      "posted_date": null,
+      "due_date": null,
+      "url": "https://www.townofholliston.us/DocumentCenter/View/11313/IFB--Pinecrest-Cart-Path-Improvements",
+      "source_url": "https://www.townofholliston.us/592/Procurement-Legal-Notices",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1627-BOS17-BOS17-134906&external=true",
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-28",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -982,7 +1078,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1006,7 +1102,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1030,7 +1126,31 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
+      "closed_on": null
+    },
+    {
+      "town": "Wellesley",
+      "region": "Next ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "source": "commbuys",
+      "kind": "open",
+      "title": "RFP No. 27E-10-27",
+      "bid_number": "BD-26-1344-00490-00490-134870",
+      "category": "Town of Wellesley",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-12-10T13:30:00-05:00",
+      "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-26-1344-00490-00490-134870&external=true",
+      "source_url": "https://www.commbuys.com/bso/view/search/external/advancedSearchBid.xhtml?openBids=true",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-26-1344-00490-00490-134870&external=true",
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-28",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1054,7 +1174,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1102,7 +1222,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=921230",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1146,11 +1266,11 @@
       "source_url": "https://www.shrewsburyma.gov/bids.aspx",
       "on_commbuys": "yes",
       "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-25-1324-TMNGR-0192M-134203&external=true",
-      "paper": "Community Advocate",
-      "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=921709",
+      "paper": null,
+      "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1174,7 +1294,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1198,7 +1318,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1222,7 +1342,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1246,7 +1366,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1264,14 +1384,14 @@
       "due_date": "2026-10-28T10:00:00-04:00",
       "url": "https://www.acton-ma.gov/bids.aspx?bidID=192",
       "source_url": "https://www.acton-ma.gov/bids.aspx",
-      "on_commbuys": "yes",
-      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1693-420HW-420HW-133429&external=true",
+      "on_commbuys": "no",
+      "commbuys_url": null,
       "paper": null,
       "legal_notice_url": null,
-      "status": "open",
+      "status": "closed",
       "first_seen": "2026-10-26",
       "last_seen": "2026-10-27",
-      "closed_on": null
+      "closed_on": "2026-10-28"
     },
     {
       "town": "Concord",
@@ -1294,7 +1414,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1318,7 +1438,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1342,7 +1462,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1366,7 +1486,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=923205",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1384,13 +1504,13 @@
       "due_date": "2026-11-19T10:00:00-05:00",
       "url": "https://medwayma.gov/rfpifb/#38-and-34-winthrop-street-building-structure-demolition",
       "source_url": "https://medwayma.gov/rfpifb/",
-      "on_commbuys": "no",
-      "commbuys_url": null,
-      "paper": null,
-      "legal_notice_url": null,
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1429-TABOS-TABOS-134624&external=true",
+      "paper": "MetroWest Daily News, The",
+      "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=925448",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1414,7 +1534,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=922249",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1438,7 +1558,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=922973",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1462,7 +1582,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=923348",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1486,7 +1606,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1510,7 +1630,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1534,7 +1654,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=922207",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1558,7 +1678,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1582,7 +1702,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1606,31 +1726,31 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
-      "town": "Stoughton",
+      "town": "Attleboro",
       "region": "Outer ring",
-      "sector": "housing",
+      "sector": "town",
       "state": "Massachusetts",
-      "source": "commbuys",
+      "source": "town",
       "kind": "open",
-      "title": "IFB #100726-S Snow Removal Services",
-      "bid_number": "BD-18-1969-SHAU2-SHAU2-134172",
-      "category": "Stoughton Housing Authority",
+      "title": "CALLING ALL SNOW REMOVAL CONTRACTORS",
+      "bid_number": null,
+      "category": "Request For Bids",
       "trade": null,
       "posted_date": null,
-      "due_date": "2026-10-28T10:00:00-04:00",
-      "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-18-1969-SHAU2-SHAU2-134172&external=true",
-      "source_url": "https://www.commbuys.com/bso/view/search/external/advancedSearchBid.xhtml?openBids=true",
-      "on_commbuys": "yes",
-      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-18-1969-SHAU2-SHAU2-134172&external=true",
+      "due_date": "2027-03-01T16:00:00-05:00",
+      "url": "https://www.cityofattleboro.us/bids.aspx?bidID=569",
+      "source_url": "https://www.cityofattleboro.us/bids.aspx",
+      "on_commbuys": "no",
+      "commbuys_url": null,
       "paper": null,
       "legal_notice_url": null,
       "status": "open",
-      "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "first_seen": "2026-10-28",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1654,8 +1774,56 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
+    },
+    {
+      "town": "Stoughton",
+      "region": "Outer ring",
+      "sector": "town",
+      "state": "Massachusetts",
+      "source": "commbuys",
+      "kind": "open",
+      "title": "FY27 Halloran Park Walkway Stoughton Diversity Monument Site",
+      "bid_number": "BD-25-1328-PO138-PO138-134749",
+      "category": "Town of Stoughton",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-11-12T11:00:00-05:00",
+      "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-25-1328-PO138-PO138-134749&external=true",
+      "source_url": "https://www.commbuys.com/bso/view/search/external/advancedSearchBid.xhtml?openBids=true",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-25-1328-PO138-PO138-134749&external=true",
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-28",
+      "last_seen": "2026-10-28",
+      "closed_on": null
+    },
+    {
+      "town": "Stoughton",
+      "region": "Outer ring",
+      "sector": "housing",
+      "state": "Massachusetts",
+      "source": "commbuys",
+      "kind": "open",
+      "title": "IFB #100726-S Snow Removal Services",
+      "bid_number": "BD-18-1969-SHAU2-SHAU2-134172",
+      "category": "Stoughton Housing Authority",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-10-28T10:00:00-04:00",
+      "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-18-1969-SHAU2-SHAU2-134172&external=true",
+      "source_url": "https://www.commbuys.com/bso/view/search/external/advancedSearchBid.xhtml?openBids=true",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-18-1969-SHAU2-SHAU2-134172&external=true",
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "closed",
+      "first_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
+      "closed_on": "2026-10-28"
     },
     {
       "town": "Waltham",
@@ -1678,7 +1846,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1702,7 +1870,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1726,7 +1894,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1750,7 +1918,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1798,7 +1966,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1822,7 +1990,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1846,7 +2014,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1870,7 +2038,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1894,7 +2062,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1918,7 +2086,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1942,7 +2110,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1966,7 +2134,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -1990,7 +2158,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2014,7 +2182,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2038,7 +2206,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=922473",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2062,7 +2230,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=923210",
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2086,7 +2254,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2110,7 +2278,7 @@
       "legal_notice_url": null,
       "status": "closed",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": "2026-10-26"
     },
     {
@@ -2182,7 +2350,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2206,31 +2374,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
-      "closed_on": null
-    },
-    {
-      "town": "Lincoln-Sudbury",
-      "region": "MetroWest core",
-      "sector": "town",
-      "state": "Massachusetts",
-      "source": "legal_notice",
-      "kind": "open",
-      "title": "SCHOOL BUS TRANSPORTATION BIDS LEGAL NOTICE The Sudbury Public School Committee and the Lincoln-Sudbury Regional School Committee of Sudbury, Massachusetts, will receive sealed bids for furnishing school bus transportation for public school",
-      "bid_number": null,
-      "category": "MetroWest Daily News, The",
-      "trade": null,
-      "posted_date": "2026-10-15",
-      "due_date": null,
-      "url": "https://www.masspublicnotices.org/Details.aspx?ID=921219",
-      "source_url": "https://www.masspublicnotices.org/Search.aspx",
-      "on_commbuys": "no",
-      "commbuys_url": null,
-      "paper": "MetroWest Daily News, The",
-      "legal_notice_url": null,
-      "status": "open",
-      "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2254,8 +2398,32 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
+    },
+    {
+      "town": "Lincoln-Sudbury",
+      "region": "MetroWest core",
+      "sector": "town",
+      "state": "Massachusetts",
+      "source": "legal_notice",
+      "kind": "open",
+      "title": "SCHOOL BUS TRANSPORTATION BIDS LEGAL NOTICE The Sudbury Public School Committee and the Lincoln-Sudbury Regional School Committee of Sudbury, Massachusetts, will receive sealed bids for furnishing school bus transportation for public school",
+      "bid_number": null,
+      "category": "MetroWest Daily News, The",
+      "trade": null,
+      "posted_date": "2026-10-15",
+      "due_date": null,
+      "url": "https://www.masspublicnotices.org/Details.aspx?ID=921219",
+      "source_url": "https://www.masspublicnotices.org/Search.aspx",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": "MetroWest Daily News, The",
+      "legal_notice_url": null,
+      "status": "closed",
+      "first_seen": "2026-10-26",
+      "last_seen": "2026-10-27",
+      "closed_on": "2026-10-28"
     },
     {
       "town": "Minuteman",
@@ -2278,7 +2446,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2302,7 +2470,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2326,7 +2494,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2350,7 +2518,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2374,7 +2542,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2398,7 +2566,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2422,7 +2590,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2446,7 +2614,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2470,7 +2638,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2494,7 +2662,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2518,7 +2686,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2542,7 +2710,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2566,7 +2734,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2590,7 +2758,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2614,7 +2782,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2638,7 +2806,55 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
+      "closed_on": null
+    },
+    {
+      "town": "Massport",
+      "region": "Statewide agency",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "bid_express",
+      "kind": "open",
+      "title": "AP2701-C1 FIRE PROTECTION SYSTEMS TERM CONTRACT ALL MASSPORT PROPERTIES BEDFORD, BOSTON, BRAINTREE, DANVERS, FRAMINGHAM, PEABODY AND WORCESTER, MA OCTOBER, 2026",
+      "bid_number": "AP2701-C1 TERM",
+      "category": "Massport",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-11-18T11:00:00-05:00",
+      "url": "https://www.bidexpress.com/solicitations/49767",
+      "source_url": "https://www.bidexpress.com/businesses/27137/home",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-28",
+      "last_seen": "2026-10-28",
+      "closed_on": null
+    },
+    {
+      "town": "Massport",
+      "region": "Statewide agency",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "bid_express",
+      "kind": "open",
+      "title": "AP2702-C1 TERM AUTHORITY WIDE WELDING & METAL FABRICATION TERM BOSTON, BEDFORD, and WORCESTER, MA OCTOBER,2026",
+      "bid_number": "AP2702-C1 TERM",
+      "category": "Massport",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-11-18T11:00:00-05:00",
+      "url": "https://www.bidexpress.com/solicitations/49768",
+      "source_url": "https://www.bidexpress.com/businesses/27137/home",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-28",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2662,7 +2878,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2686,7 +2902,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2710,79 +2926,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-10-27",
-      "closed_on": null
-    },
-    {
-      "town": "MassDOT",
-      "region": "Statewide agency",
-      "sector": "agency",
-      "state": "Massachusetts",
-      "source": "massdot",
-      "kind": "open",
-      "title": "Natick — Bridge Replacement, N-03-012, Boden Lane over CSX/MBTA",
-      "bid_number": "607420",
-      "category": "NATICK",
-      "trade": null,
-      "posted_date": null,
-      "due_date": "2026-10-27T14:00:00-04:00",
-      "url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp#607420",
-      "source_url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp",
-      "on_commbuys": "no",
-      "commbuys_url": null,
-      "paper": null,
-      "legal_notice_url": null,
-      "status": "open",
-      "first_seen": "2026-10-27",
-      "last_seen": "2026-10-27",
-      "closed_on": null
-    },
-    {
-      "town": "MassDOT",
-      "region": "Statewide agency",
-      "sector": "agency",
-      "state": "Massachusetts",
-      "source": "massdot",
-      "kind": "open",
-      "title": "Northborough - Shrewsbury — Rehabilitation & Box Widening on Route 20, from Route 9 to South Street",
-      "bid_number": "610825",
-      "category": "NORTHBOROUGH - SHREWSBURY",
-      "trade": null,
-      "posted_date": null,
-      "due_date": "2026-10-27T14:00:00-04:00",
-      "url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp#610825",
-      "source_url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp",
-      "on_commbuys": "no",
-      "commbuys_url": null,
-      "paper": null,
-      "legal_notice_url": null,
-      "status": "open",
-      "first_seen": "2026-10-27",
-      "last_seen": "2026-10-27",
-      "closed_on": null
-    },
-    {
-      "town": "MassDOT",
-      "region": "Statewide agency",
-      "sector": "agency",
-      "state": "Massachusetts",
-      "source": "massdot",
-      "kind": "open",
-      "title": "Shrewsbury - Worcester — Bridge Preservation, S-14-021=W-44-115, I-290 (EB and WB) over Lake Quinsigamond and Lake Avenue North",
-      "bid_number": "612874",
-      "category": "SHREWSBURY - WORCESTER",
-      "trade": null,
-      "posted_date": null,
-      "due_date": "2026-10-27T14:00:00-04:00",
-      "url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp#612874",
-      "source_url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp",
-      "on_commbuys": "no",
-      "commbuys_url": null,
-      "paper": null,
-      "legal_notice_url": null,
-      "status": "open",
-      "first_seen": "2026-10-27",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2806,7 +2950,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2830,7 +2974,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2854,7 +2998,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2878,7 +3022,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": null
     },
     {
@@ -2902,8 +3046,80 @@
       "legal_notice_url": null,
       "status": "closed",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-28",
       "closed_on": "2026-10-27"
+    },
+    {
+      "town": "MassDOT",
+      "region": "Statewide agency",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "massdot",
+      "kind": "open",
+      "title": "Natick — Bridge Replacement, N-03-012, Boden Lane over CSX/MBTA",
+      "bid_number": "607420",
+      "category": "NATICK",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-10-27T14:00:00-04:00",
+      "url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp#607420",
+      "source_url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "closed",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
+      "closed_on": "2026-10-28"
+    },
+    {
+      "town": "MassDOT",
+      "region": "Statewide agency",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "massdot",
+      "kind": "open",
+      "title": "Northborough - Shrewsbury — Rehabilitation & Box Widening on Route 20, from Route 9 to South Street",
+      "bid_number": "610825",
+      "category": "NORTHBOROUGH - SHREWSBURY",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-10-27T14:00:00-04:00",
+      "url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp#610825",
+      "source_url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "closed",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
+      "closed_on": "2026-10-28"
+    },
+    {
+      "town": "MassDOT",
+      "region": "Statewide agency",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "massdot",
+      "kind": "open",
+      "title": "Shrewsbury - Worcester — Bridge Preservation, S-14-021=W-44-115, I-290 (EB and WB) over Lake Quinsigamond and Lake Avenue North",
+      "bid_number": "612874",
+      "category": "SHREWSBURY - WORCESTER",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-10-27T14:00:00-04:00",
+      "url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp#612874",
+      "source_url": "https://hwy.massdot.state.ma.us/webapps/const/statusReport.asp",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "closed",
+      "first_seen": "2026-10-27",
+      "last_seen": "2026-10-27",
+      "closed_on": "2026-10-28"
     },
     {
       "town": "MBTA",
