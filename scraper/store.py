@@ -260,7 +260,11 @@ def new_open_bids(previous: list[dict], current: list[dict]) -> list[dict]:
             previous_open.add(_identity(record))
     found = []
     for record in current:
-        if record.get("status") == "open" and _identity(record) not in previous_open:
+        if (
+            record.get("status") == "open"
+            and record.get("kind") != "lead"
+            and _identity(record) not in previous_open
+        ):
             found.append(record)
     return found
 

@@ -52,6 +52,19 @@ from scraper.parsers.msba import ParseError as MsbaParseError
 from scraper.parsers.msba import latest_bid_schedule_url, parse_bid_schedule
 from scraper.parsers.agencies import ParseError as AgencyParseError
 from scraper.parsers.agencies import parse_dcr, parse_mapc, parse_massdot
+from scraper.parsers.agendas import MAX_AGENDA_PDFS, agenda_links, lead_lines
+from scraper.parsers.cities import ParseError as CityParseError
+from scraper.parsers.cities import (
+    parse_bha_bids,
+    parse_boston_bids,
+    parse_boston_projects,
+    parse_quincy_bids,
+    parse_somerville_bids,
+    parse_worcester_bids,
+)
+from scraper.pdftext import pdf_to_text
+from scraper.samgov import SEARCH_URL as SAM_SEARCH_URL
+from scraper.samgov import SamError, filter_opportunities, search_opportunities
 from scraper.parsers.notices import ParseError as NoticeParseError
 from scraper.parsers.notices import parse_notice_page
 from scraper.trades import cladding_trade
@@ -91,6 +104,7 @@ PARSE_ERRORS = (
     NoticeParseError,
     LegalNoticeError,
     AgencyParseError,
+    CityParseError,
 )
 STATE_BY_REGION = {
     "RI border": "Rhode Island",
@@ -107,6 +121,8 @@ FEED_LABELS = {
     "massdot": "MassDOT",
     "dcr": "DCR",
     "mapc": "MAPC",
+    "sam_gov": "SAM.gov",
+    "boston_planning": "Boston Planning",
 }
 CHALLENGE_TITLES = (
     "just a moment",
@@ -170,6 +186,8 @@ def main() -> int:
         source_reports.append(report)
         if report["status"] == "ok":
             successful.add(report["url"])
+            for extra in report.get("also_successful") or []:
+                successful.add(extra)
             fresh.extend(found)
 
     feed_items, feed_ok, feed_reports, legal_notices = _finish_feeds(
@@ -287,7 +305,14 @@ def _scrape_listed_source(source: dict, fetcher: PoliteFetcher, known: dict):
         "message": None,
     }
     try:
+        if source.get("type") == "skipped":
+            report["status"] = "skipped"
+            report["message"] = source.get("notes") or "Skipped"
+            print(f"SKIP {source['town']}: {report['message']}", flush=True)
+            return report, []
         found = scrape_source(source, fetcher, known)
+        if source.get("_agenda_ok"):
+            report["also_successful"] = [source["_agenda_ok"]]
     except (FetchError, RobotsDisallowed, *PARSE_ERRORS) as exc:
         report["status"] = "error"
         report["message"] = str(exc)
@@ -413,9 +438,34 @@ def _scrape_one_feed(feed, fetcher, known, town_regions, previous_feeds, now) ->
             result["items"] = found
             result["ok_url"] = canonical_url(url)
             result["report"] = _feed_ok(now, "mapc", f"{len(found)} in-range notice(s)")
+        elif kind == "boston_planning":
+            html = fetcher.get(url)
+            _reject_challenge(html, url)
+            found = parse_boston_projects(html, url)
+            result["items"] = found
+            result["ok_url"] = canonical_url(url)
+            result["report"] = _feed_ok(now, "boston_planning", f"{len(found)} early lead(s)")
+        elif kind == "sam_gov":
+            records, status, message = search_opportunities(fetcher, now)
+            if status == "skipped":
+                result["report"] = {
+                    "status": "skipped",
+                    "label": FEED_LABELS["sam_gov"],
+                    "last_success": None,
+                    "last_error": None,
+                    "message": message,
+                    "open_count": 0,
+                }
+            else:
+                found = []
+                for item in filter_opportunities(records or [], town_regions):
+                    found.append(_sam_item(item, town_regions))
+                result["items"] = found
+                result["ok_url"] = canonical_url(SAM_SEARCH_URL)
+                result["report"] = _feed_ok(now, "sam_gov", f"{message}; {len(found)} kept")
         else:
             raise FetchError(f"unknown feed type {kind!r}")
-    except (FetchError, RobotsDisallowed, *PARSE_ERRORS) as exc:
+    except (FetchError, RobotsDisallowed, SamError, *PARSE_ERRORS) as exc:
         result["error"] = str(exc)
         print(f"ERROR {agency} ({kind}): {exc}", flush=True)
     except Exception as exc:
@@ -570,6 +620,8 @@ def _feed_counts(reports: dict, bids: list[dict]) -> dict:
         "massdot": "massdot",
         "dcr": "dcr",
         "mapc": "mapc",
+        "sam_gov": "sam_gov",
+        "boston_planning": "boston_planning",
     }
     cleaned = {}
     for key in FEED_LABELS:
@@ -609,23 +661,131 @@ def scrape_source(source: dict, fetcher: PoliteFetcher, known: dict) -> list[dic
         listings = parse_document_page(html, page_url)
     elif kind == "notices":
         listings = parse_notice_page(html, page_url)
+    elif kind == "boston":
+        listings = parse_boston_bids(html, page_url)
+    elif kind == "worcester":
+        listings = parse_worcester_bids(html, page_url)
+    elif kind == "somerville":
+        listings = parse_somerville_bids(html, page_url)
+    elif kind == "quincy":
+        listings = parse_quincy_bids(html, page_url)
+    elif kind == "bha":
+        listings = parse_bha_bids(html, page_url)
     else:
         raise FetchError(f"unknown page type {kind!r}")
+    if kind == "civicplus":
+        leads, agenda_url = _planning_leads(source, page_url, fetcher)
+        if agenda_url:
+            source["_agenda_ok"] = agenda_url
+        listings.extend(leads)
     source_url = canonical_url(page_url)
     for item in listings:
         item["town"] = source["town"]
         item["region"] = source.get("region")
-        item["sector"] = source.get("sector") or "town"
-        item["state"] = source.get("state") or STATE_BY_REGION.get(
+        item["state"] = item.get("state") or source.get("state") or STATE_BY_REGION.get(
             source.get("region") or "", "Massachusetts"
         )
-        item["source"] = "town"
-        item["kind"] = item.get("kind") or "open"
-        item["source_url"] = source_url
+        if item.get("kind") == "lead":
+            item["sector"] = item.get("sector") or "private"
+            item["source"] = item.get("source") or "planning_board"
+            item["source_url"] = canonical_url(item.get("source_url") or source_url)
+        else:
+            item["sector"] = source.get("sector") or "town"
+            item["source"] = "town"
+            item["kind"] = item.get("kind") or "open"
+            item["source_url"] = source_url
         item["url"] = canonical_url(item["url"])
         item.pop("close_raw", None)
         item.pop("status_raw", None)
     return listings
+
+
+def _planning_leads(source: dict, page_url: str, fetcher: PoliteFetcher):
+    """One Agenda Center page per CivicPlus town. No PDF when the HTML has no link."""
+    from urllib.parse import urlsplit, urlunsplit
+
+    parts = urlsplit(page_url)
+    agenda_url = urlunsplit((parts.scheme, parts.netloc, "/AgendaCenter", "", ""))
+    try:
+        html = fetcher.get(agenda_url)
+    except (FetchError, RobotsDisallowed) as exc:
+        print(f"agenda skipped {source['town']}: {exc}", flush=True)
+        return [], None
+    if _is_challenge(html):
+        print(f"agenda asked for a human check; not read ({source['town']})", flush=True)
+        return [], None
+    leads = []
+    pdfs = getattr(fetcher, "agenda_pdfs", 0)
+    for link in agenda_links(html, agenda_url)[:1]:
+        if pdfs >= MAX_AGENDA_PDFS:
+            print("agenda PDF cap reached", flush=True)
+            break
+        try:
+            data, _final = fetcher.get_bytes(link["url"])
+        except (FetchError, RobotsDisallowed) as exc:
+            print(f"agenda file skipped {link['url']}: {exc}", flush=True)
+            continue
+        pdfs += 1
+        fetcher.agenda_pdfs = pdfs
+        if data[:5].startswith(b"%PDF") or link["url"].lower().endswith(".pdf"):
+            text = pdf_to_text(data)
+        else:
+            text = data.decode("utf-8", "replace")
+        for line in lead_lines(text):
+            leads.append(
+                {
+                    "title": line,
+                    "url": link["url"],
+                    "kind": "lead",
+                    "sector": "private",
+                    "source": "planning_board",
+                    "category": link["label"],
+                    "posted_date": link.get("posted"),
+                    "source_url": agenda_url,
+                }
+            )
+    return leads, canonical_url(agenda_url)
+
+
+def _sam_item(item: dict, town_regions: dict[str, str]) -> dict:
+    town = item.get("town") or "Federal"
+    code = item.get("state_code") or ""
+    region = town_regions.get(town) or ""
+    if not region:
+        if code == "MA" and town.casefold() in {
+            "boston", "worcester", "cambridge", "somerville", "quincy", "lowell"
+        }:
+            region = "Cities"
+        elif code == "NH":
+            region = "NH border"
+        elif code == "RI":
+            region = "RI border"
+        else:
+            region = "Statewide agency"
+    state = {"MA": "Massachusetts", "NH": "New Hampshire", "RI": "Rhode Island"}.get(
+        code, "Massachusetts"
+    )
+    if region in STATE_BY_REGION:
+        state = STATE_BY_REGION[region]
+    category = item.get("category")
+    scope = item.get("scope") or ""
+    if scope:
+        category = f"{category} — {scope[:240]}" if category else scope[:240]
+    return {
+        "town": town,
+        "region": region,
+        "sector": "federal",
+        "state": state,
+        "source": "sam_gov",
+        "kind": "open",
+        "title": item["title"],
+        "bid_number": item.get("bid_number"),
+        "category": category,
+        "posted_date": item.get("posted_date"),
+        "due": item.get("due"),
+        "url": item["url"],
+        "source_url": SAM_SEARCH_URL,
+    }
 
 
 def _finish_civicplus(item: dict, options: dict, fetcher: PoliteFetcher, known: dict):
@@ -784,7 +944,8 @@ def _town_status(town_order, reports, bids, previous_status, now, town_regions) 
             seen.append(town)
     for town in seen:
         mine = [report for report in reports if report["town"] == town]
-        failed = [report for report in mine if report["status"] != "ok"]
+        failed = [report for report in mine if report["status"] == "error"]
+        skipped = [report for report in mine if report["status"] == "skipped"]
         open_count = sum(
             1 for bid in bids if bid.get("town") == town and bid.get("status") == "open"
         )
@@ -798,6 +959,14 @@ def _town_status(town_order, reports, bids, previous_status, now, town_regions) 
                 "last_success": prior.get("last_success"),
                 "last_error": _iso(now),
                 "message": message,
+                "open_count": open_count,
+            }
+        elif skipped and not any(report["status"] == "ok" for report in mine):
+            entry = {
+                "status": "skipped",
+                "last_success": prior.get("last_success"),
+                "last_error": None,
+                "message": "; ".join(report["message"] or "Skipped" for report in skipped),
                 "open_count": open_count,
             }
         else:
@@ -835,7 +1004,7 @@ def _commbuys_status(previous_status: dict, now: datetime) -> dict:
 
 
 def _print_summary(town_order, bids, status_doc, opened, elapsed: float) -> None:
-    print("\nSource             open  upcoming", flush=True)
+    print("\nSource             open  upcoming  leads", flush=True)
     for source, label in (
         ("town", "Town page"),
         ("commbuys", "COMMBUYS"),
@@ -848,6 +1017,9 @@ def _print_summary(town_order, bids, status_doc, opened, elapsed: float) -> None
         ("massdot", "MassDOT"),
         ("dcr", "DCR"),
         ("mapc", "MAPC"),
+        ("sam_gov", "SAM.gov"),
+        ("boston_planning", "Boston Planning"),
+        ("planning_board", "Planning board"),
     ):
         open_count = sum(
             1
@@ -863,7 +1035,12 @@ def _print_summary(town_order, bids, status_doc, opened, elapsed: float) -> None
             and bid.get("status") == "open"
             and bid.get("kind") == "upcoming"
         )
-        print(f"{label:<18} {open_count:>4}  {upcoming_count:>8}", flush=True)
+        lead_count = sum(
+            1
+            for bid in bids
+            if bid.get("source") == source and bid.get("status") == "open" and bid.get("kind") == "lead"
+        )
+        print(f"{label:<18} {open_count:>4}  {upcoming_count:>8}  {lead_count:>5}", flush=True)
     print("\nRegion                 open", flush=True)
     regions = []
     for bid in bids:
@@ -878,7 +1055,7 @@ def _print_summary(town_order, bids, status_doc, opened, elapsed: float) -> None
         )
         print(f"{region:<22} {open_count:>4}", flush=True)
     print("\nSector                 open", flush=True)
-    for sector in ("town", "school", "housing", "agency", "utility", "college", "hospital", "private"):
+    for sector in ("town", "school", "housing", "agency", "utility", "college", "hospital", "private", "federal"):
         open_count = sum(
             1
             for bid in bids
@@ -892,6 +1069,10 @@ def _print_summary(town_order, bids, status_doc, opened, elapsed: float) -> None
         for bid in bids
         if bid.get("trade") == "cladding" and bid.get("status") == "open"
     ]
+    lead_rows = [bid for bid in bids if bid.get("kind") == "lead" and bid.get("status") == "open"]
+    print(f"\nEarly leads                {len(lead_rows):>4}", flush=True)
+    for bid in lead_rows[:8]:
+        print(f"  {bid.get('source')}: {bid.get('town')}: {bid.get('title')}", flush=True)
     print(f"\nCladding tag               {len(cladding):>4}", flush=True)
     for bid in cladding[:8]:
         print(f"  {bid.get('town')}: {bid.get('title')}", flush=True)

@@ -105,6 +105,11 @@ These were public-page or robots problems, or there was no bid list to parse. CO
 - New Hampshire Purchasing: the site returned access denied.
 - Connecticut CTsource: the public page links to guides. The bid board itself is not an open HTML list.
 - Central Register: still skipped. Its bulletin list is disallowed by robots.txt.
+- Cambridge current bid list and the Cambridge OpenGov portal: the public URL answered with a human check. City of Cambridge, its schools, and its housing authority stay on COMMBUYS. The city is still in the Cities region.
+- Boston supplier portal (procurement.boston.gov): registration is required. The public list at boston.gov/bid-listings is used instead.
+- Boston Public Schools, Worcester Public Schools, and the other city school and housing sites that are not a bid list: no separate page was added. COMMBUYS organization names are matched. Boston Housing Authority's current-opportunities page is scraped. Worcester school purchases that are on the city bid table are included.
+- SAM.gov: skipped when `SAM_GOV_API_KEY` is not set. See SETUP.md. The live run makes at most two API calls. RI border federal notices are not requested, so the cap stays at two calls; an RI border city in a response is still kept.
+- Planning-board agendas: a CivicPlus Agenda Center page with no public agenda-file link is skipped for that town. A page that asks for a human check is not opened. At most eight agenda PDFs are read per run.
 - MWRA Supplier Portal: the public mwra.com page has no bid table. New bids are posted on an Infor CloudSuite site that requires registration. MWRA rows on COMMBUYS are kept. The portal itself is not opened.
 - MWRTA: `/procurement` and `/doing-business` return 404, and the homepage is a transit schedule, not a bid list. COMMBUYS organization matches are kept.
 - CMRPC: `/bids/` is 404. The procurement page describes accounting, auctioneer, and fuel programs, not an open solicitation list. News posts for past RFPs are closed archives. COMMBUYS organization matches are kept.

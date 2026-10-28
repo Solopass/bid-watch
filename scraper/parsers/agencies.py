@@ -179,15 +179,13 @@ def mapc_in_range(text: str, town_regions: dict[str, str]) -> bool:
 
 # Towns named in a title that are outside the ring. Used when a list has no
 # location column but the title itself names a place.
+# Boston, Worcester, Cambridge, Somerville, Quincy, and Lowell are covered
+# cities. A title that names one of them is kept once that city is in the
+# town list. These names stay out of range.
 _OUTSIDE_PLACES = (
-    "boston",
-    "cambridge",
     "chelsea",
-    "somerville",
-    "quincy",
     "brockton",
     "springfield",
-    "lowell",
     "lawrence",
     "lynn",
     "newton",
