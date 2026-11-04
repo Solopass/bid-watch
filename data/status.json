@@ -1,12 +1,12 @@
 {
-  "updated": "2026-11-03T13:06:32-05:00",
+  "updated": "2026-11-04T13:16:01-05:00",
   "commbuys": {
     "status": "ok",
-    "last_success": "2026-11-03T13:06:32-05:00",
+    "last_success": "2026-11-04T13:16:01-05:00",
     "last_error": null,
-    "message": "883 open statewide; 57 covered rows kept; 45 matched a town bid",
-    "rows": 883,
-    "covered_rows": 57
+    "message": "904 open statewide; 56 covered rows kept; 51 matched a town bid",
+    "rows": 904,
+    "covered_rows": 56
   },
   "central_register": {
     "status": "skipped",
@@ -19,23 +19,23 @@
     "legal_notices": {
       "status": "ok",
       "label": "Legal notices",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
-      "message": "33 covered-town notices in the last 14 days; stopped after 3 pages on a long query; 29 matched an existing bid; 4 added",
-      "open_count": 4
+      "message": "36 covered-town notices in the last 14 days; stopped after 3 pages on a long query; 28 matched an existing bid; 8 added",
+      "open_count": 8
     },
     "bid_express": {
       "status": "ok",
       "label": "Bid Express",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
-      "message": "DCAMM 5; Massport 5",
-      "open_count": 10
+      "message": "DCAMM 6; Massport 5",
+      "open_count": 11
     },
     "massdevelopment": {
       "status": "ok",
       "label": "MassDevelopment",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": "2 posting(s)",
       "open_count": 2
@@ -44,7 +44,7 @@
       "status": "error",
       "label": "MBTA",
       "last_success": "2026-10-28T16:08:16-04:00",
-      "last_error": "2026-11-03T13:06:32-05:00",
+      "last_error": "2026-11-04T13:16:01-05:00",
       "message": "MBTA: robots.txt disallows https://bc.mbta.com/business_center/bidding_solicitations/current_solicitations/; MBTA: robots.txt disallows https://bc.mbta.com/business_center/bidding_solicitations/future_solicitations/",
       "open_count": 14
     },
@@ -52,7 +52,7 @@
       "status": "error",
       "label": "MSBA",
       "last_success": "2026-10-28T16:08:16-04:00",
-      "last_error": "2026-11-03T13:06:32-05:00",
+      "last_error": "2026-11-04T13:16:01-05:00",
       "message": "MSBA estimated bid schedule had no readable project rows",
       "open_count": 2,
       "pdf_url": "https://www.massschoolbuildings.org/sites/default/files/edit-contentfiles/About_Us/Board_Meetings/2026_Board/8.26.2026/Estimated_Bid_Dates_August_2026.pdf"
@@ -60,7 +60,7 @@
     "massdot": {
       "status": "ok",
       "label": "MassDOT",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": "3 in-range project(s)",
       "open_count": 3
@@ -68,7 +68,7 @@
     "dcr": {
       "status": "ok",
       "label": "DCR",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": "3 current construction ad(s)",
       "open_count": 1
@@ -76,7 +76,7 @@
     "mapc": {
       "status": "ok",
       "label": "MAPC",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": "2 in-range notice(s)",
       "open_count": 2
@@ -92,27 +92,27 @@
     "boston_planning": {
       "status": "ok",
       "label": "Boston Planning",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
-      "message": "5 early lead(s)",
+      "message": "4 early lead(s)",
       "open_count": 9
     }
   },
   "towns": {
     "Framingham": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.framinghamma.gov/robots.txt: timed out",
       "open_count": 10,
       "region": "MetroWest core",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.framinghamma.gov/bids.aspx",
-          "status": "ok",
-          "count": 5,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.framinghamma.gov/robots.txt: timed out"
         },
         {
           "type": "notices",
@@ -124,36 +124,36 @@
       ]
     },
     "Natick": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.natickma.gov/robots.txt: timed out",
       "open_count": 5,
       "region": "MetroWest core",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.natickma.gov/bids.aspx",
-          "status": "ok",
-          "count": 5,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.natickma.gov/robots.txt: timed out"
         }
       ]
     },
     "Marlborough": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.marlborough-ma.gov/robots.txt: timed out",
       "open_count": 3,
       "region": "MetroWest core",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.marlborough-ma.gov/bids.aspx",
-          "status": "ok",
-          "count": 1,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.marlborough-ma.gov/robots.txt: timed out"
         },
         {
           "type": "notices",
@@ -165,27 +165,27 @@
       ]
     },
     "Hudson": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.townofhudson.org/robots.txt: timed out",
       "open_count": 0,
       "region": "MetroWest core",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.townofhudson.org/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.townofhudson.org/robots.txt: timed out"
         }
       ]
     },
     "Westborough": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.westboroughma.gov/robots.txt: timed out",
       "open_count": 5,
       "region": "MetroWest core",
       "sources": [
@@ -199,26 +199,26 @@
         {
           "type": "civicplus",
           "url": "https://www.westboroughma.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.westboroughma.gov/robots.txt: timed out"
         }
       ]
     },
     "Ashland": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.ashlandmass.com/robots.txt: timed out",
       "open_count": 2,
       "region": "MetroWest core",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.ashlandmass.com/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.ashlandmass.com/robots.txt: timed out"
         },
         {
           "type": "notices",
@@ -231,10 +231,10 @@
     },
     "Hopkinton": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 1,
+      "open_count": 3,
       "region": "MetroWest core",
       "sources": [
         {
@@ -248,86 +248,86 @@
     },
     "Sudbury": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 1,
+      "open_count": 2,
       "region": "MetroWest core",
       "sources": [
         {
           "type": "wordpress",
           "url": "https://sudbury.ma.us/bids/",
           "status": "ok",
-          "count": 1,
+          "count": 2,
           "message": null
         }
       ]
     },
     "Wayland": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.wayland.ma.us/robots.txt: timed out",
       "open_count": 1,
       "region": "MetroWest core",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.wayland.ma.us/bids.aspx",
-          "status": "ok",
-          "count": 1,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.wayland.ma.us/robots.txt: timed out"
         }
       ]
     },
     "Southborough": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.southboroughma.gov/robots.txt: timed out",
       "open_count": 2,
       "region": "MetroWest core",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.southboroughma.gov/bids.aspx",
-          "status": "ok",
-          "count": 3,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.southboroughma.gov/robots.txt: timed out"
         }
       ]
     },
     "Holliston": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 2,
+      "open_count": 3,
       "region": "MetroWest core",
       "sources": [
         {
           "type": "documents",
           "url": "https://www.townofholliston.us/592/Procurement-Legal-Notices",
           "status": "ok",
-          "count": 4,
+          "count": 5,
           "message": null
         }
       ]
     },
     "Milford": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.milfordma.gov/robots.txt: timed out",
       "open_count": 2,
       "region": "MetroWest core",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.milfordma.gov/bids.aspx",
-          "status": "ok",
-          "count": 1,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.milfordma.gov/robots.txt: timed out"
         },
         {
           "type": "notices",
@@ -339,76 +339,76 @@
       ]
     },
     "Wellesley": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.wellesleyma.gov/robots.txt: timed out",
       "open_count": 1,
       "region": "Next ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.wellesleyma.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.wellesleyma.gov/robots.txt: timed out"
         }
       ]
     },
     "Weston": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.westonma.gov/robots.txt: timed out",
       "open_count": 1,
       "region": "Next ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.westonma.gov/bids.aspx",
-          "status": "ok",
-          "count": 1,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.westonma.gov/robots.txt: timed out"
         }
       ]
     },
     "Needham": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.needhamma.gov/robots.txt: timed out",
       "open_count": 3,
       "region": "Next ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.needhamma.gov/bids.aspx",
-          "status": "ok",
-          "count": 6,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.needhamma.gov/robots.txt: timed out"
         }
       ]
     },
     "Shrewsbury": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.shrewsburyma.gov/robots.txt: timed out",
       "open_count": 5,
       "region": "Next ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.shrewsburyma.gov/bids.aspx",
-          "status": "ok",
-          "count": 4,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.shrewsburyma.gov/robots.txt: timed out"
         }
       ]
     },
     "Stow": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -424,178 +424,178 @@
       ]
     },
     "Acton": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.acton-ma.gov/robots.txt: timed out",
       "open_count": 3,
       "region": "Next ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.acton-ma.gov/bids.aspx",
-          "status": "ok",
-          "count": 2,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.acton-ma.gov/robots.txt: timed out"
         }
       ]
     },
     "Concord": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.concordma.gov/robots.txt: timed out",
       "open_count": 2,
       "region": "Next ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.concordma.gov/bids.aspx",
-          "status": "ok",
-          "count": 2,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.concordma.gov/robots.txt: timed out"
         }
       ]
     },
     "Dover": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.doverma.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "Next ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.doverma.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.doverma.gov/robots.txt: timed out"
         }
       ]
     },
     "Sherborn": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.sherbornma.org/robots.txt: timed out",
       "open_count": 0,
       "region": "Next ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.sherbornma.org/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.sherbornma.org/robots.txt: timed out"
         }
       ]
     },
     "Bellingham": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.bellinghamma.org/robots.txt: timed out",
       "open_count": 0,
       "region": "Next ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.bellinghamma.org/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.bellinghamma.org/robots.txt: timed out"
         }
       ]
     },
     "Upton": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
-      "open_count": 1,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.uptonma.gov/robots.txt: timed out",
+      "open_count": 2,
       "region": "Next ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.uptonma.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.uptonma.gov/robots.txt: timed out"
         }
       ]
     },
     "Grafton": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.grafton-ma.gov/robots.txt: timed out",
       "open_count": 1,
       "region": "Next ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.grafton-ma.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.grafton-ma.gov/robots.txt: timed out"
         }
       ]
     },
     "Maynard": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.townofmaynard-ma.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "Next ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.townofmaynard-ma.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.townofmaynard-ma.gov/robots.txt: timed out"
         }
       ]
     },
     "Lincoln": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.lincolntown.org/robots.txt: timed out",
       "open_count": 0,
       "region": "Next ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.lincolntown.org/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.lincolntown.org/robots.txt: timed out"
         }
       ]
     },
     "Mendon": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.mendonma.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "Next ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.mendonma.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.mendonma.gov/robots.txt: timed out"
         }
       ]
     },
     "Medway": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -611,127 +611,127 @@
       ]
     },
     "Franklin": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.franklinma.gov/robots.txt: timed out",
       "open_count": 2,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.franklinma.gov/bids.aspx",
-          "status": "ok",
-          "count": 2,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.franklinma.gov/robots.txt: timed out"
         }
       ]
     },
     "Wrentham": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.wrentham.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.wrentham.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.wrentham.gov/robots.txt: timed out"
         }
       ]
     },
     "Bedford": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
-      "open_count": 0,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.bedfordma.gov/robots.txt: timed out",
+      "open_count": 1,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.bedfordma.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.bedfordma.gov/robots.txt: timed out"
         }
       ]
     },
     "Boxborough": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.boxborough-ma.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.boxborough-ma.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.boxborough-ma.gov/robots.txt: timed out"
         }
       ]
     },
     "Lexington": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.lexingtonma.gov/robots.txt: timed out",
       "open_count": 1,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.lexingtonma.gov/bids.aspx",
-          "status": "ok",
-          "count": 1,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.lexingtonma.gov/robots.txt: timed out"
         }
       ]
     },
     "Littleton": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.littletonma.org/robots.txt: timed out",
       "open_count": 1,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.littletonma.org/bids.aspx",
-          "status": "ok",
-          "count": 1,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.littletonma.org/robots.txt: timed out"
         }
       ]
     },
     "Carlisle": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.carlislema.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.carlislema.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.carlislema.gov/robots.txt: timed out"
         }
       ]
     },
     "Harvard": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -747,42 +747,42 @@
       ]
     },
     "Clinton": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.clintonma.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.clintonma.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.clintonma.gov/robots.txt: timed out"
         }
       ]
     },
     "Uxbridge": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.uxbridge-ma.gov/robots.txt: timed out",
       "open_count": 1,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.uxbridge-ma.gov/bids.aspx",
-          "status": "ok",
-          "count": 1,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.uxbridge-ma.gov/robots.txt: timed out"
         }
       ]
     },
     "Sutton": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -798,163 +798,163 @@
       ]
     },
     "Douglas": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.douglas-ma.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.douglas-ma.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.douglas-ma.gov/robots.txt: timed out"
         }
       ]
     },
     "Oxford": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.oxfordma.us/robots.txt: timed out",
       "open_count": 0,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.oxfordma.us/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.oxfordma.us/robots.txt: timed out"
         }
       ]
     },
     "Auburn": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.auburnma.gov/robots.txt: timed out",
       "open_count": 2,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.auburnma.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.auburnma.gov/robots.txt: timed out"
         }
       ]
     },
     "Charlton": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.townofcharlton.net/robots.txt: timed out",
       "open_count": 0,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.townofcharlton.net/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.townofcharlton.net/robots.txt: timed out"
         }
       ]
     },
     "Webster": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.webster-ma.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.webster-ma.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.webster-ma.gov/robots.txt: timed out"
         }
       ]
     },
     "Southbridge": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.ci.southbridge.ma.us/robots.txt: timed out",
       "open_count": 1,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.ci.southbridge.ma.us/bids.aspx",
-          "status": "ok",
-          "count": 1,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.ci.southbridge.ma.us/robots.txt: timed out"
         }
       ]
     },
     "Blackstone": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.townofblackstone.org/robots.txt: timed out",
       "open_count": 0,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.townofblackstone.org/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.townofblackstone.org/robots.txt: timed out"
         }
       ]
     },
     "North Attleborough": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.northattleborough.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.northattleborough.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.northattleborough.gov/robots.txt: timed out"
         }
       ]
     },
     "Plainville": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.plainvillema.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.plainvillema.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.plainvillema.gov/robots.txt: timed out"
         }
       ]
     },
     "Attleboro": {
       "status": "error",
       "last_success": "2026-11-02T15:32:17-05:00",
-      "last_error": "2026-11-03T13:06:32-05:00",
-      "message": "civicplus: TimeoutError: The read operation timed out",
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.cityofattleboro.us/robots.txt: timed out",
       "open_count": 2,
       "region": "Outer ring",
       "sources": [
@@ -963,166 +963,166 @@
           "url": "https://www.cityofattleboro.us/bids.aspx",
           "status": "error",
           "count": 0,
-          "message": "TimeoutError: The read operation timed out"
+          "message": "could not read robots.txt https://www.cityofattleboro.us/robots.txt: timed out"
         }
       ]
     },
     "Norton": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.nortonma.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.nortonma.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.nortonma.gov/robots.txt: timed out"
         }
       ]
     },
     "Seekonk": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.seekonk-ma.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.seekonk-ma.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.seekonk-ma.gov/robots.txt: timed out"
         }
       ]
     },
     "Canton": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.town.canton.ma.us/robots.txt: timed out",
       "open_count": 0,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.town.canton.ma.us/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.town.canton.ma.us/robots.txt: timed out"
         }
       ]
     },
     "Stoughton": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.stoughton.org/robots.txt: timed out",
       "open_count": 1,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.stoughton.org/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.stoughton.org/robots.txt: timed out"
         }
       ]
     },
     "Waltham": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.city.waltham.ma.us/robots.txt: timed out",
       "open_count": 1,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.city.waltham.ma.us/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.city.waltham.ma.us/robots.txt: timed out"
         }
       ]
     },
     "Lincoln RI": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.lincolnri.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "RI border",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.lincolnri.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.lincolnri.gov/robots.txt: timed out"
         }
       ]
     },
     "Cumberland RI": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.cumberlandri.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "RI border",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.cumberlandri.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.cumberlandri.gov/robots.txt: timed out"
         }
       ]
     },
     "North Smithfield": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.nsmithfieldri.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "RI border",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.nsmithfieldri.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.nsmithfieldri.gov/robots.txt: timed out"
         }
       ]
     },
     "Nashua": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.nashuanh.gov/robots.txt: timed out",
       "open_count": 2,
       "region": "NH border",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.nashuanh.gov/bids.aspx",
-          "status": "ok",
-          "count": 4,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.nashuanh.gov/robots.txt: timed out"
         }
       ]
     },
     "Hudson NH": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -1138,59 +1138,59 @@
       ]
     },
     "Salem NH": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.salemnh.gov/robots.txt: timed out",
       "open_count": 2,
       "region": "NH border",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.salemnh.gov/bids.aspx",
-          "status": "ok",
-          "count": 2,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.salemnh.gov/robots.txt: timed out"
         }
       ]
     },
     "Pelham": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.pelhamweb.com/robots.txt: timed out",
       "open_count": 0,
       "region": "NH border",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.pelhamweb.com/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.pelhamweb.com/robots.txt: timed out"
         }
       ]
     },
     "Windham NH": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.windhamnh.gov/robots.txt: timed out",
       "open_count": 0,
       "region": "NH border",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.windhamnh.gov/bids.aspx",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://www.windhamnh.gov/robots.txt: timed out"
         }
       ]
     },
     "Assabet Valley": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
       "open_count": 11,
@@ -1207,7 +1207,7 @@
     },
     "Keefe Tech": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -1224,7 +1224,7 @@
     },
     "Lincoln-Sudbury": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -1241,7 +1241,7 @@
     },
     "Algonquin Regional": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -1258,7 +1258,7 @@
     },
     "Blackstone Valley Tech": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -1275,7 +1275,7 @@
     },
     "Minuteman": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -1292,10 +1292,10 @@
     },
     "Boston": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 33,
+      "open_count": 30,
       "region": "Cities",
       "sources": [
         {
@@ -1309,7 +1309,7 @@
     },
     "Boston Housing": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
       "open_count": 10,
@@ -1326,10 +1326,10 @@
     },
     "Worcester": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 11,
+      "open_count": 10,
       "region": "Cities",
       "sources": [
         {
@@ -1360,24 +1360,24 @@
     },
     "Somerville": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 4,
+      "open_count": 6,
       "region": "Cities",
       "sources": [
         {
           "type": "somerville",
           "url": "https://www.somervillema.gov/departments/finance/procurement-and-contracting-services",
           "status": "ok",
-          "count": 3,
+          "count": 4,
           "message": null
         }
       ]
     },
     "Quincy": {
       "status": "ok",
-      "last_success": "2026-11-03T13:06:32-05:00",
+      "last_success": "2026-11-04T13:16:01-05:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -1393,19 +1393,19 @@
       ]
     },
     "Lowell": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-03T13:06:32-05:00",
-      "last_error": null,
-      "message": null,
-      "open_count": 9,
+      "last_error": "2026-11-04T13:16:01-05:00",
+      "message": "civicplus: could not read robots.txt https://www.lowellma.gov/robots.txt: timed out",
+      "open_count": 11,
       "region": "Cities",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.lowellma.gov/bids.aspx",
-          "status": "ok",
-          "count": 5,
-          "message": null
+          "status": "error",
+          "count": 0,
+          "message": "could not read robots.txt https://www.lowellma.gov/robots.txt: timed out"
         }
       ]
     }
