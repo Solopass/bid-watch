@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-13T13:10:46-05:00",
+  "updated": "2026-11-14T11:45:26-05:00",
   "bids": [
     {
       "town": "Framingham",
@@ -22,7 +22,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -46,7 +46,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -70,7 +70,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -94,7 +94,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-10",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -118,7 +118,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -142,7 +142,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -166,7 +166,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -190,7 +190,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -214,7 +214,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -358,7 +358,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -382,7 +382,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -406,7 +406,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -430,7 +430,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-09",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -454,7 +454,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-09",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -478,7 +478,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-12",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -598,7 +598,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -690,11 +690,11 @@
       "source_url": "https://www.bidnetdirect.com/massachusetts/townwestborough",
       "on_commbuys": "yes",
       "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1348-TA000-TA000-134819&external=true",
-      "paper": "Community Advocate",
-      "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=926105",
+      "paper": null,
+      "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -718,7 +718,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -742,7 +742,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-04",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -766,7 +766,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -790,7 +790,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -834,11 +834,35 @@
       "source_url": "https://www.commbuys.com/bso/view/search/external/advancedSearchBid.xhtml?openBids=true",
       "on_commbuys": "yes",
       "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1591-APS00-APS01-134915&external=true",
-      "paper": "MetroWest Daily News, The",
-      "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=928616",
+      "paper": null,
+      "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
+      "closed_on": null
+    },
+    {
+      "town": "Ashland",
+      "region": "MetroWest core",
+      "sector": "town",
+      "state": "Massachusetts",
+      "source": "town",
+      "kind": "open",
+      "title": "Demolition of the Former Police station and asbestos removal",
+      "bid_number": "24-TM-005",
+      "category": "Town Owned Properties",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-12-10T11:00:00-05:00",
+      "url": "https://www.ashlandmass.com/bids.aspx?bidID=148",
+      "source_url": "https://www.ashlandmass.com/bids.aspx",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1448-TM01-TM01-134961&external=true",
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-11-14",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -862,7 +886,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -910,7 +934,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -934,7 +958,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=927468",
       "status": "open",
       "first_seen": "2026-11-04",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -958,7 +982,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-04",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -982,7 +1006,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-11",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1006,7 +1030,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-12",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1030,7 +1054,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=927473",
       "status": "open",
       "first_seen": "2026-11-04",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1102,7 +1126,7 @@
       "legal_notice_url": null,
       "status": "closed",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": "2026-10-26"
     },
     {
@@ -1174,7 +1198,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=929442",
       "status": "open",
       "first_seen": "2026-11-04",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1198,7 +1222,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1294,7 +1318,7 @@
       "legal_notice_url": null,
       "status": "closed",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": "2026-10-30"
     },
     {
@@ -1318,7 +1342,7 @@
       "legal_notice_url": null,
       "status": "closed",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": "2026-10-30"
     },
     {
@@ -1342,7 +1366,7 @@
       "legal_notice_url": null,
       "status": "closed",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": "2026-11-12"
     },
     {
@@ -1366,7 +1390,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=927354",
       "status": "open",
       "first_seen": "2026-11-03",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1390,7 +1414,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1414,7 +1438,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1438,7 +1462,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-05",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1510,7 +1534,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1534,7 +1558,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-05",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1582,7 +1606,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-29",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1606,7 +1630,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=927814",
       "status": "open",
       "first_seen": "2026-11-05",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1674,11 +1698,11 @@
       "source_url": "https://www.shrewsburyma.gov/bids.aspx",
       "on_commbuys": "yes",
       "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-25-1324-TMNGR-TMNGR-134646&external=true",
-      "paper": "Community Advocate",
-      "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=926111",
+      "paper": null,
+      "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1702,7 +1726,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=930612",
       "status": "open",
       "first_seen": "2026-11-11",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1726,7 +1750,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1822,7 +1846,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-30",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1846,7 +1870,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-03",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1870,7 +1894,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-02",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1918,7 +1942,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=928283",
       "status": "open",
       "first_seen": "2026-11-06",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -1990,7 +2014,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-12",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2014,7 +2038,7 @@
       "legal_notice_url": null,
       "status": "closed",
       "first_seen": "2026-11-04",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": "2026-11-05"
     },
     {
@@ -2086,7 +2110,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2110,7 +2134,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=929692",
       "status": "open",
       "first_seen": "2026-11-11",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2134,7 +2158,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=928622",
       "status": "open",
       "first_seen": "2026-11-11",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2302,7 +2326,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2326,7 +2350,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=929794",
       "status": "open",
       "first_seen": "2026-11-12",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2374,7 +2398,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2418,11 +2442,11 @@
       "source_url": "https://www.commbuys.com/bso/view/search/external/advancedSearchBid.xhtml?openBids=true",
       "on_commbuys": "yes",
       "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-23-2126-AWD00-CHUR-134709&external=true",
-      "paper": "Auburn News",
-      "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=926217",
+      "paper": null,
+      "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2470,7 +2494,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=926871",
       "status": "open",
       "first_seen": "2026-10-29",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2494,7 +2518,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2518,7 +2542,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-05",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2542,7 +2566,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-05",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2566,7 +2590,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-11",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2590,7 +2614,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2638,7 +2662,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-05",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2734,7 +2758,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2758,31 +2782,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-09",
-      "last_seen": "2026-11-13",
-      "closed_on": null
-    },
-    {
-      "town": "Nashua",
-      "region": "NH border",
-      "sector": "town",
-      "state": "New Hampshire",
-      "source": "town",
-      "kind": "open",
-      "title": "Comprehensive Firefighter Occupational Health Evaluations & Early Detection Cancer Screenings",
-      "bid_number": "RFP0589-111326",
-      "category": "Administrative Services",
-      "trade": null,
-      "posted_date": null,
-      "due_date": "2026-11-13T14:00:00-05:00",
-      "url": "https://www.nashuanh.gov/bids.aspx?bidID=620",
-      "source_url": "https://www.nashuanh.gov/bids.aspx",
-      "on_commbuys": "no",
-      "commbuys_url": null,
-      "paper": null,
-      "legal_notice_url": null,
-      "status": "open",
-      "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2858,6 +2858,30 @@
       "closed_on": "2026-11-05"
     },
     {
+      "town": "Nashua",
+      "region": "NH border",
+      "sector": "town",
+      "state": "New Hampshire",
+      "source": "town",
+      "kind": "open",
+      "title": "Comprehensive Firefighter Occupational Health Evaluations & Early Detection Cancer Screenings",
+      "bid_number": "RFP0589-111326",
+      "category": "Administrative Services",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-11-13T14:00:00-05:00",
+      "url": "https://www.nashuanh.gov/bids.aspx?bidID=620",
+      "source_url": "https://www.nashuanh.gov/bids.aspx",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "closed",
+      "first_seen": "2026-10-26",
+      "last_seen": "2026-11-13",
+      "closed_on": "2026-11-14"
+    },
+    {
       "town": "Hudson NH",
       "region": "NH border",
       "sector": "town",
@@ -2878,7 +2902,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-06",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2902,7 +2926,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2974,7 +2998,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -2998,7 +3022,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3022,7 +3046,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3046,7 +3070,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3070,7 +3094,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3094,7 +3118,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3118,7 +3142,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3142,7 +3166,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3166,7 +3190,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3190,7 +3214,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3214,7 +3238,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-03",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3238,7 +3262,7 @@
       "legal_notice_url": null,
       "status": "closed",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": "2026-10-26"
     },
     {
@@ -3310,7 +3334,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3334,7 +3358,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3358,7 +3382,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-30",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3382,7 +3406,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3430,7 +3454,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-12",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3454,7 +3478,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3478,31 +3502,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
-      "closed_on": null
-    },
-    {
-      "town": "Boston",
-      "region": "Cities",
-      "sector": "town",
-      "state": "Massachusetts",
-      "source": "commbuys",
-      "kind": "open",
-      "title": "REQ - IMPROVEMENTS TO DORCHESTER PARK INFIELD",
-      "bid_number": "BD-27-1142-30000-300-134435",
-      "category": "City of Boston",
-      "trade": null,
-      "posted_date": null,
-      "due_date": "2026-11-13T14:00:00-05:00",
-      "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1142-30000-300-134435&external=true",
-      "source_url": "https://www.commbuys.com/bso/view/search/external/advancedSearchBid.xhtml?openBids=true",
-      "on_commbuys": "yes",
-      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1142-30000-300-134435&external=true",
-      "paper": null,
-      "legal_notice_url": null,
-      "status": "open",
-      "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3526,7 +3526,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-02",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3550,7 +3550,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-09",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3574,7 +3574,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3598,7 +3598,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3622,7 +3622,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-02",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3646,7 +3646,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3670,7 +3670,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-02",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3694,7 +3694,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-09",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3718,7 +3718,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3742,7 +3742,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-02",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3766,7 +3766,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-02",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3790,7 +3790,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3814,7 +3814,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-02",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3838,7 +3838,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-09",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3862,7 +3862,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3886,7 +3886,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-02",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3910,7 +3910,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-31",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -3982,7 +3982,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-03",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -4030,7 +4030,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-12",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -4078,7 +4078,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-29",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -4518,6 +4518,30 @@
       "region": "Cities",
       "sector": "town",
       "state": "Massachusetts",
+      "source": "commbuys",
+      "kind": "open",
+      "title": "REQ - IMPROVEMENTS TO DORCHESTER PARK INFIELD",
+      "bid_number": "BD-27-1142-30000-300-134435",
+      "category": "City of Boston",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-11-13T14:00:00-05:00",
+      "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1142-30000-300-134435&external=true",
+      "source_url": "https://www.commbuys.com/bso/view/search/external/advancedSearchBid.xhtml?openBids=true",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1142-30000-300-134435&external=true",
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "closed",
+      "first_seen": "2026-10-28",
+      "last_seen": "2026-11-13",
+      "closed_on": "2026-11-14"
+    },
+    {
+      "town": "Boston",
+      "region": "Cities",
+      "sector": "town",
+      "state": "Massachusetts",
       "source": "town",
       "kind": "open",
       "title": "FUNDRAISING, SPONSORSHIP AND DONOR RELATIONS FOR THE 2027 ROSE GARDEN PARTY",
@@ -4582,7 +4606,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-11",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -4606,7 +4630,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-03",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -4630,7 +4654,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -4654,31 +4678,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
-      "closed_on": null
-    },
-    {
-      "town": "Boston Housing",
-      "region": "Cities",
-      "sector": "housing",
-      "state": "Massachusetts",
-      "source": "town",
-      "kind": "open",
-      "title": "RFP #2425-01 Package Locker at BHA Sites",
-      "bid_number": "2425-01",
-      "category": "Addendum No. 1 has been released The Boston Housing Authority (BHA) on behalf of itself and affiliated entities, Heritage Housing Corporation, and Lower Mills Housing Corporation, seeks proposals from qualified vendors to provide, install, ",
-      "trade": null,
-      "posted_date": null,
-      "due_date": null,
-      "url": "https://www.bostonhousing.org/en/Bid-Opportunities/Current-Bid-Opportunities/RFP-2425-01-Package-Locker-at-BHA-Sites.aspx",
-      "source_url": "https://www.bostonhousing.org/en/Bid-Opportunities/Current-Bid-Opportunities.aspx",
-      "on_commbuys": "no",
-      "commbuys_url": null,
-      "paper": null,
-      "legal_notice_url": null,
-      "status": "open",
-      "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -4702,31 +4702,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
-      "closed_on": null
-    },
-    {
-      "town": "Boston Housing",
-      "region": "Cities",
-      "sector": "housing",
-      "state": "Massachusetts",
-      "source": "town",
-      "kind": "open",
-      "title": "RFP #2494-01 Affordable Housing Development Consultant Services",
-      "bid_number": "2494-01",
-      "category": "Addendum No. 1 has been released The Boston Housing Authority (“BHA”) is seeking affordable housing development consultant services from one or more qualified individuals or firms (each a “Consultant”) with significant experience in feasibi",
-      "trade": null,
-      "posted_date": null,
-      "due_date": null,
-      "url": "https://www.bostonhousing.org/en/Bid-Opportunities/Current-Bid-Opportunities/RFP-2494-01-Affordable-Housing-Development-Consul.aspx",
-      "source_url": "https://www.bostonhousing.org/en/Bid-Opportunities/Current-Bid-Opportunities.aspx",
-      "on_commbuys": "no",
-      "commbuys_url": null,
-      "paper": null,
-      "legal_notice_url": null,
-      "status": "open",
-      "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -4750,7 +4726,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-29",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -4832,6 +4808,54 @@
       "state": "Massachusetts",
       "source": "town",
       "kind": "open",
+      "title": "RFP #2425-01 Package Locker at BHA Sites",
+      "bid_number": "2425-01",
+      "category": "Addendum No. 1 has been released The Boston Housing Authority (BHA) on behalf of itself and affiliated entities, Heritage Housing Corporation, and Lower Mills Housing Corporation, seeks proposals from qualified vendors to provide, install, ",
+      "trade": null,
+      "posted_date": null,
+      "due_date": null,
+      "url": "https://www.bostonhousing.org/en/Bid-Opportunities/Current-Bid-Opportunities/RFP-2425-01-Package-Locker-at-BHA-Sites.aspx",
+      "source_url": "https://www.bostonhousing.org/en/Bid-Opportunities/Current-Bid-Opportunities.aspx",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "closed",
+      "first_seen": "2026-10-28",
+      "last_seen": "2026-11-13",
+      "closed_on": "2026-11-14"
+    },
+    {
+      "town": "Boston Housing",
+      "region": "Cities",
+      "sector": "housing",
+      "state": "Massachusetts",
+      "source": "town",
+      "kind": "open",
+      "title": "RFP #2494-01 Affordable Housing Development Consultant Services",
+      "bid_number": "2494-01",
+      "category": "Addendum No. 1 has been released The Boston Housing Authority (“BHA”) is seeking affordable housing development consultant services from one or more qualified individuals or firms (each a “Consultant”) with significant experience in feasibi",
+      "trade": null,
+      "posted_date": null,
+      "due_date": null,
+      "url": "https://www.bostonhousing.org/en/Bid-Opportunities/Current-Bid-Opportunities/RFP-2494-01-Affordable-Housing-Development-Consul.aspx",
+      "source_url": "https://www.bostonhousing.org/en/Bid-Opportunities/Current-Bid-Opportunities.aspx",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "closed",
+      "first_seen": "2026-10-28",
+      "last_seen": "2026-11-13",
+      "closed_on": "2026-11-14"
+    },
+    {
+      "town": "Boston Housing",
+      "region": "Cities",
+      "sector": "housing",
+      "state": "Massachusetts",
+      "source": "town",
+      "kind": "open",
       "title": "RFP #2503-01 WORKERS’ COMPENSATION/EMPLOYER’S LIABILITY INSURANCE BHA Project",
       "bid_number": "2503-01",
       "category": "Addendum No. 1 and 2 have been released The Boston Housing Authority (BHA) invites all interested parties to submit proposals to provide Workers’ Compensation/Employer’s Liability insurance under the laws of the Commonwealth of Massachusett",
@@ -4870,7 +4894,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -4894,7 +4918,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -4918,7 +4942,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -4942,7 +4966,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -4966,7 +4990,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-04",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -4990,7 +5014,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5014,7 +5038,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-11",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5038,7 +5062,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-03",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5062,7 +5086,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5086,7 +5110,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-09",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5110,7 +5134,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-09",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5134,7 +5158,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-09",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5158,7 +5182,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-12",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5350,7 +5374,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5374,7 +5398,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-30",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5398,7 +5422,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-12",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5422,7 +5446,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=927788",
       "status": "open",
       "first_seen": "2026-10-29",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5446,7 +5470,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-12",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5470,7 +5494,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-12",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5494,7 +5518,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=930083",
       "status": "open",
       "first_seen": "2026-11-12",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5518,7 +5542,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5542,7 +5566,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5566,7 +5590,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=930081",
       "status": "open",
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5734,7 +5758,7 @@
       "legal_notice_url": null,
       "status": "closed",
       "first_seen": "2026-11-05",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": "2026-11-13"
     },
     {
@@ -5902,7 +5926,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=927745",
       "status": "open",
       "first_seen": "2026-11-05",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5926,7 +5950,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-05",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5950,7 +5974,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5974,7 +5998,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -5998,7 +6022,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=930035",
       "status": "open",
       "first_seen": "2026-11-11",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6022,7 +6046,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-04",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6046,7 +6070,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=930032",
       "status": "open",
       "first_seen": "2026-11-11",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6070,7 +6094,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6094,7 +6118,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-05",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6224,30 +6248,6 @@
       "state": "Massachusetts",
       "source": "town",
       "kind": "open",
-      "title": "Furniture, Fixtures, and Equipment at New Squantum Elementary School",
-      "bid_number": null,
-      "category": null,
-      "trade": null,
-      "posted_date": null,
-      "due_date": "2026-11-13",
-      "url": "https://www.quincyma.gov/departments/purchasing/bid_detail_T2_R1349.php",
-      "source_url": "https://www.quincyma.gov/departments/purchasing/current_bids.php",
-      "on_commbuys": "yes",
-      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-26-1163-PD888-PD888-134986&external=true",
-      "paper": null,
-      "legal_notice_url": null,
-      "status": "open",
-      "first_seen": "2026-10-30",
-      "last_seen": "2026-11-13",
-      "closed_on": null
-    },
-    {
-      "town": "Quincy",
-      "region": "Cities",
-      "sector": "town",
-      "state": "Massachusetts",
-      "source": "town",
-      "kind": "open",
       "title": "On-Call Real Estate Consultant Services",
       "bid_number": null,
       "category": null,
@@ -6262,7 +6262,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-09",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6286,7 +6286,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-12",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6310,7 +6310,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6386,6 +6386,30 @@
       "closed_on": "2026-11-13"
     },
     {
+      "town": "Quincy",
+      "region": "Cities",
+      "sector": "town",
+      "state": "Massachusetts",
+      "source": "town",
+      "kind": "open",
+      "title": "Furniture, Fixtures, and Equipment at New Squantum Elementary School",
+      "bid_number": null,
+      "category": null,
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-11-13",
+      "url": "https://www.quincyma.gov/departments/purchasing/bid_detail_T2_R1349.php",
+      "source_url": "https://www.quincyma.gov/departments/purchasing/current_bids.php",
+      "on_commbuys": "yes",
+      "commbuys_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-26-1163-PD888-PD888-134986&external=true",
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "closed",
+      "first_seen": "2026-10-30",
+      "last_seen": "2026-11-14",
+      "closed_on": "2026-11-14"
+    },
+    {
       "town": "Lowell",
       "region": "Cities",
       "sector": "town",
@@ -6406,7 +6430,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6430,7 +6454,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6454,7 +6478,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6478,7 +6502,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6502,7 +6526,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6526,7 +6550,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-11",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6550,7 +6574,7 @@
       "legal_notice_url": "https://www.masspublicnotices.org/Details.aspx?ID=929796",
       "status": "open",
       "first_seen": "2026-11-11",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6574,7 +6598,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6598,7 +6622,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-11",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6622,7 +6646,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-11",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6646,7 +6670,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-09",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6670,7 +6694,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-11",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6886,7 +6910,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-09",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6910,7 +6934,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-05",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6934,7 +6958,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -6958,7 +6982,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7054,7 +7078,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-09",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7078,7 +7102,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7102,7 +7126,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7136,30 +7160,6 @@
       "state": "Massachusetts",
       "source": "bid_express",
       "kind": "open",
-      "title": "Request for Bids for Prequalified Trade Contractors for SDE - Middleton Jail and HOC - Medical & Kitchen Building/ISB Replacement, Phase 2, Middleton, MA, for the following Trade Bid Sections: Masonry; Miscellaneous and Ornamental Iron; Waterproofing, Dampproofing and Caulking; Roofing and Flashing; Metal Windows; Glass and Glazing; Tile; Acoustical Tile; Resilient Floors; Painting; Fire Protection Sprinkler System; Plumbing; HVAC; Electrical. The Construction Manager is Commodore Builders, LLC.",
-      "bid_number": "SDE1902 Phase 2 Trade RFB",
-      "category": "DCAMM",
-      "trade": null,
-      "posted_date": null,
-      "due_date": "2026-11-17T12:00:00-05:00",
-      "url": "https://www.bidexpress.com/solicitations/49386",
-      "source_url": "https://www.bidexpress.com/businesses/10279/home",
-      "on_commbuys": "no",
-      "commbuys_url": null,
-      "paper": null,
-      "legal_notice_url": null,
-      "status": "open",
-      "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
-      "closed_on": null
-    },
-    {
-      "town": "DCAMM",
-      "region": "Statewide agency",
-      "sector": "agency",
-      "state": "Massachusetts",
-      "source": "bid_express",
-      "kind": "open",
       "title": "EPS – North Shore Regional 911 Call Center Water Leaks, Middleton, MA. The work consists of the renovation of a one-story 9,500 GSF building that houses the North Shore Regional 911 Call Center. This Project includes the following Filed Sub-Bid Categories: Roofing & Flashing; Plumbing; HVAC; Electrical. The Category of Work is General Building Construction.",
       "bid_number": "EPS2401",
       "category": "DCAMM",
@@ -7174,7 +7174,31 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
+      "closed_on": null
+    },
+    {
+      "town": "DCAMM",
+      "region": "Statewide agency",
+      "sector": "agency",
+      "state": "Massachusetts",
+      "source": "bid_express",
+      "kind": "open",
+      "title": "Request for Bids for Prequalified Trade Contractors for SDE - Middleton Jail and HOC - Medical & Kitchen Building/ISB Replacement, Phase 2, Middleton, MA, for the following Trade Bid Sections: Masonry; Miscellaneous and Ornamental Iron; Waterproofing, Dampproofing and Caulking; Roofing and Flashing; Metal Windows; Glass and Glazing; Tile; Acoustical Tile; Resilient Floors; Painting; Fire Protection Sprinkler System; Plumbing; HVAC; Electrical. The Construction Manager is Commodore Builders, LLC.",
+      "bid_number": "SDE1902 Phase 2 Trade RFB",
+      "category": "DCAMM",
+      "trade": null,
+      "posted_date": null,
+      "due_date": "2026-11-23T12:00:00-05:00",
+      "url": "https://www.bidexpress.com/solicitations/49386",
+      "source_url": "https://www.bidexpress.com/businesses/10279/home",
+      "on_commbuys": "no",
+      "commbuys_url": null,
+      "paper": null,
+      "legal_notice_url": null,
+      "status": "open",
+      "first_seen": "2026-10-26",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7198,7 +7222,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7222,7 +7246,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-04",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7294,7 +7318,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7318,7 +7342,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7342,7 +7366,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-10",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7366,7 +7390,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7390,7 +7414,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-10",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7414,7 +7438,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-10",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7438,7 +7462,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-04",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7510,7 +7534,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7534,7 +7558,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-26",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7558,7 +7582,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7582,7 +7606,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-31",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7702,7 +7726,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7726,7 +7750,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-05",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7798,7 +7822,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-11-09",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7822,7 +7846,7 @@
       "legal_notice_url": null,
       "status": "open",
       "first_seen": "2026-10-28",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": null
     },
     {
@@ -7894,7 +7918,7 @@
       "legal_notice_url": null,
       "status": "closed",
       "first_seen": "2026-10-27",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "closed_on": "2026-11-10"
     },
     {
