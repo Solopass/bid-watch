@@ -1,12 +1,12 @@
 {
-  "updated": "2026-11-24T15:54:34-05:00",
+  "updated": "2026-11-25T15:14:57-05:00",
   "commbuys": {
     "status": "ok",
-    "last_success": "2026-11-24T15:54:34-05:00",
+    "last_success": "2026-11-25T15:14:57-05:00",
     "last_error": null,
-    "message": "869 open statewide; 64 covered rows kept; 40 matched a town bid",
-    "rows": 869,
-    "covered_rows": 64
+    "message": "898 open statewide; 66 covered rows kept; 40 matched a town bid",
+    "rows": 898,
+    "covered_rows": 66
   },
   "central_register": {
     "status": "skipped",
@@ -19,23 +19,23 @@
     "legal_notices": {
       "status": "ok",
       "label": "Legal notices",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
-      "message": "24 covered-town notices in the last 14 days; stopped after 3 pages on a long query; 16 matched an existing bid; 8 added",
-      "open_count": 8
+      "message": "26 covered-town notices in the last 14 days; stopped after 3 pages on a long query; 19 matched an existing bid; 7 added",
+      "open_count": 7
     },
     "bid_express": {
       "status": "ok",
       "label": "Bid Express",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
-      "message": "DCAMM 5; Massport 7",
-      "open_count": 12
+      "message": "DCAMM 6; Massport 8",
+      "open_count": 14
     },
     "massdevelopment": {
       "status": "ok",
       "label": "MassDevelopment",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": "1 posting(s)",
       "open_count": 1
@@ -44,7 +44,7 @@
       "status": "error",
       "label": "MBTA",
       "last_success": "2026-11-23T17:16:22-05:00",
-      "last_error": "2026-11-24T15:54:34-05:00",
+      "last_error": "2026-11-25T15:14:57-05:00",
       "message": "MBTA: robots.txt disallows https://bc.mbta.com/business_center/bidding_solicitations/current_solicitations/; MBTA: robots.txt disallows https://bc.mbta.com/business_center/bidding_solicitations/future_solicitations/",
       "open_count": 12
     },
@@ -52,7 +52,7 @@
       "status": "error",
       "label": "MSBA",
       "last_success": "2026-10-28T16:08:16-04:00",
-      "last_error": "2026-11-24T15:54:34-05:00",
+      "last_error": "2026-11-25T15:14:57-05:00",
       "message": "MSBA capital planning page had no estimated bid schedule",
       "open_count": 2,
       "pdf_url": "https://www.massschoolbuildings.org/sites/default/files/edit-contentfiles/About_Us/Board_Meetings/2026_Board/8.26.2026/Estimated_Bid_Dates_August_2026.pdf"
@@ -60,15 +60,15 @@
     "massdot": {
       "status": "ok",
       "label": "MassDOT",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
-      "message": "2 in-range project(s)",
+      "message": "1 in-range project(s)",
       "open_count": 1
     },
     "dcr": {
       "status": "ok",
       "label": "DCR",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": "2 current construction ad(s)",
       "open_count": 2
@@ -76,7 +76,7 @@
     "mapc": {
       "status": "ok",
       "label": "MAPC",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": "3 in-range notice(s)",
       "open_count": 2
@@ -92,7 +92,7 @@
     "boston_planning": {
       "status": "ok",
       "label": "Boston Planning",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": "4 early lead(s)",
       "open_count": 12
@@ -101,7 +101,7 @@
   "towns": {
     "Framingham": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 7,
@@ -125,7 +125,7 @@
     },
     "Natick": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 4,
@@ -142,17 +142,17 @@
     },
     "Marlborough": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 2,
+      "open_count": 3,
       "region": "MetroWest core",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.marlborough-ma.gov/bids.aspx",
           "status": "ok",
-          "count": 0,
+          "count": 1,
           "message": null
         },
         {
@@ -166,7 +166,7 @@
     },
     "Hudson": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -183,10 +183,10 @@
     },
     "Westborough": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 1,
+      "open_count": 2,
       "region": "MetroWest core",
       "sources": [
         {
@@ -207,7 +207,7 @@
     },
     "Ashland": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 3,
@@ -231,7 +231,7 @@
     },
     "Hopkinton": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -248,7 +248,7 @@
     },
     "Sudbury": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -265,7 +265,7 @@
     },
     "Wayland": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -282,7 +282,7 @@
     },
     "Southborough": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -299,7 +299,7 @@
     },
     "Holliston": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -316,7 +316,7 @@
     },
     "Milford": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -340,7 +340,7 @@
     },
     "Wellesley": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -357,10 +357,10 @@
     },
     "Weston": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 1,
+      "open_count": 0,
       "region": "Next ring",
       "sources": [
         {
@@ -374,7 +374,7 @@
     },
     "Needham": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 4,
@@ -391,7 +391,7 @@
     },
     "Shrewsbury": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -408,7 +408,7 @@
     },
     "Stow": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -425,7 +425,7 @@
     },
     "Acton": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -442,7 +442,7 @@
     },
     "Concord": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -459,7 +459,7 @@
     },
     "Dover": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -476,10 +476,10 @@
     },
     "Sherborn": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 1,
+      "open_count": 0,
       "region": "Next ring",
       "sources": [
         {
@@ -493,7 +493,7 @@
     },
     "Bellingham": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -510,7 +510,7 @@
     },
     "Upton": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -527,7 +527,7 @@
     },
     "Grafton": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -544,7 +544,7 @@
     },
     "Maynard": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -561,7 +561,7 @@
     },
     "Lincoln": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -578,7 +578,7 @@
     },
     "Mendon": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -595,7 +595,7 @@
     },
     "Medway": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -612,7 +612,7 @@
     },
     "Franklin": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -629,7 +629,7 @@
     },
     "Wrentham": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -646,10 +646,10 @@
     },
     "Bedford": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 0,
+      "open_count": 1,
       "region": "Outer ring",
       "sources": [
         {
@@ -663,7 +663,7 @@
     },
     "Boxborough": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -680,7 +680,7 @@
     },
     "Lexington": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -697,7 +697,7 @@
     },
     "Littleton": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -714,7 +714,7 @@
     },
     "Carlisle": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -731,7 +731,7 @@
     },
     "Harvard": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -748,7 +748,7 @@
     },
     "Clinton": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -765,10 +765,10 @@
     },
     "Uxbridge": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 1,
+      "open_count": 2,
       "region": "Outer ring",
       "sources": [
         {
@@ -782,7 +782,7 @@
     },
     "Sutton": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -799,7 +799,7 @@
     },
     "Douglas": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -816,7 +816,7 @@
     },
     "Oxford": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -833,7 +833,7 @@
     },
     "Auburn": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -850,7 +850,7 @@
     },
     "Charlton": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -867,7 +867,7 @@
     },
     "Webster": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -884,7 +884,7 @@
     },
     "Southbridge": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -901,10 +901,10 @@
     },
     "Blackstone": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 2,
+      "open_count": 3,
       "region": "Outer ring",
       "sources": [
         {
@@ -918,7 +918,7 @@
     },
     "North Attleborough": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -935,7 +935,7 @@
     },
     "Plainville": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -952,24 +952,24 @@
     },
     "Attleboro": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 3,
+      "open_count": 2,
       "region": "Outer ring",
       "sources": [
         {
           "type": "civicplus",
           "url": "https://www.cityofattleboro.us/bids.aspx",
           "status": "ok",
-          "count": 3,
+          "count": 2,
           "message": null
         }
       ]
     },
     "Norton": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -986,7 +986,7 @@
     },
     "Seekonk": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -1003,7 +1003,7 @@
     },
     "Canton": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -1020,7 +1020,7 @@
     },
     "Stoughton": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -1037,7 +1037,7 @@
     },
     "Waltham": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -1054,7 +1054,7 @@
     },
     "Lincoln RI": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -1071,7 +1071,7 @@
     },
     "Cumberland RI": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -1088,7 +1088,7 @@
     },
     "North Smithfield": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -1105,7 +1105,7 @@
     },
     "Nashua": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -1122,7 +1122,7 @@
     },
     "Hudson NH": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -1139,7 +1139,7 @@
     },
     "Salem NH": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 0,
@@ -1156,7 +1156,7 @@
     },
     "Pelham": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -1173,7 +1173,7 @@
     },
     "Windham NH": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -1190,7 +1190,7 @@
     },
     "Assabet Valley": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 11,
@@ -1207,7 +1207,7 @@
     },
     "Keefe Tech": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -1224,7 +1224,7 @@
     },
     "Lincoln-Sudbury": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 1,
@@ -1240,25 +1240,25 @@
       ]
     },
     "Algonquin Regional": {
-      "status": "ok",
+      "status": "error",
       "last_success": "2026-11-24T15:54:34-05:00",
-      "last_error": null,
-      "message": null,
+      "last_error": "2026-11-25T15:14:57-05:00",
+      "message": "notices: could not read robots.txt https://nsboro.k12.ma.us/robots.txt: [Errno -5] No address associated with hostname",
       "open_count": 0,
       "region": "MetroWest core",
       "sources": [
         {
           "type": "notices",
           "url": "https://nsboro.k12.ma.us/150206_3",
-          "status": "ok",
+          "status": "error",
           "count": 0,
-          "message": null
+          "message": "could not read robots.txt https://nsboro.k12.ma.us/robots.txt: [Errno -5] No address associated with hostname"
         }
       ]
     },
     "Blackstone Valley Tech": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 3,
@@ -1275,7 +1275,7 @@
     },
     "Minuteman": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 2,
@@ -1292,7 +1292,7 @@
     },
     "Boston": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 32,
@@ -1309,7 +1309,7 @@
     },
     "Boston Housing": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 4,
@@ -1326,10 +1326,10 @@
     },
     "Worcester": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 11,
+      "open_count": 9,
       "region": "Cities",
       "sources": [
         {
@@ -1360,10 +1360,10 @@
     },
     "Somerville": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 7,
+      "open_count": 8,
       "region": "Cities",
       "sources": [
         {
@@ -1377,24 +1377,24 @@
     },
     "Quincy": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
-      "open_count": 4,
+      "open_count": 5,
       "region": "Cities",
       "sources": [
         {
           "type": "quincy",
           "url": "https://www.quincyma.gov/departments/purchasing/current_bids.php",
           "status": "ok",
-          "count": 1,
+          "count": 2,
           "message": null
         }
       ]
     },
     "Lowell": {
       "status": "ok",
-      "last_success": "2026-11-24T15:54:34-05:00",
+      "last_success": "2026-11-25T15:14:57-05:00",
       "last_error": null,
       "message": null,
       "open_count": 11,
